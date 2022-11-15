@@ -5,11 +5,11 @@ on:
     branches: [ "develop" ]
 
 env:
-  PROJECT_ID: '${{ secrets.GCP_PROJECT_ID }}'
-  REGION: '${{ secrets.GCP_REGION }}'
-  GAR_LOCATION: '${{ secrets.GCP_REGION }}'
-  GAR_ID: '${{ secrets.GAR_ID }}'
-  SERVICE: '${{ secrets.SERVICE }}'
+  PROJECT_ID: tahouse
+  REGION: us-central1
+  GAR_LOCATION: us-central1
+  GAR_ID: dev-tahouse
+  SERVICE: dev-tahouse-frontend
   
 jobs:
   deploy:
