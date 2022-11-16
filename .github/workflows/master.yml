@@ -9,8 +9,6 @@ env:
   REGION: us-central1
   ARTIFACTORY: tahouse
   SERVICE: tahouse-frontend
-  ARTIFACTORY_STAGE: stage-tahouse
-  SERVICE_STAGE: stage-tahouse-frontend
 
 jobs:
   build-test:
@@ -35,57 +33,9 @@ jobs:
         path: artifact/
         retention-days: 5
         
-  docker-push-stage:
+  docker-push:
     runs-on: ubuntu-latest
     needs: [build-test]
-    steps:
-    - uses: actions/checkout@v3
-    - name: Download artifact build
-      uses: actions/download-artifact@v3
-      with:
-        name: build
-    - name: Create personalized variables
-      id: vars
-      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-    - name: Docker Auth
-      id: docker-auth
-      uses: 'docker/login-action@v2'
-      with:
-        username: _json_key
-        password: '${{ secrets.GCP_CREDENTIALS }}'
-        registry: '${{ env.REGION }}-docker.pkg.dev'
-    - name: Build and Push Container
-      run: |-
-        docker build -t "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY_STAGE }}/${{ env.SERVICE_STAGE }}:${{ steps.vars.outputs.sha_short }}" -t "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY_STAGE }}/${{ env.SERVICE_STAGE }}:latest" ./
-        docker push "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY_STAGE }}/${{ env.SERVICE_STAGE }}" --all-tags
-
-  deploy-stage:
-    environment: stage
-    runs-on: ubuntu-latest
-    needs: [docker-push-stage]
-    steps:
-    - uses: actions/checkout@v3
-    - name: Create personalized variables
-      id: vars
-      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-    - name: Google Auth
-      id: auth
-      uses: 'google-github-actions/auth@v0'
-      with:
-        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-    - name: Deploy to Cloud Run
-      id: deploy
-      uses: google-github-actions/deploy-cloudrun@v0
-      with:
-        service: ${{ env.SERVICE }}
-        region: ${{ env.REGION }}
-        image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY_STAGE }}/${{ env.SERVICE_STAGE }}:${{ steps.vars.outputs.sha_short }}
-    - name: Show Output
-      run: echo ${{ steps.deploy.outputs.url }} 
-
-  docker-push-prod:
-    runs-on: ubuntu-latest
-    needs: [deploy-stage]
     steps:
     - uses: actions/checkout@v3
     - name: Download artifact build
@@ -110,7 +60,7 @@ jobs:
   deploy-prod:
     environment: prod
     runs-on: ubuntu-latest
-    needs: [docker-push-prod]
+    needs: [docker-push]
     steps:
     - uses: actions/checkout@v3
     - name: Create personalized variables
