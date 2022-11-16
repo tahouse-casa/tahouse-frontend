@@ -3,7 +3,7 @@ import { ItemFooter } from "../../components/itemFooter/itemFooter"
 export const Footer = () => {
 return (
     <Container>
-        <Title>Bonplad</Title>
+        <Title>taHouse</Title>
         <ItemFooter name="Sobre nosotros"/>
         <ItemFooter name="Nuestra"/>
         <ItemFooter name="Paises"/>
