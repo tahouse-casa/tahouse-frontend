@@ -10,7 +10,6 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-    - name: Setup chekout & node
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
