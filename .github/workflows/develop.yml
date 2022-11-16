@@ -1,0 +1,82 @@
+name: Build, Test & Deploy [DEVELOP]
+
+on:
+  push:
+    branches: [ "develop" ]
+    
+env:
+  PROJECT: tahouse
+  REGION: us-central1
+  ARTIFACTORY: dev-tahouse
+  SERVICE: dev-tahouse-frontend
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.14.2
+    - name: Install dependecies
+      run: npm ci
+    - name: Build
+      run: npm run build
+    #- name: Test
+    #  run: npm test
+    - name: Move build directory
+      run: mkdir artifact && mv build/ artifact/
+    - name: Upload artifact build
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: artifact/
+        retention-days: 5
+        
+  docker-push:
+    runs-on: ubuntu-latest
+    needs: [build-test]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download artifact build
+      uses: actions/download-artifact@v3
+      with:
+        name: build
+    - name: Create personalized variables
+      id: vars
+      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    - name: Docker Auth
+      id: docker-auth
+      uses: 'docker/login-action@v2'
+      with:
+        username: _json_key
+        password: '${{ secrets.GCP_CREDENTIALS }}'
+        registry: '${{ env.REGION }}-docker.pkg.dev'
+    - name: Build and Push Container
+      run: |-
+        docker build -t "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY }}/${{ env.SERVICE }}:${{ steps.vars.outputs.sha_short }}" -t "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY }}/${{ env.SERVICE }}:latest" ./
+        docker push "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY }}/${{ env.SERVICE }}" --all-tags
+
+  deploy-dev:
+    environment: dev
+    runs-on: ubuntu-latest
+    needs: [docker-push]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create personalized variables
+      id: vars
+      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    - name: Google Auth
+      id: auth
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+    - name: Deploy to Cloud Run
+      id: deploy
+      uses: google-github-actions/deploy-cloudrun@v0
+      with:
+        service: ${{ env.SERVICE }}
+        region: ${{ env.REGION }}
+        image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY }}/${{ env.SERVICE }}:${{ steps.vars.outputs.sha_short }}
+    - name: Show Output
+      run: echo ${{ steps.deploy.outputs.url }} 
