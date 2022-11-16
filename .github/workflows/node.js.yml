@@ -39,12 +39,17 @@ jobs:
     needs: [build-test]
     steps:
     - uses: actions/checkout@v3
+    
     - name: test
       run: ls
+    
     - name: Download artifact build
       uses: actions/download-artifact@v3
       with:
         name: build
+  
+    - name: test
+      run: ls
         
     - name: Create personalized variables
       id: vars
