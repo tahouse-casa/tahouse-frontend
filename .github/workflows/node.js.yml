@@ -1,0 +1,43 @@
+name: Build+Test+Build_Docker+Push+Deploy
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup chekout & node
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.14.2
+        
+    - name: Install dependecies
+      run: npm ci
+      
+    - name: Build
+      run: npm run build
+      
+    - name: Test
+      run: npm test
+      
+    - name: Upload artifact build
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: build/
+        retention-days: 5
+        
+  docker-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download a single artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: build
+    - name: Test
+      run: ls
