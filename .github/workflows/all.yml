@@ -1,4 +1,4 @@
-name: Build+Test+Build_Docker+Push+Deploy
+name: Build, Test & Deploy
 
 on:
   push:
@@ -57,8 +57,8 @@ jobs:
         registry: '${{ env.GAR_LOCATION }}-docker.pkg.dev'
     - name: Build and Push Container
       run: |-
-        docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_ID }}/${{ env.SERVICE }}:${{ steps.vars.outputs.sha_short }}" ./
-        docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_ID }}/${{ env.SERVICE }}:${{ steps.vars.outputs.sha_short }}"
+        docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_ID }}/${{ env.SERVICE }}:${{ steps.vars.outputs.sha_short }}" "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_ID }}/${{ env.SERVICE }}:latest ./
+        docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_ID }}/${{ env.SERVICE }} --all-tags
 
   deploy:
     runs-on: ubuntu-latest
@@ -82,4 +82,3 @@ jobs:
         image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_ID }}/${{ env.SERVICE }}:${{ steps.vars.outputs.sha_short }}
     - name: Show Output
       run: echo ${{ steps.deploy.outputs.url }} 
-  
