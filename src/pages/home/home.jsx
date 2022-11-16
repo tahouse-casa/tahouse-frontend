@@ -145,7 +145,6 @@ export const Home = () => {
             )}
             {!searched && <Promotion/>}
             {!searched && <ShoppingGuide/>}
-            <Footer/>
         </Container>
     )
 } 
