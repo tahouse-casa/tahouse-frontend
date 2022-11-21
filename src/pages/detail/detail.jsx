@@ -13,7 +13,7 @@ export const Detail = () => {
     const idCard = Number(id)
 
     useEffect(()=>{
-        fetch(`http://localhost:3001/api/v1/properties/${idCard}`)
+        fetch(`${process.env.DATABASE_URL}/properties/${idCard}`)
         .then(res => res.json())
         .then(data=>setCard(data))
     }, [idCard])
