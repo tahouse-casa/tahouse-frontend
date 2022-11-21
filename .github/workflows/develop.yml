@@ -76,7 +76,7 @@ jobs:
       uses: google-github-actions/deploy-cloudrun@v0
       with:
         env_vars: |
-          API_URL=https://api.dev.tahouse.casa/api/v1
+          REACT_APP_API_URL=https://api.dev.tahouse.casa/api/v1
         service: ${{ env.SERVICE }}
         region: ${{ env.REGION }}
         image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT }}/${{ env.ARTIFACTORY }}/${{ env.SERVICE }}:${{ steps.vars.outputs.sha_short }}
