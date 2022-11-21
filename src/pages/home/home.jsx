@@ -28,7 +28,7 @@ export const Home = () => {
     const [defaultCountry, setDefaultCountry] = useState({})
 
     useEffect(()=>{
-        fetch("http://localhost:3001/api/v1/properties")
+        fetch(`${process.env.API_URL}/properties`)
         .then(res => res.json())
         .then(data=>{
             setData(data)
@@ -36,7 +36,7 @@ export const Home = () => {
     }, [])
 
     useEffect(()=>{
-        fetch("http://localhost:3001/api/v1/countries")
+        fetch(`${process.env.API_URL}/countries`)
         .then(res => res.json())
         .then(data=>{
             setCountries(data)
