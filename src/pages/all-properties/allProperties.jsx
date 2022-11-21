@@ -9,7 +9,7 @@ export const AllProperties = () => {
     const [data, setData] = useState([])
 
     useEffect(()=>{
-        fetch("http://localhost:3001/api/v1/properties")
+        fetch(`${process.env.API_URL}/properties`)
         .then(res => res.json())
         .then(data=>{
             setData(data)
