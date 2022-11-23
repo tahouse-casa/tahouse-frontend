@@ -5,20 +5,23 @@ import {BsSearch} from 'react-icons/bs'
 import { AppContext } from '../../context'
 export const Searcher = () => {
 
-    const {handleSearch, estates, setEstates, valueInput, setLoading, viewDefaultValue} = useContext(AppContext)
+    const {handleSearch, setEstates, valueInput, setLoading, viewDefaultValue, data, setMap, setVisibleFilters, setValueInput} = useContext(AppContext)
     const navigate = useNavigate();
     const searchData = () => {
         setLoading(true)
-        const {pais, baños, habitaciones, precio, max} = valueInput
+        const {pais, baños, habitaciones,ambientes, precio, max} = valueInput
         let newList;
         if(pais.length > 0) {
-             newList = estates.filter((estate)=> {
+             newList = data.filter((estate)=> {
                 const selectOnlyCountry = estate.country
                 return selectOnlyCountry.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toUpperCase()
                 .includes(pais.normalize("NFD").replace(/[\u0300-\u036f]/g, ''))
         })
             setEstates(newList)
-            viewDefaultValue()
+        }
+        if(ambientes){
+            newList = newList.filter((estate)=> estate.ambientes >= ambientes)
+            setEstates(newList)
         }
         if(baños){
             newList = newList.filter((estate)=> estate.bathrooms >= baños)
@@ -36,15 +39,19 @@ export const Searcher = () => {
             newList = newList.filter((estate)=> estate.meters <= max)
             setEstates(newList)
         }
-        //setMap(false)
+        setMap(false)
+        setVisibleFilters(false)
+
+        viewDefaultValue()
         if(pais === ""){
             navigate("/");
         } else {
-            navigate(`/search/${pais}`);
+            navigate(`/search`);
         }
-        //setTimeout(()=>{
+        setTimeout(()=>{
+        setVisibleFilters(false)
             setLoading(false)
-        //}, [1000])
+        }, [1000])
     }
     return (
         <Container>

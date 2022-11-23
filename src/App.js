@@ -16,8 +16,9 @@ function App() {
           <Route path={"/login"} element={<LoginDos/>}/>
           <Route path={"/detail/:id"} element={<Detail/>}/>
           <Route path={"/all-properties/detail/:id"} element={<Detail/>}/>
+          <Route path={"/search/detail/:id"} element={<Detail/>}/>
           <Route path={"/all-properties"} element={<AllProperties/>}/>
-          <Route path={"/search/:country"} element={<Searched/>}/>
+          <Route path={"/search"} element={<Searched/>}/>
         </Routes>
       </BrowserRouter>
     </AppProvider>

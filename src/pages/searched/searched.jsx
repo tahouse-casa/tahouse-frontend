@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Cart } from "../../components/carts/cart"
 import { MapComponent } from "../../components/MapComponent/map.component"
 import {Filters} from '../../containers/filters/Filters'
@@ -12,10 +12,7 @@ import {ContainerSearched, ContainerListOfEstate, ContainerButtons,
 
 export const Searched = () => {
 
-    const [visibleFilters, setVisibleFilters] = useState(false)
-    const [map, setMap] = useState(false)
-
-    const { estates, defaultCountry, setDefaultCountry} = useContext(AppContext)
+    const { estates, defaultCountry, setDefaultCountry, map, setMap, setVisibleFilters, loading} = useContext(AppContext)
     
     return (
         <ContainerSearched>
@@ -36,16 +33,14 @@ export const Searched = () => {
                     </ContainerButtons>
                     {map && <MapComponent defaultCountry={defaultCountry} 
                     />}
-{}
-                            <Filters
+                    {!loading && <Filters
                                 defaultValue={defaultCountry}
                                 setDefaultCountry={setDefaultCountry}
-                                visibleFilters={visibleFilters}
                             >
-                                
                             <Searcher/>
-                            </Filters>
-{}
+                            
+                        </Filters>
+                    }
                     {estates.length > 0 && (
                     <Title alingLeft marginTop>
                         {estates?.length} Departamentos en alquiler en {estates[0]?.country.split(",", 1)}

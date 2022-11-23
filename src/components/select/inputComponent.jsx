@@ -2,7 +2,7 @@ import { Input, Container, Title, ErrorSpan} from "./stylesSelect.js"
 
 export const InputComponent = ({handleSearch, placeholder,
                         nameInput, errorInput, setErrorIput,
-                        validate = "integer"}) =>{
+                        validate = "integer", valor}) =>{
 
     const verifyInputs = (verify, nameInput, e) => {
         if (e.target.value === ''){
@@ -34,6 +34,7 @@ export const InputComponent = ({handleSearch, placeholder,
                 <div>
                     <Input name={nameInput} type="number"
                      onChange={(e)=>verifyInputs(validate,nameInput,e)}
+                     value={valor}
                      />
                     {errorInput[`${nameInput}`] && <ErrorSpan>{errorInput[`${nameInput}`]}</ErrorSpan>}
                 </div>

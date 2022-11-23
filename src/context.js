@@ -4,10 +4,19 @@ const AppContext = createContext()
 export const AppProvider = ({children}) => {
     const [data, setData] = useState([])
     const [estates, setEstates] = useState([])
-    const [valueInput, setValueInput] = useState({pais: ''})
+    const [valueInput, setValueInput] = useState({
+        pais: '',
+        ambientes: '',
+        baños: '',
+        habitaciones: '',
+        max: '',
+        precio: ''
+    })
     const [countries, setCountries] = useState([])
     const [loading, setLoading] = useState(false)
-    const [defaultCountry, setDefaultCountry] = useState({})
+    const [defaultCountry, setDefaultCountry] = useState({country: 'Colombia'})
+    const [map, setMap] = useState(false)
+    const [visibleFilters, setVisibleFilters] = useState(false)
 
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_API_URL}/properties`)
@@ -26,6 +35,7 @@ export const AppProvider = ({children}) => {
         })
     }, [])
 
+console.log(valueInput)
     const handleSearch = (e) =>{
         const name = e.target.name
         const value = e.target.value.toUpperCase()
@@ -46,12 +56,17 @@ return (
         estates, 
         setEstates,
         valueInput,
+        setValueInput,
         loading,
         setLoading,
         defaultCountry,
         setDefaultCountry,
         viewDefaultValue,
-        data
+        data,
+        map,
+        setMap,
+        visibleFilters,
+        setVisibleFilters
         }}>
     {children}
     </AppContext.Provider>
