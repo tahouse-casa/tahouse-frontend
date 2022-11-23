@@ -7,7 +7,7 @@ export const Container = styled.div`
  display: flex;
  justify-content: space-between;
  align-items: center;
- min-width: 260px;
+ min-width: ${props=> props.onlyButton ? '50px' : '260px'};
  min-height: 30px;
  padding: 0;
 `
@@ -20,6 +20,7 @@ export const Input = styled.input`
  height: 30px;
  outline: none;
  background: #fff;
+ display: ${props => props.onlyButton ? 'none' : 'inline-block'};
 `
 export const SearchButton = styled.button`
  background-color: #000;

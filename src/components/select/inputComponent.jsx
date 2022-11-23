@@ -1,8 +1,8 @@
-import { Input, Container, Title, ContainerMinMax, ErrorSpan} from "./stylesSelect.js"
+import { Input, Container, Title, ErrorSpan} from "./stylesSelect.js"
 
 export const InputComponent = ({handleSearch, placeholder,
                         nameInput, errorInput, setErrorIput,
-                        validate = "integer", minmax}) =>{
+                        validate = "integer", valor}) =>{
 
     const verifyInputs = (verify, nameInput, e) => {
         if (e.target.value === ''){
@@ -31,29 +31,12 @@ export const InputComponent = ({handleSearch, placeholder,
     return(
         <Container>
             <Title>{placeholder}</Title>
-            {minmax ? (
-                <ContainerMinMax>
-                    <div>
-                        <Input type="number" min="90" placeholder="min" right
-                                name="min"
-                                onChange={(e)=>verifyInputs(validate, e.target.name, e)}/>
-                        {errorInput['min'] && <ErrorSpan>{errorInput['min']}</ErrorSpan>}
-                    </div>
-                    <div>
-                        <Input type="number" max="10000000" placeholder="max"
-                                name="max"
-                                onChange={(e)=>verifyInputs(validate, e.target.name, e)}/>
-                        {errorInput['max'] && <ErrorSpan>{errorInput['max']}</ErrorSpan>}
-                    </div>
-                </ContainerMinMax>
-            ) : (
                 <div>
                     <Input name={nameInput} type="number"
                      onChange={(e)=>verifyInputs(validate,nameInput,e)}
+                     value={valor}
                      />
                     {errorInput[`${nameInput}`] && <ErrorSpan>{errorInput[`${nameInput}`]}</ErrorSpan>}
                 </div>
-            )
-            }
         </Container>
     )}

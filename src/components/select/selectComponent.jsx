@@ -6,6 +6,7 @@ export const SelectComponent = ({handleSearch, placeholder,
     const verifyInputs = (e) => {
         handleSearch(e)
     }
+
     return(
         <Container>
             <Title>{placeholder}</Title>

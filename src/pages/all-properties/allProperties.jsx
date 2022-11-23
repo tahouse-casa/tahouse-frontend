@@ -1,27 +1,24 @@
-import { useState, useEffect} from "react"
-import { Container, ContainerListOfProperties, Title } from "./stylesLallProperties"
+import { useContext} from "react"
+import { Container, ContainerListOfProperties, Title, ContainerSearcher } from "./stylesLallProperties"
 import { Navbar } from "../../components/navbar/navbar"
 import { Footer } from "../../containers/footer/footer"
 import { Cart } from "../../components/carts/cart"
+import { Searcher } from "../../components/searcher/searcher"
+import { AppContext } from "../../context";
 
 export const AllProperties = () => {
 
-    const [data, setData] = useState([])
-
-    useEffect(()=>{
-        fetch(`${process.env.REACT_APP_API_URL}/properties`)
-        .then(res => res.json())
-        .then(data=>{
-            setData(data)
-        })
-    }, [])
-
+    const {data} = useContext(AppContext)
 
     return (
         <Container>
             <Navbar/>
+            <ContainerSearcher>
+                <Title >Encuentra el hogar de tus sueños</Title>
+                <Searcher />
+            </ContainerSearcher>
             <Title>Todas las propiedades</Title>
-            <ContainerListOfProperties changeDisplay={data.length}>
+            <ContainerListOfProperties changeDisplay={data?.length}>
             {data.length > 0 && (data.map((element, index)=>(
                                 <Cart key={index}
                                      id={element.id}

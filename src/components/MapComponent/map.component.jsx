@@ -24,8 +24,8 @@ export const MapComponent = ({defaultCountry}) => {
         margin: '2rem 0 0 0',
     }
     const center = {
-        lat: defaultCountry.latitud, 
-        lng: defaultCountry.longitud
+        lat: defaultCountry.latitud || 4.570868, 
+        lng: defaultCountry.longitud || -74.297333
     }
 
     return (

@@ -23,7 +23,7 @@ return (
     <>
         <Navbar/>
         <MainContainer>
-            <ButtonZone>Zona destacada</ButtonZone>
+            <ButtonZone>Zona Destacada</ButtonZone>
             <DetailCard card={card}/>
         </MainContainer>
         <Footer/>

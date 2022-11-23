@@ -1,11 +1,16 @@
-import { Container, Logo, Bar1y2, Bar3, ContainerBars, Linke, ButtonDrop, Ul, Li, DivDropDown, ContainerRutes} from "./stylesNavbar"
+import { useState, useContext } from "react"
+import { Container, Logo, Bar1y2, Bar3,
+     ContainerBars, Linke, ButtonDrop, Ul, Li,
+      DivDropDown, ContainerRutes} from "./stylesNavbar"
 import logo from '../../assets/logo-bg.png'
-import { useState } from "react"
 import { BsArrowDownShort } from "react-icons/bs";
+import { AppContext } from "../../context";
 
-export const Navbar = ({setSearched, setValueInput, valueInput}) => {
+export const Navbar = ({setSearched}) => {
     const [dropDown, setDropDown] = useState(false)
     const [click, setClick] = useState(false)
+
+    const {setValueInput, valueInput} = useContext(AppContext)
 
     const ChangeDrop = () => {
         setDropDown(PrevState => !PrevState)
