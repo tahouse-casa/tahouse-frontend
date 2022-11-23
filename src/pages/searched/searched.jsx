@@ -8,11 +8,12 @@ import { Navbar } from "../../components/navbar/navbar"
 
 //css
 import {ContainerSearched, ContainerListOfEstate, ContainerButtons,
-    ContainerButton, TextButton, Iconfilter, IconMap,Title, ContainerSearcher} from './stylesSearched'
+    ContainerButton, TextButton, Iconfilter, IconMap,Title,
+    ContainerSearcher, ContainerButtonsDownFilter, DeleteButton} from './stylesSearched'
 
 export const Searched = () => {
 
-    const { estates, defaultCountry, setDefaultCountry, map, setMap, setVisibleFilters, loading} = useContext(AppContext)
+    const { estates, defaultCountry, setDefaultCountry, map, setMap, setVisibleFilters, loading, setValueInput} = useContext(AppContext)
     
     return (
         <ContainerSearched>
@@ -37,8 +38,18 @@ export const Searched = () => {
                                 defaultValue={defaultCountry}
                                 setDefaultCountry={setDefaultCountry}
                             >
-                            <Searcher/>
-                            
+                                <ContainerButtonsDownFilter>
+                                    <DeleteButton onClick={()=> setValueInput({
+                                        pais: '',
+                                        ambientes: '',
+                                        baños: '',
+                                        habitaciones: '',
+                                        max: '',
+                                        precio: ''})}>
+                                        Borrar
+                                    </DeleteButton>
+                                    <Searcher onlyButton/>
+                                </ContainerButtonsDownFilter>
                         </Filters>
                     }
                     {estates.length > 0 && (

@@ -35,7 +35,6 @@ export const AppProvider = ({children}) => {
         })
     }, [])
 
-console.log(valueInput)
     const handleSearch = (e) =>{
         const name = e.target.name
         const value = e.target.value.toUpperCase()
@@ -49,6 +48,7 @@ console.log(valueInput)
             setDefaultCountry(result)
         }
     }
+
 return (
     <AppContext.Provider value={{ 
         handleSearch, 

@@ -20,7 +20,6 @@ export const Filters = ({
                 defaultValue={defaultValue}
                 setDefaultCountry={setDefaultCountry}
                 />
-                
         <InputComponent placeholder="Cantidad de ambientes" nameInput={"ambientes"}
                 handleSearch={handleSearch}
                 errorInput={errorInput}
@@ -45,15 +44,14 @@ export const Filters = ({
                 setErrorIput={setErrorIput}
                 valor={valueInput.precio}
             />
-            
             <InputComponent placeholder="Mts2"  nameInput={"max"}
                 handleSearch={handleSearch} 
                 errorInput={errorInput}
                 setErrorIput={setErrorIput}
                 valor={valueInput.max}
                 //validate="decimal"
-                /> 
+                />
+                {children}
     </ContainerFilters>
-
     )
 }

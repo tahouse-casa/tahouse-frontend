@@ -80,3 +80,16 @@ export const ContainerSearcher = styled.div`
  margin-bottom: 20px;
  flex-wrap: wrap;
 `
+export const ContainerButtonsDownFilter = styled.div`
+ width: 100%;
+ display: flex;
+ justify-content: space-around;
+`
+export const DeleteButton = styled.button`
+ background-color: #000;
+ padding: 10px;
+ border-radius: 20%;
+ font-size: 8px;
+ color: #fff;
+ cursor: pointer;
+`

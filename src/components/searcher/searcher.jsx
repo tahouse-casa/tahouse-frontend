@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Container, SearchButton, Input } from "./stylesSearcher"
 import {BsSearch} from 'react-icons/bs'
 import { AppContext } from '../../context'
-export const Searcher = () => {
+export const Searcher = ({onlyButton}) => {
 
-    const {handleSearch, setEstates, valueInput, setLoading, viewDefaultValue, data, setMap, setVisibleFilters, setValueInput} = useContext(AppContext)
+    const {handleSearch, setEstates, valueInput, setLoading, viewDefaultValue, data, setMap, setVisibleFilters} = useContext(AppContext)
     const navigate = useNavigate();
     const searchData = () => {
         setLoading(true)
@@ -54,10 +54,12 @@ export const Searcher = () => {
         }, [1000])
     }
     return (
-        <Container>
+        <Container onlyButton={onlyButton}>
+            {!onlyButton &&
             <BsSearch size={'15px'} style={{ margin: '0 12px', backgroundColor: '#fff'}}/>
+            }
             <Input type="text" placeholder="En que país deseas vivir"
-             name="pais" value={valueInput.pais} onChange={(e)=>handleSearch(e)}/>
+             name="pais" value={valueInput.pais} onChange={(e)=>handleSearch(e)} onlyButton={onlyButton}/>
             <SearchButton onClick={()=>searchData()}>Buscar</SearchButton>
         </Container>
     )
