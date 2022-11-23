@@ -46,7 +46,7 @@ export const Filters = ({
                 valor={valueInput.precio}
             />
             
-            <InputComponent placeholder="Metros Hasta"  nameInput={"max"}
+            <InputComponent placeholder="Mts2"  nameInput={"max"}
                 handleSearch={handleSearch} 
                 errorInput={errorInput}
                 setErrorIput={setErrorIput}
