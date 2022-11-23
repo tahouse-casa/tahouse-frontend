@@ -1,16 +1,16 @@
+import {useContext} from 'react'
+import { useNavigate } from "react-router-dom";
 import { Container, SearchButton, Input } from "./stylesSearcher"
 import {BsSearch} from 'react-icons/bs'
-export const Searcher = ({handleSearch,
-    setEstates, estates, valueInput,
-    setSearched, setLoading,
-     viewDefaultValue, setMap}) => {
+import { AppContext } from '../../context'
+export const Searcher = () => {
+
+    const {handleSearch, estates, setEstates, valueInput, setLoading, viewDefaultValue} = useContext(AppContext)
+    const navigate = useNavigate();
     const searchData = () => {
         setLoading(true)
-        const {pais, baños, habitaciones, precio, min, max} = valueInput
+        const {pais, baños, habitaciones, precio, max} = valueInput
         let newList;
-        if(pais === ""){
-            setSearched(false)
-        }
         if(pais.length > 0) {
              newList = estates.filter((estate)=> {
                 const selectOnlyCountry = estate.country
@@ -18,7 +18,7 @@ export const Searcher = ({handleSearch,
                 .includes(pais.normalize("NFD").replace(/[\u0300-\u036f]/g, ''))
         })
             setEstates(newList)
-            setSearched(true)
+            viewDefaultValue()
         }
         if(baños){
             newList = newList.filter((estate)=> estate.bathrooms >= baños)
@@ -32,20 +32,19 @@ export const Searcher = ({handleSearch,
             newList = newList.filter((estate)=> estate.price <= precio)
             setEstates(newList)
         }
-        if(min){
-            newList = newList.filter((estate)=> estate.meters >= min)
-            setEstates(newList)
-        }
         if(max){
             newList = newList.filter((estate)=> estate.meters <= max)
             setEstates(newList)
         }
-        setMap(false)
-        viewDefaultValue()
-        
-        setTimeout(()=>{
+        //setMap(false)
+        if(pais === ""){
+            navigate("/");
+        } else {
+            navigate(`/search/${pais}`);
+        }
+        //setTimeout(()=>{
             setLoading(false)
-        }, [1000])
+        //}, [1000])
     }
     return (
         <Container>
