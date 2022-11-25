@@ -44,7 +44,13 @@ export const Logo = styled.img`
  height: 40px;
  cursor: pointer;
 `
-
+export const LogoText = styled.h2`
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-align: center;
+  font-family: "open-sans";
+  font-weight: bold;
+`
 export const Bar1y2 = styled.div`
  max-width: 16px;
  width: 16px;
