@@ -1,20 +1,32 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Cart } from "../../components/carts/cart"
 import { MapComponent } from "../../components/MapComponent/map.component"
 import {Filters} from '../../containers/filters/Filters'
 import { Searcher } from "../../components/searcher/searcher"
 import { AppContext } from "../../context";
 import { Navbar } from "../../components/navbar/navbar"
+import {usePagination} from '../../hooks/usePagination'
 
 //css
 import {ContainerSearched, ContainerListOfEstate, ContainerButtons,
     ContainerButton, TextButton, Iconfilter, IconMap,Title,
-    ContainerSearcher, ContainerButtonsDownFilter, DeleteButton} from './stylesSearched'
+    ContainerSearcher, ContainerButtonsDownFilter, DeleteButton,
+    ButtonPag, Pagination} from './stylesSearched'
+import { BsChevronDoubleRight, BsChevronDoubleLeft } from "react-icons/bs";
 
 export const Searched = () => {
 
+    const [numberProp, setNumberProp] = useState(null)
+
     const { estates, defaultCountry, setDefaultCountry, map, setMap, setVisibleFilters, loading, setValueInput} = useContext(AppContext)
     
+    const paginacion = usePagination(null, numberProp,setNumberProp, estates)
+    //change display data.length
+        const {
+            dataPaginada,
+            numberPagination,
+            setPage
+        } = paginacion
     return (
         <ContainerSearched>
                     <Navbar />
@@ -52,13 +64,13 @@ export const Searched = () => {
                                 </ContainerButtonsDownFilter>
                         </Filters>
                     }
-                    {estates.length > 0 && (
+                    {dataPaginada.length > 0 && (
                     <Title alingLeft marginTop>
-                        {estates?.length} Departamentos en alquiler en {estates[0]?.country.split(",", 1)}
+                        {dataPaginada?.length} Departamentos en alquiler en {estates[0]?.country.split(",", 1)}
                      </Title>
                     )}
-                    <ContainerListOfEstate changeDisplay={estates.length}>
-                        {estates.length > 0 ? (estates.map((element, index)=>(
+                    <ContainerListOfEstate changeDisplay={dataPaginada.length}>
+                        {dataPaginada.length > 0 ? (dataPaginada.map((element, index)=>(
                                 <Cart key={index}
                                      id={element.id}
                                      img={element.urlImage}
@@ -72,6 +84,23 @@ export const Searched = () => {
                                 (<div>not found</div>)
                         } 
                     </ContainerListOfEstate>
+                    <Pagination>
+        <BsChevronDoubleLeft onClick={() => setPage(0)} style={{cursor: 'pointer'}}/>
+        {numberPagination.map((number, i) => (
+          <ButtonPag onClick={() => {
+              number.used = true
+            setNumberProp(number)
+            }}
+            key={i}>
+            {number.valor}
+          </ButtonPag>
+        ))}
+      <BsChevronDoubleRight onClick={() => {
+          setNumberProp(numberPagination[numberPagination.length - 1])
+          setPage(numberPagination[numberPagination.length -1].offset)}} 
+      style={{cursor: 'pointer'}}
+      />
+      </Pagination>
             </ContainerSearched>
     )
 }

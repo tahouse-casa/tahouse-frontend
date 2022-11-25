@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { Container, Logo, Bar1y2, Bar3,
      ContainerBars, Linke, ButtonDrop, Ul, Li,
-      DivDropDown, ContainerRutes} from "./stylesNavbar"
+      DivDropDown, ContainerRutes, LogoText} from "./stylesNavbar"
 import logo from '../../assets/logo-bg.png'
 import { BsArrowDownShort } from "react-icons/bs";
 import { AppContext } from "../../context";
@@ -22,10 +22,11 @@ export const Navbar = ({setSearched}) => {
     return (
         <Container >
             <Linke to="/">
-            <Logo src={logo} alt="" onClick={()=>{
+                <Logo src={logo} alt="logo-taHouse.casa" onClick={()=>{
                 setSearched && setSearched(false)
                 setValueInput && setValueInput({pais: valueInput.pais})
                 }}/>
+                <LogoText>TaHouse</LogoText>
             </Linke>
                 <ContainerRutes open={click}>
                     <Linke to="/">Home</Linke>

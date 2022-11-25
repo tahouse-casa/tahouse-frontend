@@ -11,7 +11,7 @@ export function Promotion() {
   <Bg></Bg>
   <Centered>
     <Logo src={logo} alt="bonpland" />
-    <P>!Los mejores precios y descuentos los encontas en Bonpland!</P>
+    <P>!Los mejores precios y descuentos los encontas en Ta House!</P>
     <Link to="/all-properties">
     <Button>Ver mas Propiedades</Button>
     </Link>
