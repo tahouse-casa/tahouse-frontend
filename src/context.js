@@ -5,7 +5,7 @@ export const AppProvider = ({children}) => {
     const [data, setData] = useState([])
     const [estates, setEstates] = useState([])
     const [valueInput, setValueInput] = useState({
-        pais: '',
+        country: '',
         ambientes: '',
         baños: '',
         habitaciones: '',
@@ -43,12 +43,11 @@ export const AppProvider = ({children}) => {
 
     const viewDefaultValue = () => {
         const result = countries.find((item)=>item.country.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toUpperCase()
-        .includes(valueInput.pais.normalize("NFD").replace(/[\u0300-\u036f]/g, '')))
+        .includes(valueInput.country.normalize("NFD").replace(/[\u0300-\u036f]/g, '')))
         if (result) {
             setDefaultCountry(result)
         }
     }
-
 return (
     <AppContext.Provider value={{ 
         handleSearch, 

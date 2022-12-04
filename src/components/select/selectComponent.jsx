@@ -1,7 +1,7 @@
 import { Select, Container, Title} from "./stylesSelect.js"
 
 export const SelectComponent = ({handleSearch, placeholder,
-                                nameInput,defaultValue, countries}) =>{
+                                nameInput,defaultValue = '', array, arrayWithoutNames}) =>{
 
     const verifyInputs = (e) => {
         handleSearch(e)
@@ -11,12 +11,18 @@ export const SelectComponent = ({handleSearch, placeholder,
         <Container>
             <Title>{placeholder}</Title>
                 <div>
-                    <Select name={nameInput} defaultValue={defaultValue.country}
+                    <Select name={nameInput} defaultValue={defaultValue}
                      onChange={(e)=>verifyInputs(e)}
                      >
-                         {countries.map((item,index)=>(
-                             <option key={index} value={item.country} >{item.country}</option>
-                         ))
+                         {defaultValue === '' && 
+                         <option value="" disabled>Seleccionar</option>}
+                         {array.map((item,index)=>{
+                             if(arrayWithoutNames){
+                                return <option key={index} value={item} >{item}</option>
+                             } else {
+                                 return <option key={index} value={item[nameInput]} >{item[nameInput]}</option>
+                             }
+                         })
                          }
                      </Select>
                 </div>         

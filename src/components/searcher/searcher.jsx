@@ -9,13 +9,13 @@ export const Searcher = ({onlyButton}) => {
     const navigate = useNavigate();
     const searchData = () => {
         setLoading(true)
-        const {pais, baños, habitaciones,ambientes, precio, max} = valueInput
+        const {country, baños, habitaciones,ambientes, precio, max} = valueInput
         let newList;
-        if(pais.length > 0) {
+        if(country.length > 0) {
              newList = data.filter((estate)=> {
                 const selectOnlyCountry = estate.country
                 return selectOnlyCountry.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toUpperCase()
-                .includes(pais.normalize("NFD").replace(/[\u0300-\u036f]/g, ''))
+                .includes(country.normalize("NFD").replace(/[\u0300-\u036f]/g, ''))
         })
             setEstates(newList)
         }
@@ -43,7 +43,7 @@ export const Searcher = ({onlyButton}) => {
         setVisibleFilters(false)
 
         viewDefaultValue()
-        if(pais === ""){
+        if(country === ""){
             navigate("/");
         } else {
             navigate(`/search`);
@@ -54,12 +54,12 @@ export const Searcher = ({onlyButton}) => {
         }, [1000])
     }
     return (
-        <Container onlyButton={onlyButton}>
-            {!onlyButton &&
-            <BsSearch size={'15px'} style={{ margin: '0 12px', backgroundColor: '#fff'}}/>
-            }
+        <Container onlyButton={onlyButton} viewAll>
+            {!onlyButton  && 
+            <BsSearch size={'15px'} style={{ margin: '0 12px', backgroundColor: '#fff'}}/>}
             <Input type="text" placeholder="En que país deseas vivir"
-             name="pais" value={valueInput.pais} onChange={(e)=>handleSearch(e)} onlyButton={onlyButton}/>
+             name="country" value={valueInput.country} onChange={(e)=>handleSearch(e)}
+             onlyButton={onlyButton}/>
             <SearchButton onClick={()=>searchData()}>Buscar</SearchButton>
         </Container>
     )

@@ -5,24 +5,49 @@ export const Container = styled.div`
  margin-bottom: 10px;
 `
 export const Title = styled.p`
- font-family: 'Open Sans';
- font-size: 14px;
- font-weight: 500;
- margin-bottom: 5px;
+ font-family: 'Roboto';
+ font-size: 12px;
+ font-weight: 400;
+ margin-bottom: 4px;
+ margin-left: 5px;
+
 `
 export const Input = styled.input`
- font-family: 'Open Sans';
- font-size: 16px;
+ font-family: 'Roboto';
+ font-size: 12px;
  width: 100%;
- border-radius: 5px;
+ padding: 5px 10px ;
+ border-radius: 20px;
+ border-width: 1px;
+ &:focus-visible{
+     outline: none;
+ }
 `
 export const ErrorSpan = styled.span`
  font-size: 12px;
+ font-family: 'Roboto';
  color: red;
 `
 export const Select = styled.select`
- font-family: 'Open Sans';
- font-size: 16px;
+ font-family: 'Roboto';
+ font-size: 12px;
  width: 100%;
- border-radius: 5px;
+ border: none;
+ &:focus-visible{
+    outline: none;
+    background: #DFDFDF;
+    box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+ }
 `
+export const BigInput = styled.textarea`
+ font-family: 'Roboto';
+ font-size: 14px;
+ width: 100%;
+ padding: 8px;
+ border-radius: 20px;
+ min-height: 90px;
+ &:focus-visible{
+     outline: none;
+ }
+` 

@@ -1,18 +1,21 @@
 import styled from 'styled-components'
-import {  BiRuler as ruler} from "react-icons/bi";
+import { MdCancel as cancel } from "react-icons/md";
+import { MdModeEdit as edit } from "react-icons/md";
 
 export const Container = styled.div`
- max-width: ${props=>props.visible ? '220' : '340px'};
  display: flex;
  justify-content: center;
  flex-wrap: wrap;
  margin: ${props=>props.visible ? '0 15px 0 0' : '0'};
+ position: relative;
+ max-height: ${props=>props.visible ? '240px' : '182px'};
 `
 export const Img = styled.img`
  width: ${props=>props.visible ? '220px' : '100%'};
- height: 150px;
- margin-bottom: 15px;
+ height: ${props=>props.visible ? '150px' : '100px'};;
+ margin-bottom: 0;
  border-radius: 6px;
+ object-fit: cover;
 `
 
 export const ContainerData = styled.div`
@@ -46,28 +49,17 @@ export const AlertZona = styled.div`
  color: rgba(0, 0, 0, 0.60);
  margin: 0;
 `
-export const Contact = styled.p`
- grid-column-start: 2;
- width: 80%;
- text-align: center;
- font-size: 7px;
- line-height: 10px;
- color: rgba(0, 0, 0, 0.70);
- margin: 0;
-`
-
 export const Text1 = styled.p`
  font-family: 'Open Sans';
  font-style: normal;
  font-weight: 600;
  font-size: ${props=>props.Size};
  line-height: 12px;
- text-align: center;
  color: #000;
 `
 export const ContainerTwo = styled.div`
  width: 100%;
- display:${props=>props.visible ? "flex": "none"};
+ display: flex;
  justify-content: flex-start;
  flex-direction: ${props=>props.row ? "row": "column"};
  align-items: flex-start;
@@ -100,8 +92,23 @@ export const DimensionsContainer = styled.div`
  width: fit-content;
  height: fit-content;
 `
-
-export const Ruler = styled(ruler)`
- transform: rotate(270deg);
- fill: rgba(0, 0, 0, 0.5);
+export const CancelIcon = styled(cancel)`
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    right: 5px;
+    top: 5px;
+`
+export const EditIcon = styled(edit)`
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+    top: 5px;
 `
