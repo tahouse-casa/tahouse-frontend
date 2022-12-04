@@ -40,12 +40,12 @@ export const Carrousel = ({data = [], detail = false}) => {
                         id={element.id}
                         img={element.urlImage}
                         price={element.price}
-                        time={element.createdAt}
                         address={element.address}
                         country={element.country}
                         baths={element.bathrooms}
                         environments={element.rooms}
                         rooms={element.rooms}
+                        city={element.city}
                         meters={element.meters}
                         featured={true}/>
                     ))

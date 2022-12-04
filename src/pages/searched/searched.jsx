@@ -4,9 +4,8 @@ import { MapComponent } from "../../components/MapComponent/map.component"
 import {Filters} from '../../containers/filters/Filters'
 import { Searcher } from "../../components/searcher/searcher"
 import { AppContext } from "../../context";
-import { Navbar } from "../../components/navbar/navbar"
 import {usePagination} from '../../hooks/usePagination'
-
+import { Return } from "../../components/return/return";
 //css
 import {ContainerSearched, ContainerListOfEstate, ContainerButtons,
     ContainerButton, TextButton, Iconfilter, IconMap,Title,
@@ -29,7 +28,7 @@ export const Searched = () => {
         } = paginacion
     return (
         <ContainerSearched>
-                    <Navbar />
+                    <Return linke="/" />
                     <ContainerSearcher>
                         <Title aling={'center'}>Encuentra el hogar de tus sueños</Title>
                         <Searcher />
@@ -52,7 +51,7 @@ export const Searched = () => {
                             >
                                 <ContainerButtonsDownFilter>
                                     <DeleteButton onClick={()=> setValueInput({
-                                        pais: '',
+                                        country: '',
                                         ambientes: '',
                                         baños: '',
                                         habitaciones: '',
@@ -75,10 +74,13 @@ export const Searched = () => {
                                      id={element.id}
                                      img={element.urlImage}
                                      price={element.price}
-                                     time={element.createdAt}
                                      address={element.address}
                                      country={element.country}
+                                     baths={element.bathrooms}
+                                     environments={element.rooms}
+                                     rooms={element.rooms}
                                      city={element.city}
+                                     meters={element.meters}
                                      featured={false}/>
                         ))) :
                                 (<div>not found</div>)

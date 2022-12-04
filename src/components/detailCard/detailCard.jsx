@@ -18,7 +18,7 @@ import {
   ButtonBuy,
 } from "./StylesDetailCard";
 
-export const DetailCard = ({card}) =>{
+export const DetailCard = ({card, prevView}) =>{
 
   const {
     price,
@@ -74,7 +74,7 @@ export const DetailCard = ({card}) =>{
         <Description>
           {description}
         </Description>
-        <ButtonBuy>Adquirir inmueble</ButtonBuy>
+        {!prevView && <ButtonBuy>Adquirir inmueble</ButtonBuy>}
       </Container>
   );
 }

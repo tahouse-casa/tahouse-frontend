@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
- width: fit-content;
- background-color: #fff;
+ width: ${props=> props.viewAll ? 'fit-content' : '50px'};
+ background-color: transparent;
  border-radius: 10px;
  display: flex;
  justify-content: space-between;
  align-items: center;
- min-width: ${props=> props.onlyButton ? '50px' : '260px'};
+ min-width: ${props=> (props.onlyButton || !props.viewAll) === true ? '50px' : '260px'};
  min-height: 30px;
  padding: 0;
 `

@@ -21,7 +21,6 @@ export const usePagination = (url,number, setNumber, dataComponent) => {
 
        useEffect(()=>{
         if(dataComponent){
-            console.log(dataComponent)
             if (dataComponent?.length < 8){
             setNumberPagination([{ valor: 1,offset: 0, used: true}])
             }
