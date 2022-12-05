@@ -9,7 +9,7 @@ import {Searched} from './pages/searched/searched'
 import {Administration} from './pages/administration/administration'
 import {CreatePropertie} from './pages/createPropertie/createPropertie'
 import {EditProperty} from './pages/editProperty/editProperty'
-import {SendFetch} from './pages/sendfetch'
+//import {SendFetch} from './pages/sendfetch'
 function App() {
   return (
     <AppProvider>
@@ -24,7 +24,6 @@ function App() {
           <Route path={"/administration/detail/:id"} element={<Detail/>}/>
           <Route path={"/all-properties"} element={<AllProperties/>}/>
           <Route path={"/search"} element={<Searched/>}/>
-          <Route path={"/send"} element={<SendFetch/>}/>
           <Route path={"/administration/properties"} element={<Administration/>}/>
           <Route path={"/administration/properties/create"} element={<CreatePropertie/>}/>
           <Route path={"/administration/properties/edit/:id"} element={<EditProperty/>}/>
