@@ -28,7 +28,8 @@ export const Administration = () => {
         }).catch((err)=>console.log(err))
     }
 
-    const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2OTkzNjc2Nn0.w5dOZTpFs0Vlcj3HUwl06ItTH_ypRZj2bi8moNyEKcQ'
+    //const TOKENLOCAL = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2OTkzNjc2Nn0.w5dOZTpFs0Vlcj3HUwl06ItTH_ypRZj2bi8moNyEKcQ'
+    const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MDI1NTg0OH0.w8yMPXjx0zmvSbCefZd9TB8fWthU465aZgyayGHA1OI"
 
     const handleInput = (e) =>{
         setIputValue({...inputValue, valor: e.target.value.toUpperCase()})
