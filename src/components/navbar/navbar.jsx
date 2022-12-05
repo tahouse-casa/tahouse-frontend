@@ -33,7 +33,9 @@ export const Navbar = ({setSearched}) => {
                     <DivDropDown>
                         <ButtonDrop onClick={() => ChangeDrop()}>administracion<BsArrowDownShort size="28px" /></ButtonDrop>
                             <Ul visible={dropDown}>
+                                <Linke to="/administration/properties">
                                 <Li>inmuebles</Li>
+                                </Linke>
                             </Ul>
                     </DivDropDown>
                 </ContainerRutes>

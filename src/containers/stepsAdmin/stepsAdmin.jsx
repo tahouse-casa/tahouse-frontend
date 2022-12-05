@@ -4,6 +4,8 @@ import {ContainerSteps, ParagraphSteps, ButtonSig, Point, Linear} from "./styles
 import { StepONe } from "./steps/stepONe";
 import { StepTwo } from "./steps/stepTwo";
 import {StepThree} from "./steps/stepThree"
+import { MdCancel } from "react-icons/md";
+import { Link } from "react-router-dom";
 export const StepsAdmin = ({data, error, setData, setError, sendData, errorFetch}) => {
     const [active, setActive] = useState({value: 0, steps: [0]})
     const [errorInput, setErrorInput] = useState({})
@@ -50,8 +52,11 @@ export const StepsAdmin = ({data, error, setData, setError, sendData, errorFetch
         return (
             <>
             <Return linke={-1} title="Nuevo inmueble" viewTitle 
-                    handleReturn={active.value === 0 ? false : handleReturn}
-        />
+                    handleReturn={active.value === 0 ? false : handleReturn}>
+                        <Link to={-1}>
+                <MdCancel size="20px" style={{background: 'transparent', fill: 'black', marginTop: '10px', marginRight: '15px'}}/>
+                        </Link>
+            </Return>
             <div style={{marginTop: '30px', minHeight: '90%'}}>
                 <ContainerSteps>
                     <Linear linear={active.value}/>

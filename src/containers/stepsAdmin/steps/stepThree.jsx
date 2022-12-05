@@ -5,7 +5,7 @@ import { Return } from "../../../components/return/return"
 import { MakeModal } from "../../../components/modal/makeModal"
 import { ModalComponent } from "../../../components/modal/modalComponent"
 import { ContainerStep, Button, ErrorSpan} from "../stylesStepsAdmin"
-import { MdCheckCircle, MdOutlineWarning } from "react-icons/md";
+import { MdCheckCircle, MdCancel } from "react-icons/md";
 
 export const StepThree = ({handleSearch, data, error, setError, errorFetch, sendData, errorInput, setErrorInput}) => {
     const [viewModal, setViewModal] = useState(false)
@@ -91,7 +91,7 @@ export const StepThree = ({handleSearch, data, error, setError, errorFetch, send
                                 linke={-1}
                                 handleModal={()=>console.log('volver')}
                                 >
-                                    <MdOutlineWarning size="20px" style={{background: 'transparent'}}/>
+                                    <MdCancel size="20px" style={{background: 'transparent'}}/>
                                 </ModalComponent>}
         </ContainerStep>
     )
