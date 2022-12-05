@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Cart } from "../../components/carts/cart"
 import { Return } from "../../components/return/return"
 import { SearcherWithoutLogic } from "../../components/searcher/searcherWithoutLogic"
 import { Link, useNavigate } from "react-router-dom"
+import { AppContext } from "../../context"
 //css
 import { Container, ContainerListOfEstate, ContainerInput, ButtonAdd} from "./stylesAdministration"
 export const Administration = () => {
@@ -13,6 +14,8 @@ export const Administration = () => {
     const [viewDelete, setViewDelete] = useState(false)
     const [error, setError] = useState({error: false, done: false})
     
+    const {JWT} = useContext(AppContext)
+
     useEffect(()=>{
         fetchApiProperties()
     }, [])
@@ -28,8 +31,7 @@ export const Administration = () => {
         }).catch((err)=>console.log(err))
     }
 
-    //const TOKENLOCAL = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2OTkzNjc2Nn0.w5dOZTpFs0Vlcj3HUwl06ItTH_ypRZj2bi8moNyEKcQ'
-    const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MDI1NTg0OH0.w8yMPXjx0zmvSbCefZd9TB8fWthU465aZgyayGHA1OI"
+    const TOKEN = JWT.token
 
     const handleInput = (e) =>{
         setIputValue({...inputValue, valor: e.target.value.toUpperCase()})

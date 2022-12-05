@@ -7,7 +7,7 @@ html {
         
         *, *::before, *::after {
                 box-sizing: inherit;
-                background: #F4F4F4;
+                background: #f4f4f4;
         }
         
         ul, li, h1, h2, h3, p, button {
@@ -25,12 +25,10 @@ html {
         }
 
         body {
-                background: #ffff;
-                height: 100vh;
-                margin: 0 auto;
-                max-width: 500px;
+                background: #f4f4f4;
                 overscroll-behavior: none;
-                width: 100%;
+                max-width: 100vw;
+                overflow-x: hidden;
         }
         #app {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);

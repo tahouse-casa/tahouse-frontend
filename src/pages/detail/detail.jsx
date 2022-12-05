@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Navbar } from "../../components/navbar/navbar"
+import { Navbar } from "../../components/navbar/navbar";
 import { Footer } from "../../containers/footer/footer"
 import { MainContainer, ButtonZone } from "./stylesDetail"
 import { useParams } from "react-router-dom"
@@ -21,12 +21,12 @@ export const Detail = () => {
 
 return (
     <>
-        <Navbar/>
         <MainContainer>
             <ButtonZone>Zona Destacada</ButtonZone>
             <DetailCard card={card}/>
         </MainContainer>
         <Footer/>
+        <Navbar/>
     </>
 )
 }

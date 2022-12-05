@@ -6,6 +6,7 @@ import { Searcher } from "../../components/searcher/searcher"
 import { AppContext } from "../../context";
 import {usePagination} from '../../hooks/usePagination'
 import { Return } from "../../components/return/return";
+import { Navbar } from "../../components/navbar/navbar";
 //css
 import {ContainerSearched, ContainerListOfEstate, ContainerButtons,
     ContainerButton, TextButton, Iconfilter, IconMap,Title,
@@ -28,6 +29,7 @@ export const Searched = () => {
         } = paginacion
     return (
         <ContainerSearched>
+            <Navbar />
                     <Return linke="/" />
                     <ContainerSearcher>
                         <Title aling={'center'}>Encuentra el hogar de tus sueños</Title>

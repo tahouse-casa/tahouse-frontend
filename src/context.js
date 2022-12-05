@@ -17,6 +17,7 @@ export const AppProvider = ({children}) => {
     const [defaultCountry, setDefaultCountry] = useState({country: 'Colombia'})
     const [map, setMap] = useState(false)
     const [visibleFilters, setVisibleFilters] = useState(false)
+    const [JWT, setJWT] = useState('')
 
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_API_URL}/properties`)
@@ -65,7 +66,9 @@ return (
         map,
         setMap,
         visibleFilters,
-        setVisibleFilters
+        setVisibleFilters,
+        setJWT,
+        JWT
         }}>
     {children}
     </AppContext.Provider>

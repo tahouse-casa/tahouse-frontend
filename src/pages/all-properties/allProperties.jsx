@@ -1,11 +1,17 @@
-import { useState} from "react"
-import { Container, ContainerListOfProperties, Title,
-     ContainerSearcher, Pagination, ButtonPag} from "./stylesLallProperties"
-import { Navbar } from "../../components/navbar/navbar"
-import { Footer } from "../../containers/footer/footer"
-import { Cart } from "../../components/carts/cart"
-import { Searcher } from "../../components/searcher/searcher"
+import { useState } from "react";
+import {
+  Container,
+  ContainerListOfProperties,
+  Title,
+  ContainerSearcher,
+  Pagination,
+  ButtonPag,
+} from "./stylesLallProperties";
+import { Footer } from "../../containers/footer/footer";
+import { Cart } from "../../components/carts/cart";
+import { Searcher } from "../../components/searcher/searcher";
 import { BsChevronDoubleRight, BsChevronDoubleLeft } from "react-icons/bs";
+import { Navbar } from "../../components/navbar/navbar";
 //import { AppContext } from "../../context";
 import {usePagination} from '../../hooks/usePagination'
 
@@ -13,7 +19,6 @@ export const AllProperties = () => {
     const [numberProp, setNumberProp] = useState(null)
 
     const paginacion = usePagination('/properties', numberProp, setNumberProp)
-//change display data.length
     const {
         dataPaginada,
         numberPagination,
@@ -62,3 +67,4 @@ export const AllProperties = () => {
         </Container>
     )
 }
+
