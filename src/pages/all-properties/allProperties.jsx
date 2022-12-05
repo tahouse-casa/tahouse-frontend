@@ -7,11 +7,12 @@ import {
   Pagination,
   ButtonPag,
 } from "./stylesLallProperties";
-import { Navbar } from "../../components/navbar/navbar";
 import { Footer } from "../../containers/footer/footer";
 import { Cart } from "../../components/carts/cart";
 import { Searcher } from "../../components/searcher/searcher";
 import { BsChevronDoubleRight, BsChevronDoubleLeft } from "react-icons/bs";
+import { Navbar } from "../../components/Navbar/Navbar";
+
 //import { AppContext } from "../../context";
 
 export const AllProperties = () => {

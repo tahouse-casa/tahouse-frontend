@@ -5,14 +5,21 @@ import {
   Input,
   Button,
   Paragraph,
-  Register,
+  RegisterButton,
   Form,
   ErrorStyle,
-} from "./StylesLoginDos";
+  Facebook,
+  Google,
+  SocialContainer,
+} from "./stylesLogin";
 import { useForm } from "react-hook-form";
-import { FaFacebook, FaGoogle } from "react-icons/fa";
+import GoogleIcon from "../../assets/Google.svg";
+import FacebookIcon from "../../assets/Facebook.svg";
+import { useState } from "react";
 
-export function LoginDos() {
+export function Login() {
+
+  const [error, setError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -20,15 +27,31 @@ export function LoginDos() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (e) => {
-    console.log(e);
+  const handleFetchLogin = (data) => {
+    fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        // setJWT(res)
+        console.log(res);
+        setError(false);
+      })
+      .catch((e) => {
+        // setJWT('hay un error')
+        setError(true);      
+      });
   };
 
   return (
     <MainContainer>
-      <Title>Te damos la bienvenida a Bonplad</Title>
+      <Title>Te damos la bienvenida a TaHouse</Title>
       <SecondTitle>Inicia sesión para una mejor experiencia</SecondTitle>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(handleFetchLogin)}>
         <Input
           name="email"
           type="email"
@@ -44,7 +67,9 @@ export function LoginDos() {
             },
           })}
         />
+
         <Input
+
           name="password"
           type="password"
           placeholder="Contraseña"
@@ -59,16 +84,23 @@ export function LoginDos() {
             },
           })}
         />
+        {error && <ErrorStyle>Los datos ingresados son incorrectos</ErrorStyle>}
         {errors.password && <ErrorStyle>{errors.password.message}</ErrorStyle>}
-        <Button>Inicie sesion</Button>
+        <Button>Ingresar</Button>
       </Form>
       <Paragraph>
-        <Register href="">¿No tienes cuenta? Registrate</Register>
+        <RegisterButton href="">¿No tienes cuenta? Registrate</RegisterButton>
         <br />O ingresa con una red social
       </Paragraph>
-      
-      <Button><FaFacebook/> Ingresar con Facebook</Button>
-      <Button><FaGoogle/> Ingresar con Google</Button>
+      <SocialContainer>
+        <Button>
+          <Facebook src={FacebookIcon} alt="facebook" /> Ingresar con Facebook
+        </Button>
+        <Button>
+          <Google src={GoogleIcon} alt="google" />
+          Ingresar con Google
+        </Button>
+      </SocialContainer>
     </MainContainer>
   );
 }

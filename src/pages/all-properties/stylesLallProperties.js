@@ -33,3 +33,22 @@ export const ContainerSearcher = styled.div`
  margin-bottom: 0;
  flex-wrap: wrap;
 `
+export const Pagination = styled.div`
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+`
+export const ButtonPag = styled.div`
+    background-color: transparent;
+    color: black;
+    padding: 4px 6px;
+    font-size: 14px;
+    :hover {
+        cursor: pointer;
+        background-color: lightblue;
+        color: black;
+    }
+
+`

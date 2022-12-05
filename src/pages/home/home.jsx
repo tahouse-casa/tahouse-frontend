@@ -1,5 +1,6 @@
 import {useContext} from "react"
-import { Navbar } from "../../components/navbar/navbar"
+import { Navbar } from "../../components/Navbar/Navbar"
+import { TopNavbar } from "../../components/TopNavBar/TopNavBar"
 import { Searcher } from "../../components/searcher/searcher"
 import { Carrousel } from "../../containers/carrousel/carrousel"
 import { ShoppingGuide } from "../../containers/shoppingGuide/shoppingGuide"
@@ -18,6 +19,7 @@ export const Home = () => {
 
     return (
         <Container>
+            <TopNavbar/>
             <Navbar />
             <ContainerSearcher>
                 <Title aling={'center'}>Encuentra el hogar de tus sueños</Title>

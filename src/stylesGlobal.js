@@ -7,7 +7,7 @@ html {
         
         *, *::before, *::after {
                 box-sizing: inherit;
-                background: #F4F4F4;
+                background: #f4f4f4;
         }
         
         ul, li, h1, h2, h3, p, button {
@@ -25,7 +25,7 @@ html {
         }
 
         body {
-                background: #ffff;
+                background: #f4f4f4;
                 height: 100vh;
                 margin: 0 auto;
                 max-width: 500px;

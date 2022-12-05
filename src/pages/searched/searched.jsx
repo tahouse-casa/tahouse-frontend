@@ -4,7 +4,7 @@ import { MapComponent } from "../../components/MapComponent/map.component"
 import {Filters} from '../../containers/filters/Filters'
 import { Searcher } from "../../components/searcher/searcher"
 import { AppContext } from "../../context";
-import { Navbar } from "../../components/navbar/navbar"
+import { Navbar } from "../../components/Navbar/Navbar"
 
 //css
 import {ContainerSearched, ContainerListOfEstate, ContainerButtons,
