@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 36px;
+    margin-bottom: 15px;
 `
 export const ContainerLink = styled.div`
     width: fit-content;

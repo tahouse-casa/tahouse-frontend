@@ -18,7 +18,7 @@ margin: 20px 10px;
 font-weight: 600;
 font-size: 20px;
 line-height: 18px;
-font-family: 'Open Sans';
+font-family: 'Roboto';
 color: #000;
 @media (min-width: 1000px) {
     text-align: center;
@@ -51,3 +51,4 @@ export const ButtonPag = styled.div`
         color: black;
     }
 `
+

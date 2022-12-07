@@ -22,13 +22,13 @@ export const Bg = styled.div`
 export const P =styled.p`
   background: transparent;
   font-weight: 600;
-  font-family: 'Open Sans';
+  font-family: 'Roboto';
   text-align: center;
 `
 export const Button = styled.button`
   background-color: #e8c590;
   text-transform: uppercase;
-  font-family: 'Open Sans';
+  font-family: 'Roboto';
   padding: 12px;
   margin-top: 10px;
   border-radius: 10px;

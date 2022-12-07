@@ -4,7 +4,7 @@ import {
   DropButton,
   DropContent,
   TextContent,
-  Icon
+  Icon,
 } from "./stylesItemFooter";
 
 export const ItemFooter =({ name }) => {

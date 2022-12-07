@@ -6,6 +6,7 @@ export const Container = styled.footer`
  justify-content: center;
  align-items: center;
  flex-wrap: wrap;
+ margin-bottom: 50px;
 `
 export const Title = styled.p`
   width: 100%;

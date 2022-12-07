@@ -41,7 +41,7 @@ export const AlertZona = styled.div`
  justify-content: center;
  border-radius: 20px;
  border: 1px solid rgba(0, 0, 0, 0.70);
- font-family: 'Open Sans';
+ font-family: 'Roboto';
  font-style: normal;
  font-weight: 400;
  font-size: 7px;
@@ -50,7 +50,7 @@ export const AlertZona = styled.div`
  margin: 0;
 `
 export const Text1 = styled.p`
- font-family: 'Open Sans';
+ font-family: 'Roboto';
  font-style: normal;
  font-weight: 600;
  font-size: ${props=>props.Size};
@@ -68,7 +68,7 @@ export const ContainerTwo = styled.div`
 `
 export const Text2 = styled.span`
  color: ${props=> props.disabledColor ? '#000' : 'rgba(0, 0, 0, 0.5)' };
- font-family: 'Open Sans';
+ font-family: 'Roboto';
  font-style: normal;
  font-weight: 600;
  font-size: ${props=>props.Size || '9px'};
@@ -77,7 +77,7 @@ export const Text2 = styled.span`
 
 export const DimensionsText = styled.span`
  color: rgba(0, 0, 0, 0.5);
- font-family: 'Open Sans';
+ font-family: 'Roboto';
  font-style: normal;
  font-weight: 400;
  font-size: 8px;

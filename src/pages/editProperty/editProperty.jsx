@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import {StepsAdmin} from '../../containers/stepsAdmin/stepsAdmin'
 import { useParams } from "react-router-dom"
+import { AppContext } from "../../context"
 
 export const EditProperty = () => {
     const [error, setError] = useState(false)
@@ -19,8 +20,9 @@ export const EditProperty = () => {
         })
     }, [id])
 
-        //const TOKENLOCAL = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2OTkzNjc2Nn0.w5dOZTpFs0Vlcj3HUwl06ItTH_ypRZj2bi8moNyEKcQ'
-        const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MDI1NTg0OH0.w8yMPXjx0zmvSbCefZd9TB8fWthU465aZgyayGHA1OI"
+    const {JWT} = useContext(AppContext)
+
+    const TOKEN = JWT.token
         const sendData = () => {
                     fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`, {
                         method: 'PATCH',

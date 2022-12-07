@@ -14,7 +14,9 @@ export const ParagraphSteps = styled.p`
 `
 export const ButtonSig = styled.button`
     width: 100%;
+    padding: 10px 0;
     display: flex;
+    color: rgba(83, 83, 83, 0.87);
     justify-content: center;
     font-size: 14px;
     border: 2px solid #00000047;
@@ -44,19 +46,32 @@ export const Linear = styled.div`
     left: 20%;
     z-index: 1;
 `
+export const ContainerButton = styled.div`
+    width: 100%;
+    padding: 0 16px;
+`
 //step1
-export const ContainerAddIMage = styled.div`
+export const ContainerIMage = styled.div`
     width: 100%;
     min-height: 70vh;
     display: flex;
     justify-content: center;
     margin-top: 50px;
+`
+export const ContainerAddIMage = styled.div`
+    width: 100%;
+    height: min-content;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00000047;
+    border-radius: 20px;
     gap: 15px;
 `
 export const Phrase = styled.p`
     font-size: 14px;
     font-family: 'Roboto';
-    margin-top: 6px;
 `
 export const ErrorSpan = styled.span`
  font-size: 12px;
@@ -70,6 +85,7 @@ export const ContainerStep = styled.div`
     width: 100%;
     margin-top: 50px;
     display: flex;
+    padding: 0 16px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;

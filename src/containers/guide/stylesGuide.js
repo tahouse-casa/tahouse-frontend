@@ -13,12 +13,12 @@ export const Container = styled.div`
 `
 export const Title = styled.h1`
     font-size: ${props => props.one ? "30px" : "15px"};
-    font-family: 'Open Sans';
+    font-family: 'Roboto';
     font-weight: 600;
 `
 export const Text = styled.p`
     font-size: 10px;
-    font-family: 'Open Sans';
+    font-family: 'Roboto';
     font-weight: 400;
 `
 export const ContainerSection = styled.div`
@@ -29,7 +29,7 @@ export const Button = styled.button`
 width: 100px;
 cursor: pointer;
 font-size: 20px;
-font-family: 'Open Sans';
+font-family: 'Roboto';
 font-weight: 400;
 margin-top: 50px;
 background-color: #7e7b78;

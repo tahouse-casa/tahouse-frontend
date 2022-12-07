@@ -1,4 +1,4 @@
-import { Select, Container, Title} from "./stylesSelect.js"
+import { Select, Container, Title, Option} from "./stylesSelect.js"
 
 export const SelectComponent = ({handleSearch, placeholder,
                                 nameInput,defaultValue = '', array, arrayWithoutNames}) =>{
@@ -15,12 +15,12 @@ export const SelectComponent = ({handleSearch, placeholder,
                      onChange={(e)=>verifyInputs(e)}
                      >
                          {defaultValue === '' && 
-                         <option value="" disabled>Seleccionar</option>}
+                         <Option value="" disabled>Seleccionar</Option>}
                          {array.map((item,index)=>{
                              if(arrayWithoutNames){
-                                return <option key={index} value={item} >{item}</option>
+                                return <Option key={index} value={item} >{item}</Option>
                              } else {
-                                 return <option key={index} value={item[nameInput]} >{item[nameInput]}</option>
+                                 return <Option key={index} value={item[nameInput]} >{item[nameInput]}</Option>
                              }
                          })
                          }
