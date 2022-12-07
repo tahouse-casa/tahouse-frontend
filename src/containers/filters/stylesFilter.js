@@ -8,4 +8,5 @@ export const ContainerFilters = styled.div`
  align-items: center;
  flex-wrap: wrap;
  margin-top: 10px;
+ padding: 0 16px;
 `

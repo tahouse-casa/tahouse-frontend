@@ -25,7 +25,7 @@ export const Home = () => {
                 <Searcher />
             </ContainerSearcher>
                 <Containerfeatured>
-                    <Title alingLeft>Inmuebles Destacados</Title>
+                    <Title alingLeft>Destacados</Title>
                     <Carrousel data={featuredProperties}/>
             </Containerfeatured>
              <Promotion/>

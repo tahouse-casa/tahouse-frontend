@@ -9,7 +9,7 @@ export const MainContainer = styled.div`
   `;
 export const Title = styled.h1`
   letter-spacing: -1px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   font-size: 20px;
   color: rgba(0, 0, 0, 0.87);
   margin: 0 auto;
@@ -22,7 +22,7 @@ export const SecondTitle = styled.p`
   font-weight: 400;
   opacity: 60%;
   margin: 4px 0 28px;
-  font-family: 'Open Sans';
+  font-family: 'Roboto';
   color: rgba(0, 0, 0, 0.87);
   margin: 0 auto;
   line-height: 24px;

@@ -36,7 +36,7 @@ export const ContainerButton = styled.div`
  cursor: pointer;
 `
 export const TextButton = styled.p`
- font-family: 'Open Sans';
+ font-family: 'Roboto';
  font-style: normal;
  font-weight: 600;
  font-size: 13px;
@@ -62,7 +62,7 @@ font-weight: 600;
 font-size: 13px;
 text-align: ${props => props.aling};
 line-height: 18px;
-font-family: 'Open Sans';
+font-family: 'Roboto';
 color: #000;
 margin-left: ${props=> props.alingLeft ? '10px': '0'};
 margin-bottom:10px ;

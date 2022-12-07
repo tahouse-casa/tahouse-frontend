@@ -14,14 +14,17 @@ export const ContainerRow = styled.div`
 export const BoldPrice = styled.p`
     font-size: 15px;
     margin-top: 12px;
+    font-family: 'Roboto';
     font-weight: bold;
     text-transform: uppercase;
 `
 export const ContactText = styled.p`
     display: flex;
+    margin-top: 12px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     font-size: 12px;
+    font-family: 'Roboto';
     gap: 2px;
     margin-right: 10px;
 `
@@ -30,12 +33,14 @@ export const OfferPrice = styled.p`
     opacity: 50%;
     margin-bottom: 10px;
     font-size: 13px;
+    font-family: 'Roboto';
 `
 export const Adress = styled.p`
     font-size: ${props=> props.title ? '14px' : '13px'};
     opacity: ${props=> props.title ? '100%' : '50%'};
     font-weight: ${props=> props.title && '600'};
     margin-bottom:  ${props=> props.title ? '0%' : '10px'};
+    font-family: 'Roboto';
 `
 export const DescriptionContainer = styled.div`
     opacity: 50%;
@@ -49,6 +54,7 @@ export const ButtonBuy = styled.button`
     border-radius: 10px;
     margin-bottom: 12px;
     background: #F3EDED;
+    font-family: 'Roboto';
 `
 export const Description = styled.p`
     width: 100%;
@@ -56,6 +62,7 @@ export const Description = styled.p`
     font-size: 12px;
     opacity: 50%;
     margin-bottom: 20px;
+    font-family: 'Roboto';
 `
 export const IconsTextContainer = styled.div`
     display: flex;
@@ -65,4 +72,5 @@ export const IconsTextContainer = styled.div`
 `
 export const IconsText = styled.p`
     font-size: 8px;
+    font-family: 'Roboto';
 `

@@ -18,10 +18,10 @@ export const ContainerSearcher = styled.div`
 export const Title = styled.h2`
 width: 100%;
 font-weight: 600;
-font-size: 13px;
+font-size: ${props=> props.alingLeft ? '20px': '16px'};
 text-align: ${props => props.aling};
 line-height: 18px;
-font-family: 'Open Sans';
+font-family: 'Roboto';
 color: #000;
 margin-left: ${props=> props.alingLeft ? '10px': '0'};
 margin-bottom:10px ;

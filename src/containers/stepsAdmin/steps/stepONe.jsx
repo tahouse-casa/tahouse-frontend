@@ -1,12 +1,14 @@
 import { BiImageAdd } from "react-icons/bi";
-import { ContainerAddIMage, Phrase} from "../stylesStepsAdmin"
+import { ContainerAddIMage, Phrase, ContainerIMage} from "../stylesStepsAdmin"
 
 
 export const StepONe = () => {
     return (
-        <ContainerAddIMage>
-            <Phrase>CARGAR IMÁGENES </Phrase>
-            <BiImageAdd size="30px"/>
-        </ContainerAddIMage>
+        <ContainerIMage>
+            <ContainerAddIMage>
+                <Phrase>CARGAR IMÁGENES </Phrase>
+                <BiImageAdd size="25px"/>
+            </ContainerAddIMage>
+        </ContainerIMage>
     )
 }

@@ -29,6 +29,7 @@ html {
                 overscroll-behavior: none;
                 max-width: 100vw;
                 overflow-x: hidden;
+                font-family: 'Roboto';
         }
         #app {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);

@@ -7,11 +7,9 @@ export const MainContainer = styled.div`
     flex-direction: column;
     margin-top: 20px;
 `
-export const ButtonZone = styled.button`
-    width: 90%;
-    padding: 0;
-    margin-bottom: 12px;
-    height: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+export const ContainerIcons = styled.div`
+    display: flex;
+    gap: 0 7px;
+    margin-right: 10px;
+    padding-top: 5px;
 `
