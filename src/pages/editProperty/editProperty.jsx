@@ -28,7 +28,7 @@ export const EditProperty = () => {
                     fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`, {
                         method: 'PATCH',
                         headers: {
-                            'Content-Type': 'aplication/json',
+                            'Content-Type': 'application/json',
                             'authorization': `Bearer ${TOKEN}`
                         },
                         body: JSON.stringify(data)
