@@ -11,23 +11,29 @@ export const Navbar = () => {
     <Container>
       <Navbars>
         <LogoContainer>
+          <Enlace to="/">
           <Img src={Inicio} alt="InicioLogo" />
-          <Enlace to="/">Inicio</Enlace>
+            Inicio
+          </Enlace>
         </LogoContainer>
         <LogoContainer>
+          <Enlace to="/">
           <Img src={Favoritos} alt="InicioLogo" />
-          <Enlace to="/">Favoritos</Enlace>
+            Favoritos
+          </Enlace>
         </LogoContainer>
         <LogoContainer>
+          <Enlace to="/administration/properties">
           <Img src={Administrar} alt="InicioLogo" />
-          <Enlace to="/administration/properties">Administrar</Enlace>
+            Administrar</Enlace>
         </LogoContainer>
         <LogoContainer onClick={()=> {
           localStorage.setItem('JWT', '')
           setJWT(null)
           }}>
+          <Enlace to="/">
           <Img src={Perfil} alt="InicioLogo" />
-          <Enlace to="/">Perfil</Enlace>
+            Perfil</Enlace>
         </LogoContainer>
       </Navbars>
     </Container>

@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import { AppContext } from "../../context"
-import {StepsAdmin} from '../../containers/stepsAdmin/stepsAdmin'
+import { StepsAdmin } from "../../containers/stepsAdmin/stepsAdminProperties/stepsAdminProperties"
+import { Navbar } from "../../components/navbar/navbar";
+
 export const CreatePropertie = () => {
     const [error, setError] = useState(false)
     const [errorFetch, setErrorFetch] = useState(false)
@@ -57,6 +59,7 @@ export const CreatePropertie = () => {
                 sendData={sendData}
                 errorFetch={errorFetch}
                 />
+                <Navbar/>
             </>
     )
 }

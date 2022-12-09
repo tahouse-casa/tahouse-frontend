@@ -2,7 +2,7 @@ import { BigInput, Container, Title, ErrorSpan} from "./stylesSelect.js"
 
 export const BigInputComponent = ({handleSearch, placeholder,
                         nameInput, errorInput, setErrorInput,
-                         valor, noLabel, intoPlaceholder}) =>{
+                         valor, noLabel, intoPlaceholder, message}) =>{
 
 
             const veryfyInputs =(e) =>{
@@ -16,8 +16,10 @@ export const BigInputComponent = ({handleSearch, placeholder,
                     <BigInput name={nameInput} type="text"
                      onChange={(e)=>veryfyInputs(e)}
                      placeholder={intoPlaceholder || ''}
-                     value={valor}/>
-                    {errorInput && errorInput[`${nameInput}`] && <ErrorSpan>{errorInput[`${nameInput}`]}</ErrorSpan>}
+                     value={valor}
+                     error={errorInput[`${nameInput}`] ? true : false}
+                     />
+                    {errorInput && errorInput[`${nameInput}`] && <ErrorSpan>{message || ""}</ErrorSpan>}
                 </div>
         </Container>
     )}

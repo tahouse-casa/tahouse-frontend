@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react"
-import {StepsAdmin} from '../../containers/stepsAdmin/stepsAdmin'
+import { StepsAdmin } from "../../containers/stepsAdmin/stepsAdminProperties/stepsAdminProperties"
 import { useParams } from "react-router-dom"
 import { AppContext } from "../../context"
+import { Navbar } from "../../components/navbar/navbar"
 
 export const EditProperty = () => {
     const [error, setError] = useState(false)
@@ -50,6 +51,7 @@ export const EditProperty = () => {
                 sendData={sendData}
                 errorFetch={errorFetch}
             />
+            <Navbar/>
         </>
     )
 }

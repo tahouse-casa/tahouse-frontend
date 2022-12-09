@@ -11,7 +11,7 @@ import {
   Facebook,
   Google,
   SocialContainer,
-} from "../../components/Register/stylesRegister";
+} from "./stylesRegister";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../assets/Google.svg";
 import FacebookIcon from "../../assets/Facebook.svg";

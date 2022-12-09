@@ -1,8 +1,8 @@
 import { Input, Container, Title, ErrorSpan} from "./stylesSelect.js"
 
 export const InputComponent = ({handleSearch, placeholder,
-                        nameInput, errorInput, setErrorIput,
-                        validate = "integer", valor, noLabel, intoPlaceholder}) =>{
+                        nameInput, errorInput, setErrorIput, type,
+                        validate = "integer", valor, noLabel, intoPlaceholder, message}) =>{
 
     const verifyInputs = (verify, nameInput, e) => {
         if (e.target.value === ''){
@@ -36,11 +36,11 @@ export const InputComponent = ({handleSearch, placeholder,
         <Container>
                 <Title>{placeholder}</Title>
                 <div>
-                    <Input name={nameInput} type={noLabel ? "text" : "number"}
+                    <Input name={nameInput} type={noLabel ? "text" : type || "number"}
                      onChange={(e)=>verifyInputs(validate,nameInput,e)}
                      placeholder={intoPlaceholder || ''}
-                     value={valor}/>
-                    {errorInput && errorInput[`${nameInput}`] && <ErrorSpan>{errorInput[`${nameInput}`]}</ErrorSpan>}
+                     value={valor} error={errorInput[`${nameInput}`] ? true : false}/>
+                    {errorInput && errorInput[`${nameInput}`] && <ErrorSpan>{message || `El campo ${placeholder} no puede estar vacio`}</ErrorSpan>}
                 </div>
         </Container>
     )}

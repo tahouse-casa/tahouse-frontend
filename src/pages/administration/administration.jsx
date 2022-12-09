@@ -4,6 +4,9 @@ import { Return } from "../../components/return/return"
 import { SearcherWithoutLogic } from "../../components/searcher/searcherWithoutLogic"
 import { Link, useNavigate } from "react-router-dom"
 import { AppContext } from "../../context"
+import { NavigateAdmin } from "../../components/navigateAdmin/navigateAdmin";
+import { Navbar } from "../../components/navbar/navbar"
+
 //css
 import { Container, ContainerListOfEstate, ContainerInput, ButtonAdd} from "./stylesAdministration"
 export const Administration = () => {
@@ -81,6 +84,7 @@ export const Administration = () => {
                     />
                 </ContainerInput>
             </Return>
+            <NavigateAdmin active="inmuebles"/>
             <ContainerListOfEstate changeDisplay={properties.length}>
                 {properties.length > 0 ? (properties.map((element, index) =>(
                     <Cart key={index}
@@ -111,6 +115,7 @@ export const Administration = () => {
             <Link to="/administration/properties/create" style={{color: '#000'}}>
                 <ButtonAdd/>
             </Link>
+            <Navbar/>
         </Container>
     )
 

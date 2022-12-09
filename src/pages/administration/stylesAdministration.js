@@ -5,6 +5,7 @@ export const Container = styled.div`
     width: 100%;
     min-height: 80vh;
     position: relative;
+    padding-bottom: 70px;
 `
 export const ContainerListOfEstate = styled.div`
  width: 100%;
