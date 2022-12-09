@@ -19,6 +19,7 @@ export const Input = styled.input`
  padding: 10px 16px ;
  border-radius: 20px;
  border-width: 1px;
+ border-color: ${props=>props.error ? "red" : '#535353' };
  &:focus-visible{
      outline: none;
  }
@@ -27,19 +28,22 @@ export const ErrorSpan = styled.span`
  font-size: 12px;
  font-family: 'Roboto';
  color: red;
+ text-align: center;
 `
 export const Select = styled.select`
  font-family: 'Roboto';
  font-size: 12px;
  width: 100%;
  color: rgba(83, 83, 83, 0.87);
- border: none;
+ border: ${props=>props.error ? "solid 1px" : 'none' };
+ border-color: ${props=>props.error ? "red" : 'none' };
  padding: 10px 16px;
+ border-radius: 20px;
+
  &:focus-visible{
     outline: none;
     background: #DFDFDF;
     box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
  }
 `
 export const Option = styled.option`
@@ -55,8 +59,28 @@ export const BigInput = styled.textarea`
  width: 100%;
  padding: 8px;
  border-radius: 20px;
+ border-color: ${props=>props.error ? "red" : '#535353' };
  min-height: 90px;
  &:focus-visible{
      outline: none;
  }
 ` 
+export const InputLat = styled.input`
+ font-family: 'Roboto';
+ font-size: 16px;
+ width: 56px;
+ padding: 6px 0;
+ text-align: center;
+ background: #FFFFFF;
+ color: rgba(83, 83, 83, 0.87);
+ border: 1px solid ${props=> props.error ? 'red' : "#535353"};
+ border-radius: 5px; 
+ &:focus-visible{
+     outline: none;
+ }
+` 
+export const ContainerInputLat = styled.div`
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+`

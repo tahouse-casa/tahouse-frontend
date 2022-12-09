@@ -1,9 +1,9 @@
 import { useContext } from "react"
-import { SelectComponent } from "../../../components/select/selectComponent"
-import { InputComponent } from "../../../components/select/inputComponent"
-import { BigInputComponent } from "../../../components/select/bigInputComponent"
-import {AppContext} from '../../../context'
-import { ContainerStep, ErrorSpan} from "../stylesStepsAdmin"
+import { SelectComponent } from "../../../../components/select/selectComponent"
+import { InputComponent } from "../../../../components/select/inputComponent"
+import { BigInputComponent } from "../../../../components/select/bigInputComponent"
+import {AppContext} from '../../../../context'
+import { ContainerStep} from "../stylesStepsAdmin"
 
 export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
 
@@ -20,6 +20,7 @@ export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
                 nameInput="typeOperation"
                 array={[{typeOperation:'Alquiler'},{typeOperation:'Venta'}, {typeOperation:'Alquiler Temporario'}]}
                 defaultValue={data.typeOperation}
+                errorInput={errorInput}
             />
             <SelectComponent 
                 handleSearch={handleSearch}
@@ -27,6 +28,7 @@ export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
                 nameInput="type"
                 array={[{type:'Casa'},{type:'Departamento'}, {type:'Hotel'}, {type:'Terreno'}, {type:'Monoambiente'}]}
                 defaultValue={data.type}
+                errorInput={errorInput}
                 />
             <SelectComponent 
                 handleSearch={handleSearch}
@@ -34,6 +36,7 @@ export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
                 nameInput="state"
                 array={[{state:'Libre'},{state:'Reservado'}, {state:'Alquilado'}, {state:'Vendido'}]}
                 defaultValue={data.state}
+                errorInput={errorInput}
                 />
             <SelectComponent 
                 handleSearch={handleSearch}
@@ -41,12 +44,14 @@ export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
                 nameInput="country"
                 array={countries}
                 defaultValue={data.country}
+                errorInput={errorInput}
             />
             <SelectComponent 
                 handleSearch={handleSearch}
                 placeholder="Ciudad"
                 nameInput="city"
                 array={defaultCountry.citys}
+                errorInput={errorInput}
                 defaultValue={data.city}
                 arrayWithoutNames
             />
@@ -78,8 +83,8 @@ export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
                 setErrorIput={setErrorInput}
                 valor={data.meters}
                 intoPlaceholder="Ej: 48"
+                message={"Error: El número de metros debe de ser igual o mayor a dos dígitos."}
             />
-            {errorInput['meters'] === true && <ErrorSpan>Error: El número de metros debe de ser igual o mayor a dos dígitos</ErrorSpan>}
             <InputComponent
                 handleSearch={handleSearch}
                 placeholder="Habitaciones"
@@ -107,8 +112,8 @@ export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
                 setErrorIput={setErrorInput}
                 valor={data.price}
                 intoPlaceholder="Ej: 480000"
+                message={"Error: El precio debe de ser igual o mayor a dos dígitos."}
             />
-            {errorInput['price'] === true && <ErrorSpan>Error: El precio debe de ser igual o mayor a dos dígitos</ErrorSpan>}
             <BigInputComponent
                 handleSearch={handleSearch}
                 placeholder="Descripción"
@@ -117,8 +122,8 @@ export const StepTwo = ({handleSearch, data, setErrorInput, errorInput}) => {
                 setErrorInput={setErrorInput}
                 valor={data.description}
                 intoPlaceholder="Ej: La casa tiene 4 ventanas..."
+                message={"Error: La descripción debe de ser igual o mayor a 10 dígitos."}
             />
-            {errorInput['description'] === true && <ErrorSpan>Error: La descripción debe de ser igual o mayor a 10 dígitos</ErrorSpan>}
 
         </ContainerStep>
     )

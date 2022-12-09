@@ -1,6 +1,6 @@
-import { Select, Container, Title, Option} from "./stylesSelect.js"
+import { Select, Container, Title, Option, ErrorSpan} from "./stylesSelect.js"
 
-export const SelectComponent = ({handleSearch, placeholder,
+export const SelectComponent = ({handleSearch, placeholder, errorInput,
                                 nameInput,defaultValue = '', array, arrayWithoutNames}) =>{
 
     const verifyInputs = (e) => {
@@ -12,6 +12,7 @@ export const SelectComponent = ({handleSearch, placeholder,
             <Title>{placeholder}</Title>
                 <div>
                     <Select name={nameInput} defaultValue={defaultValue}
+                    error={errorInput[`${nameInput}`] ? true : false}
                      onChange={(e)=>verifyInputs(e)}
                      >
                          {defaultValue === '' && 
@@ -25,6 +26,7 @@ export const SelectComponent = ({handleSearch, placeholder,
                          })
                          }
                      </Select>
+                    {errorInput && errorInput[`${nameInput}`] && <ErrorSpan>El campo {placeholder} debe ser seleccionado.</ErrorSpan>}
                 </div>         
         </Container>
     )}

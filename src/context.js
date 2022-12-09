@@ -19,6 +19,12 @@ export const AppProvider = ({children}) => {
     const [visibleFilters, setVisibleFilters] = useState(false)
     const [JWT, setJWT] = useState('')
 
+
+
+    useEffect(()=>{
+        addJWT()
+    }, [])
+
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_API_URL}/properties`)
         .then(res => res.json())
@@ -36,6 +42,13 @@ export const AppProvider = ({children}) => {
         })
     }, [])
 
+    const addJWT = () => {
+        if(localStorage.getItem('JWT')){
+            const data = localStorage.getItem('JWT')
+            const parseo = JSON.parse(data)
+            setJWT(parseo)
+        }
+    }
     const handleSearch = (e) =>{
         const name = e.target.name
         const value = e.target.value.toUpperCase()

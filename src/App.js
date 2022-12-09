@@ -8,14 +8,18 @@ import {Searched} from './pages/searched/searched'
 import {Administration} from './pages/administration/administration'
 import {CreatePropertie} from './pages/createPropertie/createPropertie'
 import {EditProperty} from './pages/editProperty/editProperty'
-import { Register } from './components/Register/Register';
-import { Login } from './components/Login/Login';
+import { Register } from './pages/Register/Register';
+import { Login } from './pages/Login/Login';
+import {AdminCountries} from './pages/AdminCountries/AdminCountries'
+import {StepCreateCountry} from './pages/AdminCountries/stepCreateCountry'
+import {StepEditCountry} from './pages/AdminCountries/stepEditCountry'
+
+
 //import {SendFetch} from './pages/sendfetch'
 
 function App() {
 
   const PrivateRoute = ({children}) => {
-    console.log(localStorage.getItem('JWT'))
  if(localStorage.getItem('JWT')){
       const data = localStorage.getItem('JWT')
       const parseo = JSON.parse(data)
@@ -30,7 +34,6 @@ function App() {
   }
 
 const RouteReplaceLogin = ({children}) => {
-  console.log(localStorage.getItem('JWT'))
  if(localStorage.getItem('JWT')){
   return  <Navigate to="/" replace={true}/>
  } else {
@@ -54,6 +57,9 @@ const RouteReplaceLogin = ({children}) => {
           <Route path={"/administration/properties"} element={<PrivateRoute><Administration/></PrivateRoute>}/>
           <Route path={"/administration/properties/create"} element={<PrivateRoute><CreatePropertie/></PrivateRoute>}/>
           <Route path={"/administration/properties/edit/:id"} element={<PrivateRoute><EditProperty/></PrivateRoute>}/>
+          <Route path={"/administration/countries"} element={<PrivateRoute><AdminCountries/></PrivateRoute>}/>
+          <Route path={"/administration/countries/edit/:id"} element={<PrivateRoute><StepEditCountry/></PrivateRoute>}/>
+          <Route path={"/administration/countries/create"} element={<PrivateRoute><StepCreateCountry/></PrivateRoute>}/>
         </Routes>
       </BrowserRouter>
     </AppProvider>

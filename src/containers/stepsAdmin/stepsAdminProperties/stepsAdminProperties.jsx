@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { Return } from "../../components/return/return"
+import { Return } from "../../../components/return/return"
 import { StepONe } from "./steps/stepONe";
 import { StepTwo } from "./steps/stepTwo";
 import {StepThree} from "./steps/stepThree"
-import { MdCancel } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { MdCancel, MdOutlineWarning } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+import { ModalComponent } from "../../../components/modal/modalComponent";
 import {ContainerSteps, ParagraphSteps, ButtonSig, Point, Linear, ContainerButton} from "./stylesStepsAdmin"
 export const StepsAdmin = ({data, error, setData, setError, sendData, errorFetch}) => {
     const [active, setActive] = useState({value: 0, steps: [0]})
     const [errorInput, setErrorInput] = useState({})
+    const [returnModal, setReturnModal] = useState(false)
+
+    const navigate = useNavigate()
     const steps = ['Imágenes', 'Datos', 'Contacto']
-    
+
     const handleSearch = (e) =>{
         const name = e.target.name
         const value = e.target.value
@@ -24,24 +28,26 @@ export const StepsAdmin = ({data, error, setData, setError, sendData, errorFetch
     
     const handlePrevVIew = () => {
         let viewDisabled = false;
+        let changeErrors = {}
         if(active.value === 1){
             for (const property in data) {
                 if(data[property] === ''){
                     setError(true)
                     viewDisabled = true
-                    break
+                    changeErrors = {...changeErrors, [property]: true}
                 }
                 if ((property === 'meters' && data[property].length < 2) || (property === 'price' && data[property].length < 2)){
                     setError(true)
                     viewDisabled = true
-                    setErrorInput({...errorInput, [property]: true})
+                    changeErrors = {...changeErrors, [property]: true}
                     }
                 if ((property === 'description' && data[property].length < 10)){
                     setError(true)
                     viewDisabled = true
-                    setErrorInput({...errorInput, [property]: true})
+                    changeErrors = {...changeErrors, [property]: true}
                     }
               }
+              setErrorInput(changeErrors)
         }
         if (!viewDisabled) {
             setError(false)
@@ -51,9 +57,9 @@ export const StepsAdmin = ({data, error, setData, setError, sendData, errorFetch
     }
 
         return (
-            <>
-            <Return linke={-1} title="Nuevo inmueble" viewTitle 
-                    handleReturn={active.value === 0 ? false : handleReturn}>
+            <div style={{paddingBottom: '70px'}}>
+            <Return  title="Nuevo inmueble" viewTitle 
+                    handleReturn={active.value === 0 ? ()=>setReturnModal(true) : handleReturn}>
                         <Link to={-1}>
                 <MdCancel size="20px" style={{background: 'transparent', fill: 'black', marginTop: '10px', marginRight: '15px'}}/>
                         </Link>
@@ -87,7 +93,6 @@ export const StepsAdmin = ({data, error, setData, setError, sendData, errorFetch
                                         />}
 
             </div>
-            {error && <p>completa todos los parametros para continuar</p>}
             {active.value < 2 &&  
             <ContainerButton>
                 <ButtonSig 
@@ -96,6 +101,20 @@ export const StepsAdmin = ({data, error, setData, setError, sendData, errorFetch
                 </ButtonSig>
             </ContainerButton>
             }
-        </>
+                       
+            {returnModal &&  <ModalComponent
+                                title="¡Cuidado!"
+                                paragraph="Estás a punto de salir sin guardar las modificaciones hechas.
+                                ¡Estás seguro de querer hacerlo?"
+                                buttons
+                                paragraphButton="SALIR"
+                                handleModal={()=>navigate("/administration/properties")}
+                                paragraphSecondButton="CANCELAR"
+                                handleSecond={()=>setReturnModal(false)}
+                        >
+
+                            <MdOutlineWarning size="20px" style={{background: 'transparent'}}/>
+                        </ModalComponent>}
+        </div>
     )
 }

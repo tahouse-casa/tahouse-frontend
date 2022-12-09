@@ -53,7 +53,7 @@ export const ContainerButton = styled.div`
 //step1
 export const ContainerIMage = styled.div`
     width: 100%;
-    min-height: 70vh;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -91,10 +91,13 @@ export const ContainerStep = styled.div`
     flex-wrap: wrap;
 `
 export const Button = styled.button`
-    width: 100%;
+    width: 94%;
+    margin: 0 16px;
+    padding: 10px 0;
     cursor: pointer;
     display: flex;
     justify-content: center;
+    color: rgba(83, 83, 83, 0.87);
     font-size: 14px;
     border: 2px solid #00000047;
     border-radius: 20px;
