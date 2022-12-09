@@ -36,7 +36,7 @@ export const CreatePropertie = () => {
                 fetch(`${process.env.REACT_APP_API_URL}/properties`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'aplication/json',
+                        'Content-Type': 'application/json',
                         'authorization': `Bearer ${TOKEN}`
                     },
                     body: JSON.stringify(data)
