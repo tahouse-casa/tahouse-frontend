@@ -13,7 +13,7 @@ import { Login } from './pages/Login/Login';
 import {AdminCountries} from './pages/AdminCountries/AdminCountries'
 import {StepCreateCountry} from './pages/AdminCountries/stepCreateCountry'
 import {StepEditCountry} from './pages/AdminCountries/stepEditCountry'
-
+import {RecoveryPassword} from './pages/recovery-password/recoveryPasword'
 
 //import {SendFetch} from './pages/sendfetch'
 
@@ -48,6 +48,7 @@ const RouteReplaceLogin = ({children}) => {
           <Route path={"/"} element={<Home/>}/>
           <Route path={"/login"} element={<RouteReplaceLogin><Login/></RouteReplaceLogin>}/>
           <Route path={"/register"} element={<RouteReplaceLogin><Register/></RouteReplaceLogin>}/>
+          <Route path={"/recovery-password"} element={<RecoveryPassword/>}/>
           <Route path={"/detail/:id"} element={<Detail/>}/>
           <Route path={"/all-properties/detail/:id"} element={<Detail/>}/>
           <Route path={"/search/detail/:id"} element={<Detail/>}/>

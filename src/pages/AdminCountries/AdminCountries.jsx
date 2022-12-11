@@ -31,13 +31,13 @@ export const AdminCountries = () => {
         })
     }
 
-    const TOKEN = JWT.TOKEN
+    const TOKEN = JWT.token
 
     const handleDelete = (id) => {
         fetch(`${process.env.REACT_APP_API_URL}/countries/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'aplication/json',
+                'Content-Type': 'application/json',
                 'authorization': `Bearer ${TOKEN}`
             }
         }).then(res=> res.json())
