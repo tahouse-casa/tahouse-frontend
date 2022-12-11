@@ -32,9 +32,9 @@ export const StepEditCountry = () => {
         const pointLatitud = arrLatitud.findIndex(item => item === '.')
         const newLatitud = {
             value1: resData.latitud.substring(0,pointLatitud),
-            value2: resData.latitud.substring(pointLatitud + 1, 4),
-            value3: resData.latitud.substring(4,6),
-            value4: resData.latitud.substring(6,8),
+            value2: resData.latitud.substring(pointLatitud + 1, pointLatitud + 3),
+            value3: resData.latitud.substring(pointLatitud + 3,pointLatitud + 5),
+            value4: resData.latitud.substring(pointLatitud + 5,pointLatitud + 7),
         }
         const arrLongitud= [...resData.longitud]
         const pointLongitud = arrLongitud.findIndex(item => item === '.')

@@ -43,7 +43,6 @@ export const CreatePropertie = () => {
                 })
                 .then((res)=>{
                     setErrorFetch(false)
-                    console.log(res)
                 }).catch((err)=>{
                     setErrorFetch(true)
                     console.log(err)
