@@ -114,7 +114,7 @@ const saveDataINLocalStorage = (data) => {
         </Button>
       </SocialContainer>
       <ContainerLeter>
-        <Paragraph onClick={()=> console.log('hola')} style={{cursor: 'pointer'}}>
+        <Paragraph onClick={()=> navigate('/recovery-password')} style={{cursor: 'pointer'}}>
           Recuperar contraseña
         </Paragraph>
       </ContainerLeter>
