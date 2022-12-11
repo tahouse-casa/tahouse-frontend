@@ -5,15 +5,14 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  
+  padding-bottom: 12px;
   `;
 export const Title = styled.h1`
   letter-spacing: -1px;
   font-family: 'Roboto';
   font-size: 20px;
   color: rgba(0, 0, 0, 0.87);
-  margin: 0 auto;
-  margin-top: 10rem;
+  margin: 65px auto 0;
   line-height: 24px;
   letter-spacing: 0.15px;
 `;
@@ -119,3 +118,7 @@ export const SocialContainer = styled.div`
   position: relative;
 `
 
+export const ContainerLeter = styled.div`
+  display: flex;
+  justify-content: center;
+  `;

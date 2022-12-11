@@ -41,6 +41,10 @@ export const Enlace = styled(Link)`
   color: rgba(0, 0, 0, 0.87);
   background-color: transparent;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 export const Img = styled.img`
   width: 20px;

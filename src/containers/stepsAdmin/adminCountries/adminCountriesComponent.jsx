@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Return } from "../../../components/return/return"
 import { InputComponent } from "../../../components/select/inputComponent"
 import { LatComponent } from "../../../components/select/latcomponent";
@@ -125,9 +125,9 @@ export const AdminCountriesComponent = ({data, setData, handleFetch}) => {
         {viewModals.done && 
         <>
             <Return title="Países" viewTitle handleReturn={()=>setViewModals({...viewModals, return: true})}>
-                <Link to={"/administration/countries"}>
-                    <MdCancel size="20px" style={{background: 'transparent', fill: 'black', marginTop: '10px', marginRight: '15px'}}/>
-                </Link>
+                    <MdCancel size="20px" 
+                    style={{background: 'transparent', fill: 'black', marginTop: '10px', marginRight: '15px'}}
+                    onClick={()=>setViewModals({...viewModals, return: true})}/>
             </Return>
             <Container>
                 <InputComponent
@@ -168,13 +168,15 @@ export const AdminCountriesComponent = ({data, setData, handleFetch}) => {
                     intoPlaceholder="Ej: Medellín"
             />
                 ))}
-                <DivAdd onClick={()=>{
-                    setCityData([...cityData, ''])
-                    const indexCitys = errorInput.citys.length
-                    setErrorInput({...errorInput, citys: [...errorInput.citys, {[indexCitys]: false}]})
-                    }}>
+                <DivAdd>
                     Agregar
-                    <MdAddCircle size="20px" style={{background: 'transparent'}}/>
+                    <MdAddCircle size="20px" style={{background: 'transparent', cursor: 'pointer'}}
+                        onClick={()=>{
+                            setCityData([...cityData, ''])
+                            const indexCitys = errorInput.citys.length
+                            setErrorInput({...errorInput, citys: [...errorInput.citys, {[indexCitys]: false}]})
+                            }}
+                    />
                 </DivAdd>
                 <Button onClick={()=>handleDone()}>GUARDAR</Button>
 

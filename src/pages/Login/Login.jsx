@@ -14,6 +14,7 @@ import {
   Facebook,
   Google,
   SocialContainer,
+  ContainerLeter
 } from "./stylesLogin";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../assets/Google.svg";
@@ -112,6 +113,11 @@ const saveDataINLocalStorage = (data) => {
           Ingresar con Google
         </Button>
       </SocialContainer>
+      <ContainerLeter>
+        <Paragraph onClick={()=> console.log('hola')} style={{cursor: 'pointer'}}>
+          Recuperar contraseña
+        </Paragraph>
+      </ContainerLeter>
     </MainContainer>
   );
 }
