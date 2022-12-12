@@ -38,9 +38,12 @@ export const AllProperties = () => {
                                      id={element.id}
                                      img={element.urlImage}
                                      price={element.price}
-                                     time={element.createdAt}
                                      address={element.address}
                                      country={element.country}
+                                     baths={element.bathrooms}
+                                     environments={element.rooms}
+                                     rooms={element.rooms}
+                                     meters={element.meters}
                                      city={element.city}
                                      featured={false}/>
                         ))) 

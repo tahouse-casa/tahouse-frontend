@@ -12,11 +12,13 @@ export const Filters = ({
     const {countries, handleSearch, visibleFilters, valueInput} = useContext(AppContext)
     return (
     <ContainerFilters visible={visibleFilters}>
-        <SelectComponent placeholder="País" nameInput={"country"}
+        <SelectComponent 
+                placeholder="País" nameInput={"country"}
                 handleSearch={handleSearch}
                 array={countries}
                 defaultValue={defaultValue.country}
                 setDefaultCountry={setDefaultCountry}
+                errorInput={errorInput}
                 />
         <InputComponent placeholder="Cantidad de ambientes" nameInput={"ambientes"}
                 handleSearch={handleSearch}
