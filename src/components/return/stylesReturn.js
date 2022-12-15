@@ -5,6 +5,7 @@ export const Container = styled.div`
     justify-content: space-between;
     width: 100%;
     margin-bottom: 15px;
+    align-items: center;
 `
 export const ContainerLink = styled.div`
     width: fit-content;

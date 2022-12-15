@@ -13,9 +13,7 @@ export const usePagination = (url,number, setNumber, dataComponent) => {
     const [dataPaginada, setDataPaginada] = useState([]);
 
     useEffect(()=>{
-        if(!dataComponent){
             fetchData('0')
-        }
     // eslint-disable-next-line
        }, [])
 
@@ -42,7 +40,7 @@ export const usePagination = (url,number, setNumber, dataComponent) => {
     
 
     const fetchData = (offset) =>{
-        if (offset) {
+        if (offset && !dataComponent) {
             fetch(`${process.env.REACT_APP_API_URL}${url}?offset=${offset}&limit=8`
             ).then((res) => res.json())
                 .then((datos) => {
