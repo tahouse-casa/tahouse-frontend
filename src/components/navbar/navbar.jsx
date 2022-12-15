@@ -17,7 +17,7 @@ export const Navbar = () => {
           </Enlace>
         </LogoContainer>
         <LogoContainer>
-          <Enlace to="/">
+          <Enlace to="/favorites-properties">
           <Img src={Favoritos} alt="InicioLogo" />
             Favoritos
           </Enlace>

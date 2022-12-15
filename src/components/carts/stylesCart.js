@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { MdCancel as cancel } from "react-icons/md";
 import { MdModeEdit as edit } from "react-icons/md";
+import { MdFavorite as fav } from "react-icons/md";
+
 
 export const Container = styled.div`
  display: flex;
@@ -9,6 +11,9 @@ export const Container = styled.div`
  margin: ${props=>props.visible ? '0 15px 0 0' : '0'};
  position: relative;
  max-height: ${props=>props.visible ? '240px' : '182px'};
+ background: #FFFFFF;
+ box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+ border-radius: 2px;
 `
 export const Img = styled.img`
  width: ${props=>props.visible ? '220px' : '100%'};
@@ -110,5 +115,15 @@ export const EditIcon = styled(edit)`
     border-radius: 50%;
     position: absolute;
     left: 5px;
+    top: 5px;
+`
+export const FavoriteIcon = styled(fav)`
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    right: 5px;
     top: 5px;
 `

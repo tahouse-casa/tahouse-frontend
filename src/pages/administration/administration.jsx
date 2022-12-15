@@ -16,8 +16,9 @@ export const Administration = () => {
     const [mirar, setMirar] = useState(false)
     const [viewDelete, setViewDelete] = useState(false)
     const [error, setError] = useState({error: false, done: false})
-    
-    const {JWT} = useContext(AppContext)
+    const [idForDelete, setIdForDelete] = useState(null)
+
+    const {JWT, fetchUser, fetchProperties} = useContext(AppContext)
 
     useEffect(()=>{
         fetchApiProperties()
@@ -29,8 +30,9 @@ export const Administration = () => {
         fetch(`${process.env.REACT_APP_API_URL}/properties`)
         .then(res => res.json())
         .then(data=>{
-            setProperties(data)
-            setAllData(data)
+            console.log(data)
+            setProperties([...data])
+            setAllData([...data])
         }).catch((err)=>console.log(err))
     }
 
@@ -49,8 +51,8 @@ export const Administration = () => {
     const handleButtonSearch = () =>{
         setMirar(prevState=> !prevState)
     }
-    const handleDelete = (id) =>{
-        fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`, {
+    const handleDelete = () =>{
+        fetch(`${process.env.REACT_APP_API_URL}/properties/${idForDelete}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,6 +62,8 @@ export const Administration = () => {
         .then((res)=>{
             fetchApiProperties()
             setError({error: false, done: true})
+            fetchUser(JWT?.user?.id)
+            fetchProperties()
             setViewDelete(prevState => !prevState)
         }).catch((err)=>{
             setError({error: true, done: false})
@@ -105,6 +109,7 @@ export const Administration = () => {
                         setViewDelete={setViewDelete}
                         DeleteButton={handleDelete}
                         setError={setError}
+                        setIdForDelete={setIdForDelete}
                         featured={false}/>
                 ))): (
                     <div>

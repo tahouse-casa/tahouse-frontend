@@ -14,7 +14,7 @@ import {AdminCountries} from './pages/AdminCountries/AdminCountries'
 import {StepCreateCountry} from './pages/AdminCountries/stepCreateCountry'
 import {StepEditCountry} from './pages/AdminCountries/stepEditCountry'
 import {RecoveryPassword} from './pages/recovery-password/recoveryPasword'
-
+import {Favorites} from './pages/favorites/favorites'
 //import {SendFetch} from './pages/sendfetch'
 
 function App() {
@@ -54,6 +54,7 @@ const RouteReplaceLogin = ({children}) => {
           <Route path={"/search/detail/:id"} element={<Detail/>}/>
           <Route path={"/administration/detail/:id"} element={<Detail/>}/>
           <Route path={"/all-properties"} element={<AllProperties/>}/>
+          <Route path={"/favorites-properties"} element={<Favorites/>}/>
           <Route path={"/search"} element={<Searched/>}/>
           <Route path={"/administration/properties"} element={<PrivateRoute><Administration/></PrivateRoute>}/>
           <Route path={"/administration/properties/create"} element={<PrivateRoute><CreatePropertie/></PrivateRoute>}/>

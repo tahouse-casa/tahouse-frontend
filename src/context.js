@@ -18,20 +18,18 @@ export const AppProvider = ({children}) => {
     const [map, setMap] = useState(false)
     const [visibleFilters, setVisibleFilters] = useState(false)
     const [JWT, setJWT] = useState('')
-
-
+    const [user, setUser] = useState(null)
 
     useEffect(()=>{
         addJWT()
     }, [])
 
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_API_URL}/properties`)
-        .then(res => res.json())
-        .then(data=>{
-            setEstates(data)
-            setData(data)
-        })
+        fetchUser(JWT?.user?.id)
+    }, [JWT])
+
+    useEffect(()=>{
+        fetchProperties()
     }, [])
 
     useEffect(()=>{
@@ -41,7 +39,15 @@ export const AppProvider = ({children}) => {
             setCountries(data)
         })
     }, [])
-
+    
+    const fetchProperties = () => {
+        fetch(`${process.env.REACT_APP_API_URL}/properties`)
+        .then(res => res.json())
+        .then(data=>{
+            setEstates(data)
+            setData(data)
+        })
+    }
     const addJWT = () => {
         if(localStorage.getItem('JWT')){
             const data = localStorage.getItem('JWT')
@@ -62,6 +68,17 @@ export const AppProvider = ({children}) => {
             setDefaultCountry(result)
         }
     }
+
+
+  const fetchUser = (idUser) => {
+      if(idUser) {
+          fetch(`${process.env.REACT_APP_API_URL}/users/${idUser}`)
+          .then(res=> res.json())
+          .then(res=> {
+            setUser(res)})
+      }
+}
+
 return (
     <AppContext.Provider value={{ 
         handleSearch, 
@@ -81,7 +98,11 @@ return (
         visibleFilters,
         setVisibleFilters,
         setJWT,
-        JWT
+        JWT,
+        user,
+        setUser,
+        fetchUser,
+        fetchProperties
         }}>
     {children}
     </AppContext.Provider>

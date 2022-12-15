@@ -1,7 +1,7 @@
 import { ModalComponent } from "../modal/modalComponent";
 import { Container, Img, ContainerData, ContainerOne,
     AlertZona, Text1,Text2, ContainerTwo, DimensionsText,
-    DimensionsContainer, EditIcon, CancelIcon} from "./stylesCart"
+    DimensionsContainer, EditIcon, CancelIcon, FavoriteIcon} from "./stylesCart"
 import { BsDoorOpen } from "react-icons/bs";
 import { TfiRulerAlt2 } from "react-icons/tfi";
 import { MdOutlineSpaceDashboard, MdOutlineBathtub, MdOutlineWarning, MdCheckCircle} from "react-icons/md";
@@ -21,20 +21,28 @@ export const Cart = ({
     meters, 
     admin = false, 
     DeleteButton, 
+    setIdForDelete,
     viewDelete = false,
     setViewDelete,
     handleEdit,
     setError,
+    favorite,
+    handleFavorite,
+    FavoriteId,
     error = {error: false, done:false}}) => {
 
         const BASE_URL = 'https://drive.google.com/uc?id='
+
 return (
     <Container visible={featured}>
-        <Link to={`detail/${id}`} style={{width: '100%'}}>
+        <Link to={`/detail/${id}`} style={{width: '100%'}}>
         <Img src={BASE_URL + img[0]} alt="" visible={featured}/>
         </Link>
-        {admin && <CancelIcon onClick={()=>setViewDelete(prevState => !prevState)}/>}
+        {admin && <CancelIcon onClick={()=>{
+            setIdForDelete(id)
+            setViewDelete(prevState => !prevState)}}/>}
         {admin && <EditIcon onClick={()=>handleEdit(id)}/>}
+        {favorite && <FavoriteIcon onClick={()=>handleFavorite(FavoriteId)}/>}
         <ContainerData visible={featured}>
             <ContainerOne>
                 <ContainerTwo>
@@ -67,7 +75,7 @@ return (
                             ¿Estás seguro de querer hacerlo?"
                             buttons
                             paragraphButton="ELIMINAR"
-                            handleModal={()=>DeleteButton(id)}
+                            handleModal={()=>DeleteButton()}
                             paragraphSecondButton="CANCELAR"
                             handleSecond={()=>setViewDelete(prevState => !prevState)}
                         >

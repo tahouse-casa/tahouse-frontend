@@ -13,7 +13,6 @@ export const ContainerListOfProperties = styled.div`
  margin:0 10px;
 `
 export const Title = styled.h2`
-width: 100%;
 margin: 20px 10px;
 font-weight: 600;
 font-size: 20px;

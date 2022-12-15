@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     width: 100%;
+    padding: 4px 0 4px 4px;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -24,4 +25,5 @@ export const Title = styled.p`
 export const ContainerItem = styled.div`
     display: flex;
     align-items: center;
+    border-radius: 15px;
 `
