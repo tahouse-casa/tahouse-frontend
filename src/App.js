@@ -50,9 +50,7 @@ const RouteReplaceLogin = ({children}) => {
           <Route path={"/register"} element={<RouteReplaceLogin><Register/></RouteReplaceLogin>}/>
           <Route path={"/recovery-password"} element={<RecoveryPassword/>}/>
           <Route path={"/detail/:id"} element={<Detail/>}/>
-          <Route path={"/all-properties/detail/:id"} element={<Detail/>}/>
           <Route path={"/search/detail/:id"} element={<Detail/>}/>
-          <Route path={"/administration/detail/:id"} element={<Detail/>}/>
           <Route path={"/all-properties"} element={<AllProperties/>}/>
           <Route path={"/favorites-properties"} element={<Favorites/>}/>
           <Route path={"/search"} element={<Searched/>}/>

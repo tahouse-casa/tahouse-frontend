@@ -30,7 +30,6 @@ export const Administration = () => {
         fetch(`${process.env.REACT_APP_API_URL}/properties`)
         .then(res => res.json())
         .then(data=>{
-            console.log(data)
             setProperties([...data])
             setAllData([...data])
         }).catch((err)=>console.log(err))
