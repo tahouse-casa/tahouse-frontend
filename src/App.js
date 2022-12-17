@@ -15,6 +15,7 @@ import {StepCreateCountry} from './pages/AdminCountries/stepCreateCountry'
 import {StepEditCountry} from './pages/AdminCountries/stepEditCountry'
 import {RecoveryPassword} from './pages/recovery-password/recoveryPasword'
 import {Favorites} from './pages/favorites/favorites'
+import {ChangePassword} from './pages/recovery-password/change-password'
 //import {SendFetch} from './pages/sendfetch'
 
 function App() {
@@ -40,6 +41,13 @@ const RouteReplaceLogin = ({children}) => {
   return children
  }
 }
+const RouteNeedLogin = ({children}) => {
+  if(localStorage.getItem('JWT')){
+    return children
+  } else {
+    return  <Navigate to="/login" replace={true}/>
+  }
+ }
   return (
     <AppProvider>
       <BrowserRouter>
@@ -49,10 +57,11 @@ const RouteReplaceLogin = ({children}) => {
           <Route path={"/login"} element={<RouteReplaceLogin><Login/></RouteReplaceLogin>}/>
           <Route path={"/register"} element={<RouteReplaceLogin><Register/></RouteReplaceLogin>}/>
           <Route path={"/recovery-password"} element={<RecoveryPassword/>}/>
+          <Route path={"/change-password/:token"} element={<ChangePassword/>}/>
           <Route path={"/detail/:id"} element={<Detail/>}/>
           <Route path={"/search/detail/:id"} element={<Detail/>}/>
           <Route path={"/all-properties"} element={<AllProperties/>}/>
-          <Route path={"/favorites-properties"} element={<Favorites/>}/>
+          <Route path={"/favorites-properties"} element={<RouteNeedLogin><Favorites/></RouteNeedLogin>}/>
           <Route path={"/search"} element={<Searched/>}/>
           <Route path={"/administration/properties"} element={<PrivateRoute><Administration/></PrivateRoute>}/>
           <Route path={"/administration/properties/create"} element={<PrivateRoute><CreatePropertie/></PrivateRoute>}/>

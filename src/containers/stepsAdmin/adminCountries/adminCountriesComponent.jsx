@@ -120,6 +120,12 @@ export const AdminCountriesComponent = ({data, setData, handleFetch}) => {
         }
         
     }
+
+            const handleDeleteCity = (id) =>{
+                const data = cityData
+                data.splice(id, 1)
+                setCityData([...data])
+            }
     return (
         <>
         {viewModals.done && 
@@ -157,17 +163,21 @@ export const AdminCountriesComponent = ({data, setData, handleFetch}) => {
                     errorInput={errorInput}
                 />
                 {cityData.map((item, index)=>(
-                <InputWithoutLogic
-                    key={index}
-                    handleSearch={handleCitys}
-                    placeholder="Ciudad"
-                    nameInput={`${index}`}
-                    errorInput={errorInput.citys[index]}
-                    valor={cityData[index]}
-                    noLabel
-                    intoPlaceholder="Ej: Medellín"
-            />
-                ))}
+                            <div style={{position: 'relative'}} key={index}>
+                        <InputWithoutLogic
+                            handleSearch={handleCitys}
+                            placeholder="Ciudad"
+                            nameInput={`${index}`}
+                            errorInput={errorInput.citys[index]}
+                            valor={cityData[index]}
+                            noLabel
+                            intoPlaceholder="Ej: Medellín"
+                    />
+                        <MdCancel size="20px" 
+                            style={{background: 'transparent', fill: 'black', position: 'absolute', top: '50%', right: '8px'}}
+                            onClick={()=>handleDeleteCity(index)}/>
+                    </div>
+                        ))}
                 <DivAdd>
                     Agregar
                     <MdAddCircle size="20px" style={{background: 'transparent', cursor: 'pointer'}}

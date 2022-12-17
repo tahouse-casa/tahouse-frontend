@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import { Link } from 'react-router-dom';
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@ export const Paragraph = styled.p`
   letter-spacing: 0.15px;
   
 `;
-export const RegisterButton = styled.a`
+export const RegisterButton = styled(Link)`
   color: #000;
   font-family: 'Roboto';
 font-style: normal;

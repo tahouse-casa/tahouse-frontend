@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { MdVisibility as vis } from "react-icons/md";
 
 export const Container = styled.div`
  width: 100%;
@@ -29,6 +30,7 @@ export const ErrorSpan = styled.span`
  font-family: 'Roboto';
  color: red;
  text-align: center;
+ margin-left: 16px;
 `
 export const Select = styled.select`
  font-family: 'Roboto';
@@ -83,4 +85,12 @@ export const ContainerInputLat = styled.div`
  width: 100%;
  display: flex;
  justify-content: space-between;
+`
+export const ViewIconEye = styled(vis)`
+    background: transparent;
+    width: 22px;
+    height: 15px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 `
