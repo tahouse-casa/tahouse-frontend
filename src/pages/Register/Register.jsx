@@ -12,6 +12,7 @@ import {
   Google,
   SocialContainer,
 } from "./stylesRegister";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../assets/Google.svg";
 import FacebookIcon from "../../assets/Facebook.svg";
@@ -26,6 +27,7 @@ export function Register({ isRegister }) {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate()
   const handleFetchRegister = (data) => {
     fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: "POST",
@@ -36,12 +38,10 @@ export function Register({ isRegister }) {
     })
       .then((res) => res.json())
       .then((res) => {
-        // setJWT(res)
-        console.log(res);
         setError(false);
+        navigate('/login')
       })
       .catch((e) => {
-        // setJWT('hay un error')
         setError(true);      
       });
   };

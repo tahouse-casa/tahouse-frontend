@@ -71,8 +71,8 @@ export const Favorites = () => {
                 <p style={{background: 'transparent'}}>Más antiguo</p>
             </ItemFilter>
         </ListFilter>}
-        <ContainerListOfEstate>
-            {favProperties.length > 0 && favProperties.map((element)=>(
+        {favProperties.length > 0 && (<ContainerListOfEstate>
+            {favProperties.map((element)=>(
                 <Cart 
                     key={element.id}
                     id={element.id}
@@ -92,7 +92,7 @@ export const Favorites = () => {
                     FavoriteId={element.Favorites.id}
                 />
             ))}
-        </ContainerListOfEstate>
+        </ContainerListOfEstate>)}
         <Navbar/>
         {error.doneDelete === true && <ModalComponent
                             title="¡Listo!"

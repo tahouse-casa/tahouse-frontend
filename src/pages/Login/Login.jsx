@@ -101,7 +101,7 @@ const saveDataINLocalStorage = (data) => {
         <Button>Ingresar</Button>
       </Form>
       <Paragraph>
-        <RegisterButton href="">¿No tienes cuenta? Registrate</RegisterButton>
+        <RegisterButton to="/register">¿No tienes cuenta? Registrate</RegisterButton>
         <br />O ingresa con una red social
       </Paragraph>
       <SocialContainer>
