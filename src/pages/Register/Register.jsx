@@ -1,7 +1,6 @@
+import { useState } from "react";
 import {
   MainContainer,
-  Title,
-  SecondTitle,
   Input,
   Button,
   Paragraph,
@@ -16,8 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../assets/Google.svg";
 import FacebookIcon from "../../assets/Facebook.svg";
-import { useState } from "react";
-
+import {Return} from '../../components/return/return'
 export function Register({ isRegister }) {
   const [error, setError] = useState(false);
   const {
@@ -29,6 +27,11 @@ export function Register({ isRegister }) {
 
   const navigate = useNavigate()
   const handleFetchRegister = (data) => {
+    if (data.password !== data.password2) {
+      setError({password: "Verifica que las contraseñas sean iguales"})
+      return
+    }
+     delete data.password2
     fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: "POST",
       headers: {
@@ -38,6 +41,10 @@ export function Register({ isRegister }) {
     })
       .then((res) => res.json())
       .then((res) => {
+        if (res.message === "SequelizeUniqueConstraintError") {
+          setError({allready: "Esta cuenta ya está registrada"})
+          return
+        }
         setError(false);
         navigate('/login')
       })
@@ -48,8 +55,7 @@ export function Register({ isRegister }) {
 
   return (
     <MainContainer>
-      <Title>Te damos la bienvenida a TaHouse</Title>
-      <SecondTitle>Inicia sesión para una mejor experiencia</SecondTitle>
+      <Return linke={"/login"}/>
       <Form onSubmit={handleSubmit(handleFetchRegister)}>
         <Input
           name="email"
@@ -82,10 +88,10 @@ export function Register({ isRegister }) {
           })}
         />
           <Input
-            name="password"
+            name="password2"
             type="password"
             placeholder="Repetir contraseña"
-            {...register("password", {
+            {...register("password2", {
               required: {
                 value: true,
                 message: "Todos los campos son requeridos",
@@ -97,10 +103,10 @@ export function Register({ isRegister }) {
             })}
           />
          {errors.message && console.log('asdasd')}
-        {error && <ErrorStyle>Los datos ingresados son incorrectos</ErrorStyle>}
+        {error && <ErrorStyle>{error.password || error.allready || "Los datos ingresados son incorrectos"}</ErrorStyle>}
         {errors.password && <ErrorStyle>{errors.password.message}</ErrorStyle>}
         <Button>Ingresar</Button>
-      </Form>
+      </Form> 
       <Paragraph>
         <RegisterButton href="">O ingresa con una red social</RegisterButton>
       </Paragraph>
