@@ -7,6 +7,7 @@ import { MdFavorite as fav } from "react-icons/md";
 export const Container = styled.div`
  display: flex;
  justify-content: center;
+ align-items: center;
  flex-wrap: wrap;
  margin: ${props=>props.visible ? '0 15px 0 0' : '0'};
  position: relative;
@@ -14,6 +15,7 @@ export const Container = styled.div`
  background: #FFFFFF;
  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
  border-radius: 2px;
+ max-width: 160px;
 `
 export const Img = styled.img`
  width: ${props=>props.visible ? '220px' : '100%'};
@@ -28,31 +30,30 @@ export const ContainerData = styled.div`
  display: flex;
  justify-content: center;
  flex-wrap: wrap;
- padding: ${props=>props.visible ? '0 8px' : '0'};
+ padding: ${props=>props.visible ? '0 8px' : '4px 4px 8px'};
 `
 export const ContainerOne = styled.div`
  width: 100%;
  display: grid;
  grid-template-columns: 2;
  height: fit-content;
- margin: 0 0 7px;
+ margin: 0;
 `
 export const AlertZona = styled.div`
  grid-column-start: 2;
  width: 60px;
  height: fit-content;
- padding: 3px;
+ padding: 2px 0 0 0;
  display: flex;
  justify-content: center;
  border-radius: 20px;
- border: 1px solid rgba(0, 0, 0, 0.70);
  font-family: 'Roboto';
  font-style: normal;
  font-weight: 400;
- font-size: 7px;
+ font-size: 6px;
  line-height: 10px;
  color: rgba(0, 0, 0, 0.60);
- margin: 0;
+ margin: 0 0 0 10px;
 `
 export const Text1 = styled.p`
  font-family: 'Roboto';

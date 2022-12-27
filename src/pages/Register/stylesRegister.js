@@ -5,30 +5,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  
   `;
-export const Title = styled.h1`
-  letter-spacing: -1px;
-  font-family: 'Roboto';
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.87);
-  margin: 0 auto;
-  margin-top: 10rem;
-  line-height: 24px;
-  letter-spacing: 0.15px;
-`;
-export const SecondTitle = styled.p`
-  font-size: 16px;
-  font-weight: 400;
-  opacity: 60%;
-  margin: 4px 0 28px;
-  font-family: 'Roboto';
-  color: rgba(0, 0, 0, 0.87);
-  margin: 0 auto;
-  line-height: 24px;
-  letter-spacing: 0.15px;
-
-`;
 export const Input = styled.input`
   padding: 14px 8px;
   border-radius: 20px;
@@ -40,11 +17,10 @@ export const Input = styled.input`
 `;
 export const Button = styled.button`
   padding: 14px 12px;
-  border-radius: 20px;
   border: 1px solid #b6b6b6;
   margin-bottom: 15px;
   cursor: pointer;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   background: #DFDFDF;
   color: black;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -75,8 +51,7 @@ export const RegisterButton = styled.a`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+    margin-top: 70px;
 `
 export const ErrorStyle = styled.span`
     text-align: center;
