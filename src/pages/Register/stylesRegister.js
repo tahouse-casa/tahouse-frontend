@@ -15,6 +15,18 @@ export const Input = styled.input`
   background-color: white;
   
 `;
+export const ShowPassword = styled.button`
+  position: absolute;
+  right: 0;
+  top: 185px;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+`;
+
 export const Button = styled.button`
   padding: 14px 12px;
   border: 1px solid #b6b6b6;

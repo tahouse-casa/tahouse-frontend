@@ -52,19 +52,27 @@ export const DetailCard = ({card, prevView}) =>{
         </Adress>
         <DescriptionContainer>
           <IconsTextContainer>
-            <TfiRulerAlt2 />
+            <TfiRulerAlt2
+              style={{ fontSize: "9px"}}
+            />
             <IconsText>{meters}m2</IconsText>
           </IconsTextContainer>
           <IconsTextContainer>
-            <BsDoorOpen />
+            <BsDoorOpen 
+                style={{ fontSize: "9px"}}
+            />
             <IconsText>{environments} Ambientes</IconsText>
           </IconsTextContainer>
           <IconsTextContainer>
-            <MdOutlineSpaceDashboard />
+            <MdOutlineSpaceDashboard
+              style={{ fontSize: "9px"}}
+            />
             <IconsText>{rooms} dorm.</IconsText>
           </IconsTextContainer>
           <IconsTextContainer>
-            <MdOutlineBathtub />
+            <MdOutlineBathtub
+              style={{ fontSize: "9px"}}
+            />
             <IconsText>{bathrooms} baños.</IconsText>
           </IconsTextContainer>
         </DescriptionContainer>

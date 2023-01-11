@@ -24,9 +24,10 @@ export const Container = styled.ul`
  }
 `
 export const Img = styled.img`
-    width: 100%;
-    height: 200px;
+    width: 328px;
+    height: 212px;
     border-radius: 10px;
+    margin: 0 auto;
 `
 export const Button = styled.button`
   position: absolute;
@@ -42,6 +43,7 @@ export const Button = styled.button`
 `
 export const DivImg = styled.div`
     width: 100%;
+    display: flex;
     opacity: ${props=> props.divActive === 'active' ? "1" : "0"};
     transition: opacity 0.5s ease-in-out;
 `
