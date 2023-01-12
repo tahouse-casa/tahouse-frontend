@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.footer`
- width: 100%;
- display: flex;
- justify-content: center;
- align-items: center;
- flex-wrap: wrap;
-`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;
 export const Title = styled.p`
   width: 100%;
   text-align: center;

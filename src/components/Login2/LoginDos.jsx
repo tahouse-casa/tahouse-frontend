@@ -8,9 +8,9 @@ import {
   Register,
   Form,
   ErrorStyle,
-} from "./StylesLoginDos";
-import { useForm } from "react-hook-form";
-import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
+} from './StylesLoginDos';
+import { useForm } from 'react-hook-form';
+import { FaFacebook, FaGoogle, FaTwitter } from 'react-icons/fa';
 
 export function LoginDos() {
   const {
@@ -33,14 +33,14 @@ export function LoginDos() {
           name="email"
           type="email"
           placeholder="E-mail"
-          {...register("email", {
+          {...register('email', {
             required: {
               value: true,
-              message: "Todos los campos son requeridos",
+              message: 'Todos los campos son requeridos',
             },
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: "El formato no es correcto",
+              message: 'El formato no es correcto',
             },
           })}
         />
@@ -48,14 +48,14 @@ export function LoginDos() {
           name="password"
           type="password"
           placeholder="Contraseña"
-          {...register("password", {
+          {...register('password', {
             required: {
               value: true,
-              message: "Todos los campos son requeridos",
+              message: 'Todos los campos son requeridos',
             },
             minLength: {
               value: 6,
-              message: "La contraseña debe tener al menos 6 caracteres",
+              message: 'La contraseña debe tener al menos 6 caracteres',
             },
           })}
         />
@@ -66,10 +66,16 @@ export function LoginDos() {
         <Register href="">¿No tienes cuenta? Registrate</Register>
         <br />O ingresa con una red social
       </Paragraph>
-      
-      <Button><FaFacebook/> Ingresar con Facebook</Button>
-      <Button><FaGoogle/> Ingresar con Google</Button>
-      <Button><FaTwitter/> Ingresar con Twitter</Button>
+
+      <Button>
+        <FaFacebook /> Ingresar con Facebook
+      </Button>
+      <Button>
+        <FaGoogle /> Ingresar con Google
+      </Button>
+      <Button>
+        <FaTwitter /> Ingresar con Twitter
+      </Button>
     </MainContainer>
   );
 }

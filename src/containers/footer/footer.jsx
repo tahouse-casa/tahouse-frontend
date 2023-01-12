@@ -1,13 +1,13 @@
-import { Container, Title } from "./stylesFooter"
-import { ItemFooter } from "../../components/itemFooter/itemFooter"
+import { Container, Title } from './stylesFooter';
+import { ItemFooter } from '../../components/itemFooter/itemFooter';
 export const Footer = () => {
-return (
+  return (
     <Container>
-        <Title>taHouse</Title>
-        <ItemFooter name="Sobre nosotros"/>
-        <ItemFooter name="Nuestra"/>
-        <ItemFooter name="Paises"/>
-        <ItemFooter name="Categorias"/>
+      <Title>taHouse</Title>
+      <ItemFooter name="Sobre nosotros" />
+      <ItemFooter name="Nuestra" />
+      <ItemFooter name="Paises" />
+      <ItemFooter name="Categorias" />
     </Container>
-)
-}
+  );
+};

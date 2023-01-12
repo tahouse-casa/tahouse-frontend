@@ -1,14 +1,7 @@
-import { useState } from "react";
-import {
-  DropDown,
-  DropButton,
-  DropContent,
-  TextContent,
-  Icon
-} from "./stylesItemFooter";
+import { useState } from 'react';
+import { DropDown, DropButton, DropContent, TextContent, Icon } from './stylesItemFooter';
 
-export const ItemFooter =({ name }) => {
-
+export const ItemFooter = ({ name }) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -16,20 +9,18 @@ export const ItemFooter =({ name }) => {
       <DropDown>
         <DropButton onClick={(e) => setIsActive(!isActive)}>
           {name}
-          <Icon open={isActive}/>
+          <Icon open={isActive} />
         </DropButton>
         {isActive && (
           <DropContent>
             <TextContent>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi,
-              pariatur fugiat. Corrupti porro minus obcaecati, in aliquam
-              adipisci omnis sunt perferendis ab quisquam fugiat enim non
-              blanditiis quibusdam? Consectetur, quae?
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, pariatur fugiat.
+              Corrupti porro minus obcaecati, in aliquam adipisci omnis sunt perferendis ab quisquam
+              fugiat enim non blanditiis quibusdam? Consectetur, quae?
             </TextContent>
           </DropContent>
         )}
       </DropDown>
     </>
   );
-}
-
+};

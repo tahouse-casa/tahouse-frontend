@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { FiChevronRight } from "react-icons/fi";
+import styled from 'styled-components';
+import { FiChevronRight } from 'react-icons/fi';
 
 export const Container = styled.div`
   width: 100%;
@@ -42,5 +42,5 @@ export const TextContent = styled.p`
 `;
 export const Icon = styled(FiChevronRight)`
   background-color: #ebeaea;
-  transform: ${props=> props.open ? "rotate(90deg)" : "none"};
+  transform: ${(props) => (props.open ? 'rotate(90deg)' : 'none')};
 `;

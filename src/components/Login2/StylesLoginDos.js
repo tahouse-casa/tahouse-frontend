@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const MainContainer = styled.div`
   display: flex;
@@ -46,16 +46,16 @@ export const Register = styled.a`
   font-family: 'Open Sans';
 `;
 export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    font-family: 'Open Sans';
-`
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans';
+`;
 export const ErrorStyle = styled.span`
-    font-family: 'Open Sans';
-    text-align: center;
-    background-color: #c61f1f;
-    padding: 5px 10px;
-    color: white;
-    margin: 5px 0 10px;
-    border-radius: 10px;
-`
+  font-family: 'Open Sans';
+  text-align: center;
+  background-color: #c61f1f;
+  padding: 5px 10px;
+  color: white;
+  margin: 5px 0 10px;
+  border-radius: 10px;
+`;
