@@ -11,6 +11,7 @@ import {
   Google,
   SocialContainer,
   ShowPassword,
+  PasswordRepeat
 } from "./stylesRegister";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -123,8 +124,7 @@ export function Register({ isRegister }) {
             },
           })}
         />
-        <ShowPassword
-          style={{ top: "26.7%"}}
+        <PasswordRepeat
           type="button"
           onClick={() => setShowpassword(!showpassword)}
         >
@@ -140,7 +140,8 @@ export function Register({ isRegister }) {
               fill="#DFDFDF"
             />
           </svg>
-        </ShowPassword>
+        </PasswordRepeat>
+        
         {errors.message && console.log("asdasd")}
         {error && (
           <ErrorStyle>

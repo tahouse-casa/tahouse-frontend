@@ -26,6 +26,17 @@ export const ShowPassword = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
 `;
+export const PasswordRepeat = styled.button`
+  position: absolute;
+  right: 0;
+  top: 240px;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+`;
 
 export const Button = styled.button`
   padding: 14px 12px;
@@ -81,7 +92,7 @@ export const Facebook = styled.img`
     width: 45px;
     height: 45px;
     left: 0px;
-    top: 24px;
+    top: 8px;
     padding: 5px 6px 5px 6px; 
 
 

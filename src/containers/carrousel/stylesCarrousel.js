@@ -24,10 +24,9 @@ export const Container = styled.ul`
  }
 `
 export const Img = styled.img`
-    width: 328px;
-    height: 212px;
+    width: 100%;
+    height: 200px;
     border-radius: 10px;
-    margin: 0 auto;
 `
 export const Button = styled.button`
   position: absolute;
