@@ -54,14 +54,17 @@ export const Home = () => {
   }, []);
 
   const viewDefaultValue = () => {
-    const result = countries.find((item) =>
+    let result = countries.find((item) =>
       item.country
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toUpperCase()
         .includes(valueInput.pais.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
     );
-    setDefaultCountry(result);
+    if (result === undefined) {
+      result = { country: '' };
+    }
+    setDefaultCountry(JSON.parse(JSON.stringify(result)));
   };
 
   const handleSearch = (e) => {

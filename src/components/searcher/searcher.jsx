@@ -52,9 +52,7 @@ export const Searcher = ({
     setMap(false);
     viewDefaultValue();
 
-    setTimeout(() => {
-      setLoading(false);
-    }, [1000]);
+    setLoading(false);
   };
   return (
     <Container>

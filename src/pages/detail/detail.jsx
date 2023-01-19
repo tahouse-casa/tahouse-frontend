@@ -9,13 +9,12 @@ export const Detail = () => {
   const [card, setCard] = useState({});
   const params = useParams();
   const { id } = params;
-  const idCard = Number(id);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/properties/${idCard}`)
+    fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`)
       .then((res) => res.json())
       .then((data) => setCard(data));
-  }, [idCard]);
+  }, [id]);
 
   return (
     <>
