@@ -72,7 +72,7 @@ export const AppProvider = ({ children }) => {
         )
     );
     if (result) {
-      setDefaultCountry(result);
+      setDefaultCountry(JSON.parse(JSON.stringify(result)));
     }
   };
 
