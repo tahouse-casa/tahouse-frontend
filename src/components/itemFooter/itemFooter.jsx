@@ -7,8 +7,7 @@ import {
   Icon,
 } from "./stylesItemFooter";
 
-export const ItemFooter =({ name }) => {
-
+export const ItemFooter = ({ name }) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -16,7 +15,7 @@ export const ItemFooter =({ name }) => {
       <DropDown>
         <DropButton onClick={(e) => setIsActive(!isActive)}>
           {name}
-          <Icon open={isActive}/>
+          <Icon open={isActive} />
         </DropButton>
         {isActive && (
           <DropContent>
@@ -31,5 +30,4 @@ export const ItemFooter =({ name }) => {
       </DropDown>
     </>
   );
-}
-
+};

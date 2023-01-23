@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.footer`
- width: 100%;
- display: flex;
- justify-content: center;
- align-items: center;
- flex-wrap: wrap;
- margin-bottom: 50px;
-`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+`;
 export const Title = styled.p`
   width: 100%;
   text-align: center;

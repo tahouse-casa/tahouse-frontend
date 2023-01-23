@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   position: fixed;
@@ -19,7 +19,6 @@ export const Navbars = styled.nav`
   justify-content: center;
   box-shadow: 0px -4px 5px rgba(0, 0, 0, 0.14),
     0px -1px 10px rgba(0, 0, 0, 0.12), 0px -2px 4px rgba(0, 0, 0, 0.2);
-
 `;
 export const LogoContainer = styled.div`
   display: flex;
@@ -27,10 +26,9 @@ export const LogoContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: transparent;
-
 `;
 export const Enlace = styled(Link)`
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 900;
   font-size: 10px;
   line-height: 16px;
@@ -49,4 +47,4 @@ export const Enlace = styled(Link)`
 export const Img = styled.img`
   width: 20px;
   height: 20px;
-`
+`;

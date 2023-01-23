@@ -42,5 +42,5 @@ export const TextContent = styled.p`
 `;
 export const Icon = styled(FiChevronRight)`
   background-color: #ebeaea;
-  transform: ${props=> props.open ? "rotate(90deg)" : "none"};
+  transform: ${(props) => (props.open ? "rotate(90deg)" : "none")};
 `;

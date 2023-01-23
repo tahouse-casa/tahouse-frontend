@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {AppContext} from '../../context'
+import { AppContext } from "../../context";
 import {
   MainContainer,
   Title,
@@ -14,16 +14,15 @@ import {
   Facebook,
   Google,
   SocialContainer,
-  ContainerLeter
+  ContainerLeter,
 } from "./stylesLogin";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../assets/Google.svg";
 import FacebookIcon from "../../assets/Facebook.svg";
 
 export function Login() {
-
   const [error, setError] = useState(false);
-  const {setJWT} = useContext(AppContext)
+  const { setJWT } = useContext(AppContext);
 
   const {
     register,
@@ -31,11 +30,11 @@ export function Login() {
     formState: { errors },
   } = useForm();
 
-const navigate = useNavigate()
-const saveDataINLocalStorage = (data) => {
-  const dataJson = JSON.stringify(data)
-  localStorage.setItem('JWT', dataJson)
-}
+  const navigate = useNavigate();
+  const saveDataINLocalStorage = (data) => {
+    const dataJson = JSON.stringify(data);
+    localStorage.setItem("JWT", dataJson);
+  };
 
   const handleFetchLogin = (data) => {
     fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
@@ -47,17 +46,15 @@ const saveDataINLocalStorage = (data) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setJWT(res)
-        saveDataINLocalStorage(res)
+        setJWT(res);
+        saveDataINLocalStorage(res);
         setError(false);
-        navigate("/")
+        navigate("/");
       })
       .catch(() => {
-        setError(true);      
+        setError(true);
       });
   };
-
-
 
   return (
     <MainContainer>
@@ -81,7 +78,6 @@ const saveDataINLocalStorage = (data) => {
         />
 
         <Input
-
           name="password"
           type="password"
           placeholder="Contraseña"
@@ -101,7 +97,9 @@ const saveDataINLocalStorage = (data) => {
         <Button>Ingresar</Button>
       </Form>
       <Paragraph>
-        <RegisterButton to="/register">¿No tienes cuenta? Registrate</RegisterButton>
+        <RegisterButton to="/register">
+          ¿No tienes cuenta? Registrate
+        </RegisterButton>
         <br />O ingresa con una red social
       </Paragraph>
       <SocialContainer>
@@ -114,7 +112,10 @@ const saveDataINLocalStorage = (data) => {
         </Button>
       </SocialContainer>
       <ContainerLeter>
-        <Paragraph onClick={()=> navigate('/recovery-password')} style={{cursor: 'pointer'}}>
+        <Paragraph
+          onClick={() => navigate("/recovery-password")}
+          style={{ cursor: "pointer" }}
+        >
           Recuperar contraseña
         </Paragraph>
       </ContainerLeter>

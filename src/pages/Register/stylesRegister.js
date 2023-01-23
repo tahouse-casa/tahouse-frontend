@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  `;
+`;
 export const Input = styled.input`
   padding: 14px 8px;
   border-radius: 20px;
@@ -13,7 +13,6 @@ export const Input = styled.input`
   border: 1px solid #b6b6b6;
   margin-bottom: 10px;
   background-color: white;
-  
 `;
 export const Button = styled.button`
   padding: 14px 12px;
@@ -21,13 +20,13 @@ export const Button = styled.button`
   margin-bottom: 15px;
   cursor: pointer;
   margin-top: 0.5rem;
-  background: #DFDFDF;
+  background: #dfdfdf;
   color: black;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: 700;
-
 `;
 export const Paragraph = styled.p`
   text-align: center;
@@ -36,11 +35,10 @@ export const Paragraph = styled.p`
   color: rgba(0, 0, 0, 0.87);
   line-height: 24px;
   letter-spacing: 0.15px;
-  
 `;
 export const RegisterButton = styled.a`
   color: #000;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -49,46 +47,43 @@ export const RegisterButton = styled.a`
   text-align: center;
 `;
 export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    margin-top: 70px;
-`
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+`;
 export const ErrorStyle = styled.span`
-    text-align: center;
-    background-color: #c61f1f;
-    padding: 5px 10px;
-    color: white;
-    margin: 5px 0 10px;
-    border-radius: 10px;
-`
+  text-align: center;
+  background-color: #c61f1f;
+  padding: 5px 10px;
+  color: white;
+  margin: 5px 0 10px;
+  border-radius: 10px;
+`;
 export const Facebook = styled.img`
-    background: #FFFFFF;
-    border: 1px solid #DFDFDF;
-    border-radius: 20px 0px 0px 20px;
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    left: 0px;
-    top: 24px;
-    padding: 5px 6px 5px 6px; 
-
-
-`
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 20px 0px 0px 20px;
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  left: 0px;
+  top: 24px;
+  padding: 5px 6px 5px 6px;
+`;
 export const Google = styled.img`
-  background: #FFFFFF;
-  border: 1px solid #DFDFDF;
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
   border-radius: 20px 0px 0px 20px;
   position: absolute;
   width: 45px;
   height: 45px;
   left: 0px;
   bottom: 15px;
-  padding: 5px 6px 5px 6px; 
-`
+  padding: 5px 6px 5px 6px;
+`;
 export const SocialContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-`
-
+`;

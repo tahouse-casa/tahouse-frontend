@@ -6,36 +6,40 @@ import Administrar from "../../assets/Administrar.svg";
 import Perfil from "../../assets/Perfil.svg";
 import { AppContext } from "../../context";
 export const Navbar = () => {
-  const {setJWT} = useContext(AppContext)
+  const { setJWT } = useContext(AppContext);
   return (
     <Container>
       <Navbars>
         <LogoContainer>
           <Enlace to="/">
-          <Img src={Inicio} alt="InicioLogo" />
+            <Img src={Inicio} alt="InicioLogo" />
             Inicio
           </Enlace>
         </LogoContainer>
         <LogoContainer>
           <Enlace to="/favorites-properties">
-          <Img src={Favoritos} alt="InicioLogo" />
+            <Img src={Favoritos} alt="InicioLogo" />
             Favoritos
           </Enlace>
         </LogoContainer>
         <LogoContainer>
           <Enlace to="/administration/properties">
-          <Img src={Administrar} alt="InicioLogo" />
-            Administrar</Enlace>
+            <Img src={Administrar} alt="InicioLogo" />
+            Administrar
+          </Enlace>
         </LogoContainer>
-        <LogoContainer onClick={()=> {
-          localStorage.setItem('JWT', '')
-          setJWT(null)
-          }}>
+        <LogoContainer
+          onClick={() => {
+            localStorage.setItem("JWT", "");
+            setJWT(null);
+          }}
+        >
           <Enlace to="/">
-          <Img src={Perfil} alt="InicioLogo" />
-            Perfil</Enlace>
+            <Img src={Perfil} alt="InicioLogo" />
+            Perfil
+          </Enlace>
         </LogoContainer>
       </Navbars>
     </Container>
   );
-}
+};
