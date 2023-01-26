@@ -8,6 +8,7 @@ export const usePagination = (url, number, setNumber, dataComponent) => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
   const [dataPaginada, setDataPaginada] = useState([]);
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     fetchData("0");
@@ -21,6 +22,7 @@ export const usePagination = (url, number, setNumber, dataComponent) => {
       }
       setData(dataComponent);
       setDataPaginada(dataComponent.slice(0, 8));
+      setloading(false);
     }
     // eslint-disable-next-line
   }, [dataComponent]);
@@ -48,6 +50,7 @@ export const usePagination = (url, number, setNumber, dataComponent) => {
             setDataPaginada(datos);
           }
           setData(data.concat(datos));
+          setloading(false);
         });
     }
   };
@@ -77,5 +80,6 @@ export const usePagination = (url, number, setNumber, dataComponent) => {
     dataPaginada,
     numberPagination,
     setPage,
+    loading,
   };
 };
