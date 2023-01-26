@@ -7,6 +7,10 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dfdfdf;
 
   @media (min-width: 768px) {
     position: flex;
@@ -14,8 +18,9 @@ export const Container = styled.div`
     left: 0;
     width: 100%;
     z-index: 3;
-    height: 0%;
+    height: 10%;
     align-items: center;
+    justify-content: center;
     background-color: #dfdfdf;
   }
 `;
@@ -28,7 +33,7 @@ export const Navbars = styled.nav`
   gap: 0 2rem;
 
   @media (min-width: 768px) {
-    max-width: 90%;
+    width: 100%;
     padding: 10px 0;
     display: flex;
     align-items: center;
@@ -43,6 +48,7 @@ export const LogoContainer = styled.div`
   justify-content: center;
   background-color: transparent;
   width: 100%;
+  
 
   @media (min-width: 768px) {
     display: flex;
@@ -55,21 +61,21 @@ export const Enlace = styled(Link)`
   font-weight: 900;
   font-size: 10px;
   line-height: 16px;
-  margin-top: 5px;
   text-align: center;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.87);
-  background-color: transparent;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 40px;
 
   @media (min-width: 768px) {
     width: 100%;
-    height: 100%;
+    height: 48px;
     font-family: "Roboto";
     font-weight: 900;
     font-size: 10px;
@@ -89,40 +95,33 @@ export const Enlace = styled(Link)`
 
 export const LogIn = styled(Link)`
   font-family: "Roboto";
-  font-weight: 900;
+  font-weight: 500;
   font-size: 10px;
-  line-height: 16px;
-  margin-top: 5px;
   text-align: center;
-  letter-spacing: 0.5px;
   text-transform: uppercase;
-  color:black;
-  background-color: transparent;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  width: 100%;
-
+  color: black;
+  width: 80px;
+  height: 40px;
 
   @media (min-width: 768px) {
-
     display: flex;
     background-color: #535353;
     border-radius: 30px;
-    padding: 5px;
-    margin: 0 10px;
     cursor: pointer;
     outline: none;
-    transition: all 0.3s ease-in-out;
-    width: 100%;
+    width: 212px;
+    height: 48px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100%;
     color: white;
-
+    gap: 0 1rem;
+  }
 `;
 
 export const LogOut = styled(Link)`
@@ -130,17 +129,18 @@ export const LogOut = styled(Link)`
   font-weight: 900;
   font-size: 10px;
   line-height: 16px;
-  margin-top: 5px;
   text-align: center;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.87);
   background-color: transparent;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: black;
+  width: 70px;
+  height: 40px;
 
   @media (min-width: 768px) {
     display: flex;

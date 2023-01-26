@@ -23,6 +23,8 @@ export const Navbar = () => {
 
   const [mobile, setMobile] = useState(false);
 
+  const [changColor, setChangColor] = useState("");
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 767) {
@@ -84,9 +86,8 @@ export const Navbar = () => {
             <LogIn to="/login">
               <FaUserCircle
                 style={{
-                  fontSize: "1.5rem",
+                  fontSize: "1.3rem",
                   color: "gray",
-                  marginRight: "0.5rem",
                   backgroundColor: "transparent",
                 }}
               />
@@ -104,7 +105,6 @@ export const Navbar = () => {
               <FaUserCircle
                 style={{
                   fontSize: "1.5rem",
-                  color: "black",
                   marginRight: "0.5rem",
                   backgroundColor: "transparent",
                 }}
