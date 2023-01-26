@@ -23,7 +23,8 @@ export const Navbar = () => {
 
   const [mobile, setMobile] = useState(false);
 
-  const [changColor, setChangColor] = useState("");
+  const [changeColor, setChangeColor] = useState(false);
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,7 +88,7 @@ export const Navbar = () => {
               <FaUserCircle
                 style={{
                   fontSize: "1.3rem",
-                  color: "gray",
+                  color: { color },
                   backgroundColor: "transparent",
                 }}
               />
@@ -106,6 +107,7 @@ export const Navbar = () => {
                 style={{
                   fontSize: "1.5rem",
                   marginRight: "0.5rem",
+                  color: "black",
                   backgroundColor: "transparent",
                 }}
               />
