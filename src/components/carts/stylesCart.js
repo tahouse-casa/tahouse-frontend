@@ -18,7 +18,8 @@ export const Container = styled.div`
  max-width: 160px;
 `
 export const Img = styled.img`
-width: ${props=>props.visible ? '220px' : '100%'};
+ 
+ width: ${props=>props.visible ? '180px' : '100%'};
  height: ${props=>props.visible ? '150px' : '100px'};;
  margin-bottom: 0;
  border-radius: 6px;
@@ -26,6 +27,7 @@ width: ${props=>props.visible ? '220px' : '100%'};
 `
 
 export const ContainerData = styled.div`
+ position: relative;
  width: 100%;
  display: flex;
  justify-content: center;

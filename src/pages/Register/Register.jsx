@@ -11,7 +11,8 @@ import {
   Google,
   SocialContainer,
   ShowPassword,
-  PasswordRepeat
+  PasswordRepeat,
+  Title
 } from "./stylesRegister";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -27,8 +28,9 @@ export function Register({ isRegister }) {
     formState: { errors },
   } = useForm();
   const [showpassword, setShowpassword] = useState(false);
+  const [showpassword2, setShowpassword2] = useState(false);
   const [password, setPassword] = useState("");
-
+  const [password2, setPassword2] = useState("");
   const navigate = useNavigate();
   const handleFetchRegister = (data) => {
     if (data.password !== data.password2) {
@@ -60,6 +62,7 @@ export function Register({ isRegister }) {
   return (
     <MainContainer>
       <Return linke={"/login"} />
+      <Title>Registrate para una mejor experiencia</Title>
       <Form onSubmit={handleSubmit(handleFetchRegister)}>
         <Input
           name="email"
@@ -68,11 +71,11 @@ export function Register({ isRegister }) {
           {...register("email", {
             required: {
               value: true,
-              message: "Todos los campos son requeridos",
+              message: "El correo ingresado no es válido",
             },
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: "El formato no es correcto",
+              value: /^[a-zA-Z0-9._%+-]+@(?:mail\.)?[a-zA-Z0-9.-]+\.(?:com)$/,
+              message: "El formato del correo no es correcto",
             },
           })}
         />
@@ -111,7 +114,8 @@ export function Register({ isRegister }) {
         </ShowPassword>
         <Input
           name="password2"
-          type="password"
+          type={showpassword2 ? "text" : "password"}
+          onChange={(e) => setPassword2(e.target.value)}
           placeholder="Repetir contraseña"
           {...register("password2", {
             required: {
@@ -126,7 +130,7 @@ export function Register({ isRegister }) {
         />
         <PasswordRepeat
           type="button"
-          onClick={() => setShowpassword(!showpassword)}
+          onClick={() => setShowpassword2(!showpassword2)}
         >
           <svg
             width="22"
@@ -151,7 +155,9 @@ export function Register({ isRegister }) {
           </ErrorStyle>
         )}
         {errors.password && <ErrorStyle>{errors.password.message}</ErrorStyle>}
-        <Button>Ingresar</Button>
+        <Button
+          type="submit"
+        >Ingresar</Button>
       </Form>
       <Paragraph>
         <RegisterButton href="">O ingresa con una red social</RegisterButton>
