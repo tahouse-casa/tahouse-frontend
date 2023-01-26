@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { AppContext } from "../../context";
 import logo from "../../assets/logo-bg.png";
-import { Logo, Linke, LogoText, Container } from "./stylesLogo";
+import { Container, Logo, LogoText } from "./logoDesktopStyle";
 
-export const LogoComponent = () => {
+export const LogoDesktop = () => {
   const { setValueInput, valueInput } = useContext(AppContext);
 
   const [ismobile, setIsMobile] = useState(false);
@@ -23,19 +23,13 @@ export const LogoComponent = () => {
   }, []);
 
   return (
-    <Container>
-      <Linke>
-        {ismobile ? (
-          <LogoText
-            onClick={() => {
-              setValueInput(!valueInput);
-            }}
-          >
-            <Logo src={logo} alt="logo" />
-            <LogoText>TaHouse</LogoText>
-          </LogoText>
-        ) : null}
-      </Linke>
+    <Container
+      onClick={() => {
+        setValueInput(!valueInput);
+      }}
+    >
+      <Logo src={logo} alt="TaHouse" />
+      <LogoText>TaHouse</LogoText>
     </Container>
   );
 };

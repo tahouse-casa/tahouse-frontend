@@ -1,21 +1,31 @@
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { Container, Enlace, LogoContainer, Navbars, Img } from "./stylesNavbar";
-import Inicio from "../../assets/Inicio.svg";
-import Favoritos from "../../assets/Favoritos.svg";
-import Administrar from "../../assets/Administrar.svg";
-import Perfil from "../../assets/Perfil.svg";
+import {
+  Container,
+  Enlace,
+  LogoContainer,
+  Navbars,
+  LogOut,
+  LogIn,
+} from "./stylesNavbar";
 import { AppContext } from "../../context";
-import { LogoComponent } from "../logo/logo";
+import { LogoDesktop } from "../logo/logoDesktop";
+
+//icons
+
+import { AiFillHome } from "react-icons/ai";
+import { MdFavorite } from "react-icons/md";
+import { RiAdminLine } from "react-icons/ri";
+import { FaUserCircle } from "react-icons/fa";
+
 export const Navbar = () => {
   const { setJWT } = useContext(AppContext);
 
   const [mobile, setMobile] = useState(false);
-  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 767) {
         setMobile(true);
       } else {
         setMobile(false);
@@ -29,36 +39,80 @@ export const Navbar = () => {
   return (
     <Container>
       <Navbars>
-        {show ? <LogoComponent /> : null}
+        {!mobile ? <LogoDesktop /> : null}
         <LogoContainer>
           <Enlace to="/">
-            <Img src={Inicio} alt="InicioLogo" />
+            <AiFillHome
+              style={{
+                fontSize: "1.5rem",
+                color: "black",
+                marginRight: "0.5rem",
+                backgroundColor: "transparent",
+              }}
+            />
             Inicio
           </Enlace>
         </LogoContainer>
         <LogoContainer>
           <Enlace to="/favorites-properties">
-            <Img src={Favoritos} alt="InicioLogo" />
+            <MdFavorite
+              style={{
+                fontSize: "1.5rem",
+                color: "black",
+                marginRight: "0.5rem",
+                backgroundColor: "transparent",
+              }}
+            />
             Favoritos
           </Enlace>
         </LogoContainer>
         <LogoContainer>
           <Enlace to="/administration/properties">
-            <Img src={Administrar} alt="InicioLogo" />
+            <RiAdminLine
+              style={{
+                fontSize: "1.5rem",
+                color: "black",
+                marginRight: "0.5rem",
+                backgroundColor: "transparent",
+              }}
+            />
             Administrar
           </Enlace>
         </LogoContainer>
-        <LogoContainer
-          onClick={() => {
-            localStorage.setItem("JWT", "");
-            setJWT(null);
-          }}
-        >
-          <Enlace to="/">
-            <Img src={Perfil} alt="InicioLogo" />
-            Perfil
-          </Enlace>
-        </LogoContainer>
+        {localStorage.getItem("JWT") === "" ? (
+          <LogoContainer>
+            <LogIn to="/login">
+              <FaUserCircle
+                style={{
+                  fontSize: "1.5rem",
+                  color: "gray",
+                  marginRight: "0.5rem",
+                  backgroundColor: "transparent",
+                }}
+              />
+              iniciar sesión
+            </LogIn>
+          </LogoContainer>
+        ) : (
+          <LogoContainer
+            onClick={() => {
+              localStorage.setItem("JWT", "");
+              setJWT(null);
+            }}
+          >
+            <LogOut to="/">
+              <FaUserCircle
+                style={{
+                  fontSize: "1.5rem",
+                  color: "black",
+                  marginRight: "0.5rem",
+                  backgroundColor: "transparent",
+                }}
+              />
+              Perfil
+            </LogOut>
+          </LogoContainer>
+        )}
       </Navbars>
     </Container>
   );
