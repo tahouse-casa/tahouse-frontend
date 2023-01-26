@@ -5,11 +5,23 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
 `;
 export const Logo = styled.img`
   width: 60px;
   height: 40px;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+  }
 `;
 export const LogoText = styled.h2`
   text-transform: uppercase;
@@ -17,6 +29,14 @@ export const LogoText = styled.h2`
   text-align: center;
   font-family: "Roboto";
   font-weight: bold;
+
+  @media (min-width: 768px) {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    text-align: center;
+    font-family: "Roboto";
+    font-weight: bold;
+  }
 `;
 export const Linke = styled(Link)`
   text-decoration: none;

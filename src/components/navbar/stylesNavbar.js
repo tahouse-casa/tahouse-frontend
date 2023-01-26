@@ -7,6 +7,15 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   z-index: 2;
+
+  @media (min-width: 768px) {
+    position: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    height: 0%;
+  }
 `;
 
 export const Navbars = styled.nav`
@@ -19,7 +28,15 @@ export const Navbars = styled.nav`
   justify-content: center;
   box-shadow: 0px -4px 5px rgba(0, 0, 0, 0.14),
     0px -1px 10px rgba(0, 0, 0, 0.12), 0px -2px 4px rgba(0, 0, 0, 0.2);
-`;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    padding: 10px 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 0 2rem;
+    justify-content: end;
+    `;
 export const LogoContainer = styled.div`
   display: flex;
   flex-direction: column;
