@@ -1,10 +1,17 @@
+import { useState } from "react";
 import { TfiRulerAlt2 } from "react-icons/tfi";
 import { MdOutlineSpaceDashboard, MdOutlineBathtub } from "react-icons/md";
 import { BsDoorOpen, BsWhatsapp } from "react-icons/bs";
 import { Carrousel } from "../../containers/carrousel/carrousel";
+import { MdShare, MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 
 import {
   Container,
+  FirtsContainer,
+  Img,
+  SecondContainer,
+  ContainerCarrousel,
+  ContainerIcons,
   ContainerRow,
   BoldPrice,
   ContactText,
@@ -14,10 +21,19 @@ import {
   DescriptionContainer,
   IconsTextContainer,
   IconsText,
+  ButtonContainer,
   ButtonBuy,
+  ContainerImage,
+  ContainerSecondImage,
 } from "./StylesDetailCard";
 
-export const DetailCard = ({ card, prevView }) => {
+export const DetailCard = ({
+  card,
+  prevView,
+  handleDelete,
+  handleAddFavorite,
+  viewIncludes,
+}) => {
   const {
     price,
     meters,
@@ -32,44 +48,96 @@ export const DetailCard = ({ card, prevView }) => {
     environments,
     urlImage,
   } = card;
-
+  const [itemSelected, setItemSelected] = useState(0);
+  const selectImage = () => {
+    const result = urlImage.find((item, index) => index === itemSelected);
+    const BASE_URL = "https://drive.google.com/uc?id=";
+    return BASE_URL + result;
+  };
   return (
     <Container>
-      <Carrousel detail="true" data={urlImage} />
-      <ContainerRow>
-        <BoldPrice>{`USD ${price}`} </BoldPrice>
-        <ContactText>
-          Enviar mensaje
-          <BsWhatsapp style={{ fontSize: "16px", fill: "#60D66A" }} />
-        </ContactText>
-      </ContainerRow>
-      <OfferPrice>
-        {type} | {state}
-      </OfferPrice>
-      <Adress title="true">{address}</Adress>
-      <Adress>
-        {country} / {city}
-      </Adress>
-      <DescriptionContainer>
-        <IconsTextContainer>
-          <TfiRulerAlt2 />
-          <IconsText>{meters}m2</IconsText>
-        </IconsTextContainer>
-        <IconsTextContainer>
-          <BsDoorOpen />
-          <IconsText>{environments} Ambientes</IconsText>
-        </IconsTextContainer>
-        <IconsTextContainer>
-          <MdOutlineSpaceDashboard />
-          <IconsText>{rooms} dorm.</IconsText>
-        </IconsTextContainer>
-        <IconsTextContainer>
-          <MdOutlineBathtub />
-          <IconsText>{bathrooms} baños.</IconsText>
-        </IconsTextContainer>
-      </DescriptionContainer>
+      <FirtsContainer>
+        <ContainerImage>
+          <Img src={selectImage()} main />
+        </ContainerImage>
+        <ContainerCarrousel>
+          <Carrousel detail="true" data={urlImage} />
+        </ContainerCarrousel>
+        <ContainerIcons>
+          <div style={{ display: "flex", gap: "20px" }}>
+            {viewIncludes ? (
+              <MdFavorite
+                size="20px"
+                onClick={() => handleDelete()}
+                style={{ background: "transparent", cursor: "pointer" }}
+              />
+            ) : (
+              <MdOutlineFavoriteBorder
+                size="20px"
+                onClick={() => handleAddFavorite()}
+                style={{ background: "transparent", cursor: "pointer" }}
+              />
+            )}
+            <MdShare
+              size="20px"
+              style={{ background: "transparent", cursor: "pointer" }}
+            />
+          </div>
+          <ContactText desktop>
+            Enviar mensaje
+            <BsWhatsapp style={{ fontSize: "16px", fill: "#60D66A" }} />
+          </ContactText>
+        </ContainerIcons>
+      </FirtsContainer>
+      <SecondContainer>
+        <ContainerSecondImage>
+          {urlImage.map((item, index) => (
+            <Img
+              key={index}
+              src={"https://drive.google.com/uc?id=" + item}
+              selected={index === itemSelected ? true : false}
+              onClick={() => setItemSelected(index)}
+            />
+          ))}
+        </ContainerSecondImage>
+
+        <ContainerRow>
+          <BoldPrice>{`USD ${price}`} </BoldPrice>
+          <ContactText>
+            Enviar mensaje
+            <BsWhatsapp style={{ fontSize: "16px", fill: "#60D66A" }} />
+          </ContactText>
+        </ContainerRow>
+        <OfferPrice>
+          {type} | {state}
+        </OfferPrice>
+        <Adress title="true">{address}</Adress>
+        <Adress>
+          {country} / {city}
+        </Adress>
+        <DescriptionContainer>
+          <IconsTextContainer>
+            <TfiRulerAlt2 />
+            <IconsText>{meters}m2</IconsText>
+          </IconsTextContainer>
+          <IconsTextContainer>
+            <BsDoorOpen />
+            <IconsText>{environments} Ambientes</IconsText>
+          </IconsTextContainer>
+          <IconsTextContainer>
+            <MdOutlineSpaceDashboard />
+            <IconsText>{rooms} dorm.</IconsText>
+          </IconsTextContainer>
+          <IconsTextContainer>
+            <MdOutlineBathtub />
+            <IconsText>{bathrooms} baños.</IconsText>
+          </IconsTextContainer>
+        </DescriptionContainer>
+      </SecondContainer>
       <Description>{description}</Description>
-      {!prevView && <ButtonBuy>Adquirir inmueble</ButtonBuy>}
+      <ButtonContainer>
+        {!prevView && <ButtonBuy>Adquirir inmueble</ButtonBuy>}
+      </ButtonContainer>
     </Container>
   );
 };

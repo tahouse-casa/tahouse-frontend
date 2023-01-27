@@ -20,8 +20,7 @@ export const Logo = styled.img`
   height: 150px;
 `;
 
-// hacer animacion de letras que vallan apareciendo una a una
-export const Text = styled.h1`
+export const Text = styled.div`
   font-size: 2rem;
   font-weight: 700;
   color: #333;

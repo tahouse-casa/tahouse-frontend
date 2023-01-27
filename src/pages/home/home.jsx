@@ -18,7 +18,6 @@ import {
 export const Home = () => {
   const [featuredProperties, setFeaturedProperties] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/featured`)
       .then((res) => res.json())

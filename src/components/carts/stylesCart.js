@@ -6,22 +6,29 @@ import { MdFavorite as fav } from "react-icons/md";
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  margin: ${(props) => (props.visible ? "0 15px 0 0" : "0")};
   position: relative;
-  max-height: ${(props) => (props.visible ? "240px" : "182px")};
+  max-height: ${(props) => (props.visible ? "250px" : "182px")};
+  min-height: ${(props) => (props.visible ? "250px" : "182px")};
   background: #ffffff;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
   border-radius: 2px;
-  max-width: 160px;
+  max-width: ${(props) => (props.visible ? "240px" : "160px")};
+  min-width: ${(props) => (props.visible ? "240px" : "160px")};
+  @media (min-width: 768px) {
+    max-width: ${(props) => (props.visible ? "330px" : "160px")};
+    min-width: ${(props) => (props.visible ? "330px" : "160px")};
+  }
 `;
 export const Img = styled.img`
-  width: ${(props) => (props.visible ? "220px" : "100%")};
-  height: ${(props) => (props.visible ? "150px" : "100px")};
+  width: 100%;
+  height: 100%;
   margin-bottom: 0;
   border-radius: 6px;
   object-fit: cover;
+  @media (min-width: 768px) {
+    max-height: 155px;
+  }
 `;
 
 export const ContainerData = styled.div`
@@ -29,6 +36,7 @@ export const ContainerData = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 15px;
   padding: ${(props) => (props.visible ? "0 8px" : "4px 4px 8px")};
 `;
 export const ContainerOne = styled.div`
@@ -69,6 +77,9 @@ export const ContainerTwo = styled.div`
   flex-direction: ${(props) => (props.row ? "row" : "column")};
   align-items: flex-start;
   margin: ${(props) => (props.row ? "7px 0" : "0")};
+  @media (min-width: 768px) {
+    margin: ${(props) => (props.row ? "7px 0 15px" : "0")};
+  }
 `;
 export const Text2 = styled.span`
   color: ${(props) => (props.disabledColor ? "#000" : "rgba(0, 0, 0, 0.5)")};
