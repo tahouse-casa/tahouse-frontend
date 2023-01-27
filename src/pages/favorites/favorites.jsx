@@ -8,7 +8,7 @@ import {
   ListFilter,
   ItemFilter,
   ContainerListOfEstate,
-} from "./stylesFvorites";
+} from "./stylesFavorites";
 import {
   MdSwapVert,
   MdSortByAlpha,

@@ -6,11 +6,19 @@ import { useParams } from "react-router-dom";
 import { DetailCard } from "../../components/detailCard/detailCard";
 import { Return } from "../../components/return/return";
 import { AppContext } from "../../context";
+import { Loader } from "../../components/loader/loader";
 import { MdShare, MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
-import { MainContainer, ContainerIcons } from "./stylesDetail";
+import {
+  MainContainer,
+  ContainerIcons,
+  Container,
+  ContainerReturn,
+} from "./stylesDetail";
 
 export const Detail = () => {
   const [card, setCard] = useState({});
+  const [loading, setLoading] = useState(true);
+
   const params = useParams();
   const { user, fetchUser, JWT } = useContext(AppContext);
   const navigate = useNavigate();
@@ -18,10 +26,12 @@ export const Detail = () => {
   const idCard = Number(id);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`${process.env.REACT_APP_API_URL}/properties/${idCard}`)
       .then((res) => res.json())
       .then((data) => {
         setCard(data);
+        setLoading(false);
       });
   }, [idCard]);
 
@@ -66,29 +76,42 @@ export const Detail = () => {
 
   return (
     <>
-      <Return linke={-1}>
-        <ContainerIcons>
-          {viewIncludes ? (
-            <MdFavorite
-              size="20px"
-              onClick={() => handleDelete()}
-              style={{ background: "transparent" }}
+      {!loading ? (
+        <Container>
+          <ContainerReturn>
+            <Return linke={-1}>
+              <ContainerIcons>
+                {viewIncludes ? (
+                  <MdFavorite
+                    size="20px"
+                    onClick={() => handleDelete()}
+                    style={{ background: "transparent" }}
+                  />
+                ) : (
+                  <MdOutlineFavoriteBorder
+                    size="20px"
+                    onClick={() => handleAddFavorite()}
+                    style={{ background: "transparent" }}
+                  />
+                )}
+                <MdShare size="20px" style={{ background: "transparent" }} />
+              </ContainerIcons>
+            </Return>
+          </ContainerReturn>
+          <MainContainer>
+            <DetailCard
+              card={card}
+              viewIncludes={viewIncludes}
+              handleDelete={handleDelete}
+              handleAddFavorite={handleAddFavorite}
             />
-          ) : (
-            <MdOutlineFavoriteBorder
-              size="20px"
-              onClick={() => handleAddFavorite()}
-              style={{ background: "transparent" }}
-            />
-          )}
-          <MdShare size="20px" style={{ background: "transparent" }} />
-        </ContainerIcons>
-      </Return>
-      <MainContainer>
-        <DetailCard card={card} />
-      </MainContainer>
-      <Footer />
-      <Navbar />
+          </MainContainer>
+          <Footer />
+          <Navbar />
+        </Container>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };

@@ -29,8 +29,10 @@ export const Title = styled.h2`
   margin-left: ${(props) => (props.alingLeft ? "10px" : "0")};
   margin-bottom: 10px;
   margin-top: ${(props) => (props.marginTop ? "20px" : "0")};
-  @media (min-width: 1000px) {
-    text-align: center;
+  @media (min-width: 768px) {
+    margin-left: ${(props) => props.alingLeft && "10%"};
+    font-size: ${(props) => (props.alingLeft ? "20px" : "24px")};
+    margin-bottom: 16px;
   }
 `;
 
@@ -38,4 +40,7 @@ export const Containerfeatured = styled.div`
   width: 100%;
   overflow: hidden;
   margin-top: 60px;
+  @media (min-width: 768px) {
+    padding: 0 24px;
+  }
 `;

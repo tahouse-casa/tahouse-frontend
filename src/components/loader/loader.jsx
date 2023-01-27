@@ -8,7 +8,7 @@ export const Loader = () => {
     <Container>
       <Logo src={logo} alt="" />
       <Text>
-        <h1>TaHouse</h1>
+        <p>TaHouse</p>
         <span>.</span>
         <span>.</span>
         <span>.</span>
