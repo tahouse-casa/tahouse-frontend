@@ -65,6 +65,7 @@ export const Favorites = () => {
   };
   return (
     <>
+      <Navbar />
       <Return title="Favoritas" viewTitle linke={-1}>
         <MdSwapVert
           size="25px"
@@ -119,7 +120,6 @@ export const Favorites = () => {
           ))}
         </ContainerListOfEstate>
       )}
-      <Navbar />
       {error.doneDelete === true && (
         <ModalComponent
           title="¡Listo!"

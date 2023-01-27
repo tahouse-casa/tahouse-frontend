@@ -47,6 +47,7 @@ export const EditProperty = () => {
 
   return (
     <>
+      <Navbar />
       <StepsAdmin
         data={data}
         setData={setData}
@@ -55,7 +56,6 @@ export const EditProperty = () => {
         sendData={sendData}
         errorFetch={errorFetch}
       />
-      <Navbar />
     </>
   );
 };

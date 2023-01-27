@@ -66,6 +66,7 @@ export const Detail = () => {
 
   return (
     <>
+      <Navbar />
       <Return linke={-1}>
         <ContainerIcons>
           {viewIncludes ? (
@@ -88,7 +89,6 @@ export const Detail = () => {
         <DetailCard card={card} />
       </MainContainer>
       <Footer />
-      <Navbar />
     </>
   );
 };

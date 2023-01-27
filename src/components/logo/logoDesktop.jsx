@@ -7,7 +7,7 @@ import { Container, Logo, LogoText } from "./logoDesktopStyle";
 export const LogoDesktop = () => {
   const { setValueInput, valueInput } = useContext(AppContext);
 
-  const [ismobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,7 +21,6 @@ export const LogoDesktop = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   return (
     <Container
       onClick={() => {

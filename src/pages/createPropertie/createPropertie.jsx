@@ -52,6 +52,7 @@ export const CreatePropertie = () => {
   };
   return (
     <>
+      <Navbar />
       <StepsAdmin
         data={data}
         setData={setData}
@@ -60,7 +61,6 @@ export const CreatePropertie = () => {
         sendData={sendData}
         errorFetch={errorFetch}
       />
-      <Navbar />
     </>
   );
 };

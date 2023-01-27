@@ -23,8 +23,7 @@ export const Navbar = () => {
 
   const [mobile, setMobile] = useState(false);
 
-  const [changeColor, setChangeColor] = useState(false);
-  const [color, setColor] = useState("");
+  let color = "";
 
   useEffect(() => {
     const handleResize = () => {
