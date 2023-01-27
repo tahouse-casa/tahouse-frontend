@@ -12,19 +12,17 @@ import { AppContext } from "../../context";
 import { LogoDesktop } from "../logo/logoDesktop";
 
 //icons
-
-import { AiFillHome } from "react-icons/ai";
-import { MdFavorite } from "react-icons/md";
-import { RiAdminLine } from "react-icons/ri";
-import { FaUserCircle } from "react-icons/fa";
+import {
+  MdOutlineHome,
+  MdFavoriteBorder,
+  MdOutlineAssignment,
+  MdOutlineAccountCircle,
+} from "react-icons/md";
 
 export const Navbar = () => {
   const { setJWT } = useContext(AppContext);
 
   const [mobile, setMobile] = useState(false);
-
-  const [changeColor, setChangeColor] = useState(false);
-  const [color, setColor] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,9 +33,12 @@ export const Navbar = () => {
       }
     };
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const style = {
+    fontSize: "1.5rem",
+    marginRight: "0.5rem",
+  };
 
   return (
     <Container>
@@ -45,54 +46,27 @@ export const Navbar = () => {
         {!mobile ? <LogoDesktop /> : null}
         <LogoContainer>
           <Enlace to="/">
-            <AiFillHome
-              style={{
-                fontSize: "1.5rem",
-                color: "black",
-                marginRight: "0.5rem",
-                backgroundColor: "transparent",
-              }}
-            />
+            <MdOutlineHome style={style} />
             Inicio
           </Enlace>
         </LogoContainer>
         <LogoContainer>
           <Enlace to="/favorites-properties">
-            <MdFavorite
-              style={{
-                fontSize: "1.5rem",
-                color: "black",
-                marginRight: "0.5rem",
-                backgroundColor: "transparent",
-              }}
-            />
+            <MdFavoriteBorder style={style} />
             Favoritos
           </Enlace>
         </LogoContainer>
         <LogoContainer>
           <Enlace to="/administration/properties">
-            <RiAdminLine
-              style={{
-                fontSize: "1.5rem",
-                color: "black",
-                marginRight: "0.5rem",
-                backgroundColor: "transparent",
-              }}
-            />
+            <MdOutlineAssignment style={style} />
             Administrar
           </Enlace>
         </LogoContainer>
         {localStorage.getItem("JWT") === "" ? (
           <LogoContainer>
             <LogIn to="/login">
-              <FaUserCircle
-                style={{
-                  fontSize: "1.3rem",
-                  color: { color },
-                  backgroundColor: "transparent",
-                }}
-              />
-              iniciar sesión
+              <MdOutlineAccountCircle style={style} />
+              Iniciar sesión
             </LogIn>
           </LogoContainer>
         ) : (
@@ -103,14 +77,7 @@ export const Navbar = () => {
             }}
           >
             <LogOut to="/">
-              <FaUserCircle
-                style={{
-                  fontSize: "1.5rem",
-                  marginRight: "0.5rem",
-                  color: "black",
-                  backgroundColor: "transparent",
-                }}
-              />
+              <MdOutlineAccountCircle style={style} />
               Perfil
             </LogOut>
           </LogoContainer>

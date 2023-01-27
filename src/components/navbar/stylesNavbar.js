@@ -48,13 +48,13 @@ export const LogoContainer = styled.div`
   justify-content: center;
   background-color: transparent;
   width: 100%;
-  
 
   @media (min-width: 768px) {
     display: flex;
     width: 100%;
     height: 48px;
-    margin-rigth: 10px;
+    margin-right: 10px;
+  }
 `;
 export const Enlace = styled(Link)`
   font-family: "Roboto";
