@@ -25,7 +25,7 @@ export const Logo = styled.img`
     cursor: pointer;
   }
 `;
-export const LogoText = styled.h2`
+export const LogoText = styled.p`
   text-transform: uppercase;
   font-size: 0.8rem;
   text-align: center;

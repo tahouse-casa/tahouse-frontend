@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  @media (min-width: 768px) {
+    padding-top: 60px;
+  }
+`;
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -45,4 +50,10 @@ cursor: pointer;
 width: 100%;
 transition: 0.3s;
 }
+`;
+
+export const ContainerReturn = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;

@@ -4,17 +4,19 @@ export const Container = styled.ul`
   width: 100%;
   display: ${(props) => (props.detail ? "block" : "flex")};
   justify-content: flex-start;
-  margin-left: ${(props) => (props.detail ? "0" : "10px")};
   overflow-x: ${(props) => (props.detail ? "none" : "scroll")};
   padding: 0;
+  gap: 15px;
   list-style: none;
   position: relative;
-  @media (min-width: 1000px) {
+  @media (min-width: 768px) {
+    max-width: ${(props) => (props.detail ? "560px" : "100%")};
+    max-height: ${(props) => (props.detail ? "360px" : "auto")};
     &::-webkit-scrollbar {
-      height: 10px;
+      height: 7px;
     }
     &::-webkit-scrollbar-track {
-      background-color: black;
+      background-color: #fff;
     }
     &::-webkit-scrollbar-thumb {
       background-color: rgb(168, 152, 152);
@@ -24,8 +26,13 @@ export const Container = styled.ul`
 `;
 export const Img = styled.img`
   width: 100%;
+  max-width: 100%;
   height: 200px;
-  border-radius: 10px;
+  border-radius: 8px;
+  object-fit: cover;
+  @media (min-width: 768px) {
+    height: 100%;
+  }
 `;
 export const Button = styled.button`
   position: absolute;

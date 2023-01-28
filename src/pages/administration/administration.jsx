@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context";
 import { NavigateAdmin } from "../../components/navigateAdmin/navigateAdmin";
 import { Navbar } from "../../components/navbar/navbar";
-
+import { Loader } from "../../components/loader/loader";
 //css
 import {
   Container,
@@ -22,6 +22,7 @@ export const Administration = () => {
   const [viewDelete, setViewDelete] = useState(false);
   const [error, setError] = useState({ error: false, done: false });
   const [idForDelete, setIdForDelete] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const { JWT, fetchUser, fetchProperties } = useContext(AppContext);
 
@@ -32,11 +33,13 @@ export const Administration = () => {
   const navigate = useNavigate();
 
   const fetchApiProperties = () => {
+    setLoading(true);
     fetch(`${process.env.REACT_APP_API_URL}/properties`)
       .then((res) => res.json())
       .then((data) => {
         setProperties([...data]);
         setAllData([...data]);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   };
@@ -48,6 +51,7 @@ export const Administration = () => {
   };
 
   const searchData = () => {
+    setLoading(true);
     const newData = allData.filter((item) =>
       item.country
         .normalize("NFD")
@@ -58,6 +62,7 @@ export const Administration = () => {
         )
     );
     setProperties(newData);
+    setLoading(false);
   };
 
   const handleButtonSearch = () => {
@@ -91,56 +96,63 @@ export const Administration = () => {
   };
   return (
     <>
-      <Navbar />
-      <Container>
-        <Return linke="/" title="Administrar" viewTitle={!mirar}>
-          <ContainerInput>
-            <SearcherWithoutLogic
-              placeholder="Buscar por país"
-              nameInput={"administrar"}
-              inputValue={inputValue.valor}
-              handleSearch={handleInput}
-              searchData={searchData}
-              onClickButtonSearch={handleButtonSearch}
-              viewAll={mirar}
-            />
-          </ContainerInput>
-        </Return>
-        <NavigateAdmin active="inmuebles" />
-        <ContainerListOfEstate changeDisplay={properties.length}>
-          {properties.length > 0 ? (
-            properties.map((element, index) => (
-              <Cart
-                key={index}
-                id={element.id}
-                img={element.urlImage}
-                price={element.price}
-                address={element.address}
-                country={element.country}
-                baths={element.bathrooms}
-                environments={element.rooms}
-                rooms={element.rooms}
-                city={element.city}
-                meters={element.meters}
-                admin
-                handleEdit={handleEdit}
-                error={error}
-                viewDelete={viewDelete}
-                setViewDelete={setViewDelete}
-                DeleteButton={handleDelete}
-                setError={setError}
-                setIdForDelete={setIdForDelete}
-                featured={false}
+      {!loading ? (
+        <Container>
+          <Return linke="/" title="Administrar" viewTitle={!mirar}>
+            <ContainerInput>
+              <SearcherWithoutLogic
+                placeholder="Buscar por país"
+                nameInput={"administrar"}
+                inputValue={inputValue.valor}
+                handleSearch={handleInput}
+                searchData={searchData}
+                onClickButtonSearch={handleButtonSearch}
+                viewAll={mirar}
               />
-            ))
-          ) : (
-            <div>No tenemos ninguna propiedad de ese país</div>
-          )}
-        </ContainerListOfEstate>
-        <Link to="/administration/properties/create" style={{ color: "#000" }}>
-          <ButtonAdd />
-        </Link>
-      </Container>
+            </ContainerInput>
+          </Return>
+          <NavigateAdmin active="inmuebles" />
+          <ContainerListOfEstate changeDisplay={properties.length}>
+            {properties.length > 0 && !loading ? (
+              properties.map((element, index) => (
+                <Cart
+                  key={index}
+                  id={element.id}
+                  img={element.urlImage}
+                  price={element.price}
+                  address={element.address}
+                  country={element.country}
+                  baths={element.bathrooms}
+                  environments={element.rooms}
+                  rooms={element.rooms}
+                  city={element.city}
+                  meters={element.meters}
+                  admin
+                  handleEdit={handleEdit}
+                  error={error}
+                  viewDelete={viewDelete}
+                  setViewDelete={setViewDelete}
+                  DeleteButton={handleDelete}
+                  setError={setError}
+                  setIdForDelete={setIdForDelete}
+                  featured={false}
+                />
+              ))
+            ) : (
+              <div>No tenemos ninguna propiedad de ese país</div>
+            )}
+          </ContainerListOfEstate>
+          <Link
+            to="/administration/properties/create"
+            style={{ color: "#000" }}
+          >
+            <ButtonAdd />
+          </Link>
+          <Navbar />
+        </Container>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };

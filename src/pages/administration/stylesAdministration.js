@@ -6,19 +6,19 @@ export const Container = styled.div`
   min-height: 80vh;
   position: relative;
   padding-bottom: 70px;
-
-  @media (min-width: 768px) {
-    padding-top: 3rem;
-  }
+  padding-top: 70px;
 `;
 export const ContainerListOfEstate = styled.div`
   width: 100%;
   display: ${(props) => (props.changeDisplay > 1 ? "grid" : "flex")};
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px 10px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 34px 16px;
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+  @media (min-width: 768px) {
+    gap: 48px 24px;
+  }
 `;
 
 export const ContainerInput = styled.div`
