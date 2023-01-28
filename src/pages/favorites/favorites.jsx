@@ -8,6 +8,7 @@ import {
   ListFilter,
   ItemFilter,
   ContainerListOfEstate,
+  ContainerReturn,
 } from "./stylesFavorites";
 import {
   MdSwapVert,
@@ -64,18 +65,20 @@ export const Favorites = () => {
     setFavProperties([...newdata]);
   };
   return (
-    <>
-      <Return title="Favoritas" viewTitle linke={-1}>
-        <MdSwapVert
-          size="25px"
-          style={{
-            background: "transparent",
-            position: "relative",
-            fill: onFilter ? "#D9D9D9" : "#000",
-          }}
-          onClick={() => setOnFilter((prevState) => !prevState)}
-        />
-      </Return>
+    <div style={{ marginTop: "10%" }}>
+      <ContainerReturn>
+        <Return title="Favoritas" viewTitle linke={-1}>
+          <MdSwapVert
+            size="25px"
+            style={{
+              background: "transparent",
+              position: "relative",
+              fill: onFilter ? "#D9D9D9" : "#000",
+            }}
+            onClick={() => setOnFilter((prevState) => !prevState)}
+          />
+        </Return>
+      </ContainerReturn>
       {onFilter && (
         <ListFilter>
           <ItemFilter onClick={() => filterFavorites("alphabet")}>
@@ -115,6 +118,7 @@ export const Favorites = () => {
               favorite
               handleFavorite={handleDelete}
               FavoriteId={element.Favorites.id}
+              featured
             />
           ))}
         </ContainerListOfEstate>
@@ -133,6 +137,6 @@ export const Favorites = () => {
           <MdCheckCircle size="20px" style={{ background: "transparent" }} />
         </ModalComponent>
       )}
-    </>
+    </div>
   );
 };

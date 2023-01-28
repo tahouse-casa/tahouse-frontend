@@ -10,6 +10,7 @@ export const ListFilter = styled.ul`
   border-radius: 10px 0px 0px 0px;
   padding: 0;
   z-index: 1;
+  margin-top: 20px;
 `;
 export const ItemFilter = styled.li`
   font-family: "Roboto";
@@ -24,10 +25,18 @@ export const ItemFilter = styled.li`
 export const ContainerListOfEstate = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px 10px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 34px 16px;
   justify-content: center;
   align-items: center;
   padding: 0 10px;
   margin-bottom: 70px;
+  @media (min-width: 768px) {
+    gap: 48px 24px;
+  }
+`;
+export const ContainerReturn = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;

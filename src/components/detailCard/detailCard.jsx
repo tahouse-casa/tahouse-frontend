@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { TfiRulerAlt2 } from "react-icons/tfi";
 import { MdOutlineSpaceDashboard, MdOutlineBathtub } from "react-icons/md";
 import { BsDoorOpen, BsWhatsapp } from "react-icons/bs";
 import { Carrousel } from "../../containers/carrousel/carrousel";
 import { MdShare, MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
-
+import { AppContext } from "../../context";
 import {
   Container,
   FirtsContainer,
@@ -47,12 +48,36 @@ export const DetailCard = ({
     type,
     environments,
     urlImage,
+    id,
   } = card;
   const [itemSelected, setItemSelected] = useState(0);
+  const { JWT } = useContext(AppContext);
+  const navigate = useNavigate();
   const selectImage = () => {
     const result = urlImage.find((item, index) => index === itemSelected);
     const BASE_URL = "https://drive.google.com/uc?id=";
     return BASE_URL + result;
+  };
+  const TOKEN = JWT.token;
+  const handleFeatured = () => {
+    if (TOKEN) {
+      fetch(`${process.env.REACT_APP_API_URL}/featured`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify({
+          propertyId: id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+        });
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <Container>
@@ -83,7 +108,7 @@ export const DetailCard = ({
               style={{ background: "transparent", cursor: "pointer" }}
             />
           </div>
-          <ContactText desktop>
+          <ContactText desktop onClick={() => handleFeatured()}>
             Enviar mensaje
             <BsWhatsapp style={{ fontSize: "16px", fill: "#60D66A" }} />
           </ContactText>

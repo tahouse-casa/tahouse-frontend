@@ -8,16 +8,21 @@ export const Container = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
-  max-height: ${(props) => (props.visible ? "250px" : "182px")};
-  min-height: ${(props) => (props.visible ? "250px" : "182px")};
+  max-height: ${(props) => (props.visible ? "250px" : "160px")};
+  min-height: ${(props) => (props.visible ? "250px" : "158px")};
   background: #ffffff;
-  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: ${(props) =>
+    props.visible
+      ? "0px 7px 6px rgb(0 0 0 / 25%)"
+      : "0px 36px 6px rgb(0 0 0 / 25%)"};
   border-radius: 2px;
   max-width: ${(props) => (props.visible ? "240px" : "160px")};
   min-width: ${(props) => (props.visible ? "240px" : "160px")};
+  justify-self: center;
   @media (min-width: 768px) {
     max-width: ${(props) => (props.visible ? "330px" : "160px")};
     min-width: ${(props) => (props.visible ? "330px" : "160px")};
+    justify-self: start;
   }
 `;
 export const Img = styled.img`
@@ -33,6 +38,7 @@ export const Img = styled.img`
 
 export const ContainerData = styled.div`
   width: 100%;
+  min-height: 80px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

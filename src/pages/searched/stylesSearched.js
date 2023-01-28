@@ -12,9 +12,14 @@ export const ContainerListOfEstate = styled.div`
   width: 100%;
   display: ${(props) => (props.changeDisplay > 1 ? "grid" : "flex")};
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 30px 10px;
   margin: 0 10px;
+  @media (min-width: 768px) {
+    margin: 0 24px;
+    gap: 48px 24px;
+    grid-template-columns: repeat(auto-fit, 330px);
+  }
 `;
 export const ContainerButtons = styled.div`
   width: 100%;
@@ -23,6 +28,13 @@ export const ContainerButtons = styled.div`
   gap: 0 15px;
   padding: 0 10px;
   height: 30px;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    height: auto;
+    margin-bottom: 50px;
+  }
 `;
 export const ContainerButton = styled.div`
   width: 100%;
@@ -34,6 +46,9 @@ export const ContainerButton = styled.div`
   background-color: #d7d7d7d1;
   border-radius: 6px;
   cursor: pointer;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 export const TextButton = styled.p`
   font-family: "Roboto";

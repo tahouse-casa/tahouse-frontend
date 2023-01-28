@@ -22,8 +22,8 @@ export const Home = () => {
     fetch(`${process.env.REACT_APP_API_URL}/featured`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setFeaturedProperties(data);
+        const featuredata = data.map((item) => item.property);
+        setFeaturedProperties(featuredata);
         setLoading(false);
       })
       .catch((err) => console.error(err));
