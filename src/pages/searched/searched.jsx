@@ -25,6 +25,7 @@ import {
   Pagination,
 } from "./stylesSearched";
 import { BsChevronDoubleRight, BsChevronDoubleLeft } from "react-icons/bs";
+import { FiltersDesktop } from "./components/filtersDesktop/filtersDesktop";
 
 export const Searched = () => {
   const [numberProp, setNumberProp] = useState(null);
@@ -66,15 +67,18 @@ export const Searched = () => {
                 Filtros
               </TextButton>
             </ContainerButton>
-            <ContainerButton column={2}>
-              <ContainerButton onClick={() => setMap((current) => !current)}>
-                <TextButton>
-                  <IconMap />
-                  Mapa
-                </TextButton>
-              </ContainerButton>
+            <ContainerButton
+              column={2}
+              onClick={() => setMap((current) => !current)}
+            >
+              <TextButton>
+                <IconMap />
+                Mapa
+              </TextButton>
             </ContainerButton>
+            <FiltersDesktop>{/*<Searcher onlyButton />*/}</FiltersDesktop>
           </ContainerButtons>
+
           {map && <MapComponent defaultCountry={defaultCountry} />}
           {!loading && (
             <Filters
@@ -121,7 +125,7 @@ export const Searched = () => {
                   rooms={element.rooms}
                   city={element.city}
                   meters={element.meters}
-                  featured={false}
+                  featured
                 />
               ))
             ) : (
