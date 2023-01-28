@@ -11,9 +11,13 @@ import { MdShare, MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import {
   MainContainer,
   ContainerIcons,
+  Copy,
+  Divbutton,
+  CopieA,
   Container,
   ContainerReturn,
 } from "./stylesDetail";
+import { writeText } from "clipboard-polyfill";
 
 export const Detail = () => {
   const [card, setCard] = useState({});
@@ -24,6 +28,20 @@ export const Detail = () => {
   const navigate = useNavigate();
   const { id } = params;
   const idCard = Number(id);
+
+  const url = window.location.href;
+
+  const [buttonText, setButtonText] = useState("");
+
+  function copyUrl() {
+    try {
+      writeText(url);
+      setButtonText("Copied!");
+    } catch (err) {
+      alert("Error!");
+      setButtonText("Error!");
+    }
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -76,25 +94,39 @@ export const Detail = () => {
 
   return (
     <>
+      <Footer />
       {!loading ? (
         <Container>
+          <Navbar />
           <ContainerReturn>
             <Return linke={-1}>
               <ContainerIcons>
-                {viewIncludes ? (
-                  <MdFavorite
-                    size="20px"
-                    onClick={() => handleDelete()}
-                    style={{ background: "transparent" }}
-                  />
-                ) : (
-                  <MdOutlineFavoriteBorder
-                    size="20px"
-                    onClick={() => handleAddFavorite()}
-                    style={{ background: "transparent" }}
-                  />
-                )}
-                <MdShare size="20px" style={{ background: "transparent" }} />
+                <CopieA>{buttonText}</CopieA>
+                <Divbutton>
+                  {viewIncludes ? (
+                    <MdFavorite
+                      size="20px"
+                      onClick={() => handleDelete()}
+                      style={{ background: "transparent" }}
+                    />
+                  ) : (
+                    <MdOutlineFavoriteBorder
+                      size="20px"
+                      onClick={() => handleAddFavorite()}
+                      style={{ background: "transparent" }}
+                    />
+                  )}
+                  <Copy type="text" value={url} readOnly={true} />
+                  <button className="copy-button" onClick={copyUrl}>
+                    <MdShare
+                      size="20px"
+                      style={{
+                        background: "transparent",
+                        color: "black",
+                      }}
+                    />
+                  </button>
+                </Divbutton>
               </ContainerIcons>
             </Return>
           </ContainerReturn>

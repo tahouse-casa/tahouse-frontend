@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-export const GlobalStyle= createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 html {
                 box-sizing: border-box;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -30,6 +30,9 @@ html {
                 max-width: 100vw;
                 overflow-x: hidden;
                 font-family: 'Roboto';
+                pading: 0;
+                margin: 0;
+                box-sizing: border-box;
         }
         #app {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
@@ -37,4 +40,4 @@ html {
                 min-height: 100vh;
                 padding-bottom: 10px;
         }
-`
+`;

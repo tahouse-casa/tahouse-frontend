@@ -11,7 +11,8 @@ export const ButtonAdd = styled(add)`
   right: 20px;
   border-radius: 50%;
   background-color: #dfdfdf;
-`;
+}`;
+
 export const Container = styled.div`
   width: 100%;
   padding: 0 16px;

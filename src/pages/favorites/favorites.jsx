@@ -123,7 +123,6 @@ export const Favorites = () => {
           ))}
         </ContainerListOfEstate>
       )}
-      <Navbar />
       {error.doneDelete === true && (
         <ModalComponent
           title="¡Listo!"
