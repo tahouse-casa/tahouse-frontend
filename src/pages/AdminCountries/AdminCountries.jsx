@@ -6,7 +6,7 @@ import { AdminItem } from "../../components/adminItem/adminItem";
 import { AppContext } from "../../context";
 import { Navbar } from "../../components/navbar/navbar";
 import { MdCancel, MdCheckCircle } from "react-icons/md";
-import { Container, ButtonAdd } from "./stylesAdminCountries";
+import { Container, ButtonAdd, ContainerReturn } from "./stylesAdminCountries";
 import { ModalComponent } from "../../components/modal/modalComponent";
 import { Loader } from "../../components/loader/loader";
 export const AdminCountries = () => {
@@ -63,7 +63,10 @@ export const AdminCountries = () => {
         <div style={{ paddingBottom: "50px" }}>
           {viewModals.done && (
             <>
-              <Return title="Países" viewTitle linke={-1} />
+              <Navbar />
+              <ContainerReturn>
+                <Return title="Países" viewTitle linke={-1} />
+              </ContainerReturn>
               <NavigateAdmin active="paises" />
               <Container>
                 {countries.map((item) => (
@@ -109,7 +112,6 @@ export const AdminCountries = () => {
           <Link to="/administration/countries/create" style={{ color: "#000" }}>
             <ButtonAdd />
           </Link>
-          <Navbar />
         </div>
       ) : (
         <Loader />

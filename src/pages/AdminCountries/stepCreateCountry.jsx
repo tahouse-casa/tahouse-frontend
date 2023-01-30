@@ -27,10 +27,20 @@ export const StepCreateCountry = () => {
       },
       body: JSON.stringify(dataFetch),
     })
-      .then((res) => res.json())
       .then((res) => {
-        setError(false);
-        setDone(true);
+        if (res.statusText === "Unauthorized") {
+          return false;
+        }
+        return res.json();
+      })
+      .then((res) => {
+        if (res) {
+          setError(false);
+          setDone(true);
+        } else {
+          setError(true);
+          setDone(false);
+        }
       })
       .catch((err) => {
         console.log(err);

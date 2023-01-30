@@ -93,7 +93,7 @@ export const AdminCountriesComponent = ({ data, setData, handleFetch }) => {
       (item) => item[0].toUpperCase() + item.substr(1)
     );
     const dataFetch = {
-      country: data.country,
+      country: data.country.toUpperCase(),
       latitud: transformLatitud,
       longitud: transformLongitud,
       citys: citysMayus,
