@@ -5,6 +5,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
+  margin-top: 10rem;
 `;
 export const Input = styled.input`
   padding: 14px 8px;
@@ -13,7 +14,60 @@ export const Input = styled.input`
   border: 1px solid #b6b6b6;
   margin-bottom: 10px;
   background-color: white;
+  @media (min-width: 992px) {
+    width: 448px;
+    height: 56px;
+    margin: 0 auto;
+    margin-bottom: 38px;
+  }
 `;
+export const Title = styled.h1`
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #535353;
+  margin: 0 auto;
+`;
+export const ShowPassword = styled.button`
+  position: absolute;
+  right: 0;
+  top: 55px;
+  z-index: 9;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  @media (min-width: 992px) {
+    top: 100px;
+    left: 420px;
+    z-index: 10;
+  }
+`;
+export const PasswordRepeat = styled.button`
+  position: absolute;
+  right: 0;
+  top: 110px;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  @media (min-width: 992px) {
+    top: 195px;
+    left: 420px;
+    z-index: 10;
+  }
+`;
+
 export const Button = styled.button`
   padding: 14px 12px;
   border: 1px solid #b6b6b6;
@@ -27,6 +81,12 @@ export const Button = styled.button`
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: 700;
+  @media (min-width: 992px) {
+    width: 448px;
+    height: 48px;
+    margin: 0 auto;
+    margin-bottom: 38px;
+  }
 `;
 export const Paragraph = styled.p`
   text-align: center;
@@ -35,6 +95,8 @@ export const Paragraph = styled.p`
   color: rgba(0, 0, 0, 0.87);
   line-height: 24px;
   letter-spacing: 0.15px;
+  margin-bottom: 36px;
+  margin-top: -5px;
 `;
 export const RegisterButton = styled.a`
   color: #000;
@@ -50,6 +112,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 70px;
+  position: relative;
 `;
 export const ErrorStyle = styled.span`
   text-align: center;
@@ -67,8 +130,16 @@ export const Facebook = styled.img`
   width: 45px;
   height: 45px;
   left: 0px;
-  top: 24px;
+  top: 8px;
   padding: 5px 6px 5px 6px;
+  @media (min-width: 768px) {
+    top: 0px;
+    left: 265px;
+  }
+  @media (min-width: 992px) {
+    top: 0px;
+    left: 726px;
+  }
 `;
 export const Google = styled.img`
   background: #ffffff;
@@ -80,6 +151,14 @@ export const Google = styled.img`
   left: 0px;
   bottom: 15px;
   padding: 5px 6px 5px 6px;
+  @media (min-width: 768px) {
+    top: 0px;
+    left: 265px;
+  }
+  @media (min-width: 992px) {
+    top: 88px;
+    left: 726px;
+  }
 `;
 export const SocialContainer = styled.div`
   display: flex;

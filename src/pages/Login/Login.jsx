@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context";
 import {
   MainContainer,
@@ -94,7 +94,7 @@ export function Login() {
         />
         {error && <ErrorStyle>Los datos ingresados son incorrectos</ErrorStyle>}
         {errors.password && <ErrorStyle>{errors.password.message}</ErrorStyle>}
-        <Button>Ingresar</Button>
+        <Button type="submit">Ingresar</Button>
       </Form>
       <Paragraph>
         <RegisterButton to="/register">
@@ -112,12 +112,14 @@ export function Login() {
         </Button>
       </SocialContainer>
       <ContainerLeter>
-        <Paragraph
-          onClick={() => navigate("/recovery-password")}
-          style={{ cursor: "pointer" }}
+        <Link
+          style={{ textDecoration: "none", color: "#000" }}
+          to={{
+            pathname: "/recovery-password",
+          }}
         >
           Recuperar contraseña
-        </Paragraph>
+        </Link>
       </ContainerLeter>
     </MainContainer>
   );
