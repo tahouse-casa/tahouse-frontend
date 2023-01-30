@@ -29,8 +29,8 @@ export function Register({ isRegister }) {
   } = useForm();
   const [showpassword, setShowpassword] = useState(false);
   const [showpassword2, setShowpassword2] = useState(false);
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  //const [password, setPassword] = useState("");
+  //const [password2, setPassword2] = useState("");
   const navigate = useNavigate();
   const handleFetchRegister = (data) => {
     if (data.password !== data.password2) {
@@ -82,7 +82,9 @@ export function Register({ isRegister }) {
         <Input
           name="password"
           type={showpassword ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(
+            e //setPassword(e.target.value)
+          ) => ""}
           placeholder="Contraseña"
           {...register("password", {
             required: {
@@ -115,7 +117,9 @@ export function Register({ isRegister }) {
         <Input
           name="password2"
           type={showpassword2 ? "text" : "password"}
-          onChange={(e) => setPassword2(e.target.value)}
+          onChange={(
+            e //setPassword2(e.target.value)
+          ) => ""}
           placeholder="Repetir contraseña"
           {...register("password2", {
             required: {
