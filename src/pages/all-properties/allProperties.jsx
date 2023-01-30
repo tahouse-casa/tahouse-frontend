@@ -6,7 +6,7 @@ import {
   ContainerSearcher,
   Pagination,
   ButtonPag,
-} from "./stylesLallProperties";
+} from "./stylesAllProperties";
 import { Footer } from "../../containers/footer/footer";
 import { Cart } from "../../components/carts/cart";
 import { Searcher } from "../../components/searcher/searcher";
@@ -44,7 +44,7 @@ export const AllProperties = () => {
                   rooms={element.rooms}
                   meters={element.meters}
                   city={element.city}
-                  featured={false}
+                  featured={true}
                 />
               ))}
           </ContainerListOfProperties>

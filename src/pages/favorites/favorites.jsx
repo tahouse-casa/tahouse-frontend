@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../context";
 import { Return } from "../../components/return/return";
 import { Navbar } from "../../components/navbar/navbar";
+import { Footer } from "../../containers/footer/footer";
 import { Cart } from "../../components/carts/cart";
 import { ModalComponent } from "../../components/modal/modalComponent";
 import {
@@ -65,7 +66,8 @@ export const Favorites = () => {
     setFavProperties([...newdata]);
   };
   return (
-    <div style={{ marginTop: "10%" }}>
+    <div>
+      <Navbar />
       <ContainerReturn>
         <Return title="Favoritas" viewTitle linke={-1}>
           <MdSwapVert
@@ -123,6 +125,7 @@ export const Favorites = () => {
           ))}
         </ContainerListOfEstate>
       )}
+      <Footer />
       {error.doneDelete === true && (
         <ModalComponent
           title="¡Listo!"

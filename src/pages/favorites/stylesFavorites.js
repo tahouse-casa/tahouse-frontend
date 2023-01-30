@@ -33,6 +33,7 @@ export const ContainerListOfEstate = styled.div`
   margin-bottom: 70px;
   @media (min-width: 768px) {
     gap: 48px 24px;
+    margin-top: 5%;
   }
 `;
 export const ContainerReturn = styled.div`

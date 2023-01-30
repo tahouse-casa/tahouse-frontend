@@ -4,12 +4,18 @@ export const Container = styled.div`
   width: 100%;
 `;
 export const ContainerListOfProperties = styled.div`
-  max-width: 100%;
+  width: 100%;
   display: ${(props) => (props.changeDisplay > 1 ? "grid" : "flex")};
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 34px 16px;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 30px 10px;
-  margin: 0 10px;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 70px;
+  @media (min-width: 768px) {
+    gap: 48px 24px;
+    grid-template-columns: repeat(auto-fit, 330px);
+  }
 `;
 export const Title = styled.h2`
   margin: 20px 10px;
@@ -30,6 +36,9 @@ export const ContainerSearcher = styled.div`
   margin-top: 30px;
   margin-bottom: 0;
   flex-wrap: wrap;
+  @media (min-width: 768px) {
+    flex-direction: column;
+  }
 `;
 export const Pagination = styled.div`
   height: 100px;

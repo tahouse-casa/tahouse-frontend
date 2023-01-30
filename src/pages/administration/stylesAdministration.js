@@ -6,7 +6,6 @@ export const Container = styled.div`
   min-height: 80vh;
   position: relative;
   padding-bottom: 70px;
-  padding-top: 70px;
 `;
 export const ContainerListOfEstate = styled.div`
   width: 100%;
@@ -41,4 +40,10 @@ export const ButtonAdd = styled(add)`
   right: 20px;
   border-radius: 50%;
   background-color: #dfdfdf;
+`;
+
+export const ContainerReturn = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;

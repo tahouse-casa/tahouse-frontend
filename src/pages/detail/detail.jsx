@@ -14,7 +14,6 @@ import {
   Copy,
   Divbutton,
   CopieA,
-  Container,
   ContainerReturn,
 } from "./stylesDetail";
 import { writeText } from "clipboard-polyfill";
@@ -94,9 +93,8 @@ export const Detail = () => {
 
   return (
     <>
-      <Footer />
       {!loading ? (
-        <Container>
+        <div>
           <Navbar />
           <ContainerReturn>
             <Return linke={-1}>
@@ -138,9 +136,9 @@ export const Detail = () => {
               handleAddFavorite={handleAddFavorite}
             />
           </MainContainer>
+
           <Footer />
-          <Navbar />
-        </Container>
+        </div>
       ) : (
         <Loader />
       )}

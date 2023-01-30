@@ -7,6 +7,9 @@ export const Container = styled.footer`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 50px;
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 export const Title = styled.p`
   width: 100%;

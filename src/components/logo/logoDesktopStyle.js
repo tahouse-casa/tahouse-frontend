@@ -36,6 +36,7 @@ export const LogoText = styled.h2`
   text-align: center;
   font-family: "Roboto";
   font-weight: bold;
+  color: #000;
 
   @media (min-width: 768px) {
     text-transform: uppercase;

@@ -7,12 +7,6 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 0%;
-
-  @media (min-width: 768px) {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-  }
 `;
 export const Logo = styled.img`
   width: 60px;
@@ -31,14 +25,7 @@ export const LogoText = styled.p`
   text-align: center;
   font-family: "Roboto";
   font-weight: bold;
-
-  @media (min-width: 768px) {
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    text-align: center;
-    font-family: "Roboto";
-    font-weight: bold;
-  }
+  color: #000;
 `;
 export const Linke = styled(Link)`
   text-decoration: none;

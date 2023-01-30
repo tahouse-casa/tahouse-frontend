@@ -26,14 +26,14 @@ export const LogoComponent = () => {
     <Container>
       <Linke>
         {ismobile ? (
-          <LogoText
+          <div
             onClick={() => {
               setValueInput(!valueInput);
             }}
           >
             <Logo src={logo} alt="logo" />
             <LogoText>TaHouse</LogoText>
-          </LogoText>
+          </div>
         ) : null}
       </Linke>
     </Container>

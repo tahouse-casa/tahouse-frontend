@@ -33,6 +33,7 @@ export const Home = () => {
     <>
       {!loading ? (
         <Container>
+          <Navbar />
           <LogoComponent />
           <ContainerSearcher>
             <Title aling={"center"}>Encuentra el hogar de tus sueños</Title>
@@ -44,7 +45,6 @@ export const Home = () => {
           </Containerfeatured>
           <Promotion />
           <ShoppingGuide />
-          <Navbar />
           <Footer />
         </Container>
       ) : (

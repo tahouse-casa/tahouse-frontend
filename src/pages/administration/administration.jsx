@@ -13,6 +13,7 @@ import {
   ContainerListOfEstate,
   ContainerInput,
   ButtonAdd,
+  ContainerReturn,
 } from "./stylesAdministration";
 export const Administration = () => {
   const [inputValue, setIputValue] = useState({ valor: "", error: null });
@@ -98,19 +99,22 @@ export const Administration = () => {
     <>
       {!loading ? (
         <Container>
-          <Return linke="/" title="Administrar" viewTitle={!mirar}>
-            <ContainerInput>
-              <SearcherWithoutLogic
-                placeholder="Buscar por país"
-                nameInput={"administrar"}
-                inputValue={inputValue.valor}
-                handleSearch={handleInput}
-                searchData={searchData}
-                onClickButtonSearch={handleButtonSearch}
-                viewAll={mirar}
-              />
-            </ContainerInput>
-          </Return>
+          <Navbar />
+          <ContainerReturn>
+            <Return linke="/" title="Administrar" viewTitle={!mirar}>
+              <ContainerInput>
+                <SearcherWithoutLogic
+                  placeholder="Buscar por país"
+                  nameInput={"administrar"}
+                  inputValue={inputValue.valor}
+                  handleSearch={handleInput}
+                  searchData={searchData}
+                  onClickButtonSearch={handleButtonSearch}
+                  viewAll={mirar}
+                />
+              </ContainerInput>
+            </Return>
+          </ContainerReturn>
           <NavigateAdmin active="inmuebles" />
           <ContainerListOfEstate changeDisplay={properties.length}>
             {properties.length > 0 && !loading ? (
@@ -148,7 +152,6 @@ export const Administration = () => {
           >
             <ButtonAdd />
           </Link>
-          <Navbar />
         </Container>
       ) : (
         <Loader />

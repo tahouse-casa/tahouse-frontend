@@ -5,9 +5,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  @media (min-width: 768px) {
-    margin-top: 3rem;
-  }
 `;
 export const ContainerSearcher = styled.div`
   width: 100%;

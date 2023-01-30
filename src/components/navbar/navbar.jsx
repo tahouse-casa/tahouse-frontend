@@ -38,6 +38,7 @@ export const Navbar = () => {
   const style = {
     fontSize: "1.5rem",
     marginRight: "0.5rem",
+    background: "transparent",
   };
 
   return (
