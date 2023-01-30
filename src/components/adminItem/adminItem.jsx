@@ -10,7 +10,7 @@ export const AdminItem = ({ data, handleDelete, handleEdit }) => {
 
   return (
     <>
-      <Container>
+      <Container className="card-country">
         <ContainerItem>
           <Img />
           <Title>{country}</Title>
@@ -18,11 +18,13 @@ export const AdminItem = ({ data, handleDelete, handleEdit }) => {
         <div>
           <MdModeEdit
             size="18px"
+            className="button-edit-country"
             style={{ background: "transparent", marginRight: "30px" }}
             onClick={() => handleEdit()}
           />
           <MdDelete
             size="18px"
+            className="button-delete-country"
             style={{ background: "transparent", marginRight: "20px" }}
             onClick={() => setView(true)}
           />

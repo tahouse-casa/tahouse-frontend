@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { Return } from "../../components/return/return";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { NavigateAdmin } from "../../components/navigateAdmin/navigateAdmin";
 import { AdminItem } from "../../components/adminItem/adminItem";
 import { AppContext } from "../../context";
@@ -16,7 +16,7 @@ export const AdminCountries = () => {
   const { JWT } = useContext(AppContext);
 
   const navigate = useNavigate();
-
+  const location = useLocation();
   useEffect(() => {
     fetchCountries();
   }, []);
@@ -56,7 +56,7 @@ export const AdminCountries = () => {
         setViewModals({ error: true, done: true });
       });
   };
-
+  console.log(location.pathname);
   return (
     <>
       {!loading ? (
@@ -65,7 +65,15 @@ export const AdminCountries = () => {
             <>
               <Navbar />
               <ContainerReturn>
-                <Return title="Países" viewTitle linke={-1} />
+                <Return
+                  title="Países"
+                  viewTitle
+                  linke={
+                    location.pathname === "/administration/countries"
+                      ? "/administration/properties"
+                      : -1
+                  }
+                />
               </ContainerReturn>
               <NavigateAdmin active="paises" />
               <Container>
