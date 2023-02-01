@@ -21,7 +21,8 @@ import { writeText } from "clipboard-polyfill";
 export const Detail = () => {
   const [card, setCard] = useState({});
   const [loading, setLoading] = useState(true);
-
+  const [copyshow, setCopyshow] = useState("false");
+  const [buttonText, setButtonText] = useState("");
   const params = useParams();
   const { user, fetchUser, JWT } = useContext(AppContext);
   const navigate = useNavigate();
@@ -30,15 +31,14 @@ export const Detail = () => {
 
   const url = window.location.href;
 
-  const [buttonText, setButtonText] = useState("");
-
   function copyUrl() {
     try {
       writeText(url);
       setButtonText("Copied!");
+      setCopyshow("true");
     } catch (err) {
-      alert("Error!");
       setButtonText("Error!");
+      setCopyshow("false");
     }
   }
 
@@ -114,7 +114,11 @@ export const Detail = () => {
                       style={{ background: "transparent" }}
                     />
                   )}
-                  <Copy type="text" value={url} readOnly={true} />
+                  {copyshow === "false" ? (
+                    <Copy type="text" value={url} readOnly={true} />
+                  ) : (
+                    <Copy show type="text" value={url} readOnly={true} />
+                  )}
                   <button className="copy-button" onClick={copyUrl}>
                     <MdShare
                       size="20px"
@@ -136,7 +140,6 @@ export const Detail = () => {
               handleAddFavorite={handleAddFavorite}
             />
           </MainContainer>
-
           <Footer />
         </div>
       ) : (

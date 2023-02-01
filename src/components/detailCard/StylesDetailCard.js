@@ -76,10 +76,13 @@ export const ContainerSecondImage = styled.div`
 export const ContainerIcons = styled.div`
   display: none;
   @media (min-width: 768px) {
-    width: 100%;
+    max-width: 750px;
+    min-width: 210px;
+    height: 50px;
     display: flex;
-    justify-content: space-between;
-    padding-top: 10px;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 12px;
     padding-left: 22%;
   }
 `;
@@ -176,4 +179,33 @@ export const IconsTextContainer = styled.div`
 export const IconsText = styled.p`
   font-size: 8px;
   font-family: "Roboto";
+`;
+export const Copy = styled.input`
+  @media (min-width: 768px) {
+    background-color: #f6f8fa;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    width: 110px;
+    height: 30px;
+    opacity: ${(props) => (props.show ? "1" : "0")};
+
+    @media (min-width: 1440px) {
+      width: 210px;
+  }
+`;
+
+export const CopieA = styled.button`
+  @media (min-width: 768px) {
+  display: flex;
+  justify-content: end;
+  color: black;
+  margin-right: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
 `;

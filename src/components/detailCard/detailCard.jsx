@@ -5,6 +5,8 @@ import { MdOutlineSpaceDashboard, MdOutlineBathtub } from "react-icons/md";
 import { BsDoorOpen, BsWhatsapp } from "react-icons/bs";
 import { Carrousel } from "../../containers/carrousel/carrousel";
 import { MdShare, MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
+
+import { writeText } from "clipboard-polyfill";
 import { AppContext } from "../../context";
 import {
   Container,
@@ -26,6 +28,8 @@ import {
   ButtonBuy,
   ContainerImage,
   ContainerSecondImage,
+  Copy,
+  CopieA,
 } from "./StylesDetailCard";
 
 export const DetailCard = ({
@@ -51,6 +55,9 @@ export const DetailCard = ({
     id,
   } = card;
   const [itemSelected, setItemSelected] = useState(0);
+
+  const [copyshow, setCopyshow] = useState("false");
+  const [buttonText, setButtonText] = useState("");
   const { JWT } = useContext(AppContext);
   const navigate = useNavigate();
   const selectImage = () => {
@@ -79,6 +86,19 @@ export const DetailCard = ({
       navigate("/login");
     }
   };
+
+  const url = window.location.href;
+
+  function copyUrl() {
+    try {
+      writeText(url);
+      setButtonText("Copied!");
+      setCopyshow("true");
+    } catch (err) {
+      setButtonText("Error!");
+      setCopyshow("false");
+    }
+  }
   return (
     <Container>
       <FirtsContainer>
@@ -103,13 +123,21 @@ export const DetailCard = ({
                 style={{ background: "transparent", cursor: "pointer" }}
               />
             )}
-            <MdShare
-              size="20px"
-              style={{ background: "transparent", cursor: "pointer" }}
-            />
+            <button onClick={() => copyUrl()}>
+              <MdShare
+                size="20px"
+                style={{ background: "transparent", cursor: "pointer" }}
+              />
+            </button>
+
+            {copyshow === "false" ? (
+              <Copy type="text" value={url} readOnly={true} />
+            ) : (
+              <Copy show type="text" value={url} readOnly={true} />
+            )}
           </div>
+          <CopieA>{buttonText}</CopieA>
           <ContactText desktop onClick={() => handleFeatured()}>
-            Enviar mensaje
             <BsWhatsapp style={{ fontSize: "16px", fill: "#60D66A" }} />
           </ContactText>
         </ContainerIcons>
