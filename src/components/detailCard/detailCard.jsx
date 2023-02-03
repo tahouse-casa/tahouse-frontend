@@ -4,7 +4,12 @@ import { TfiRulerAlt2 } from "react-icons/tfi";
 import { MdOutlineSpaceDashboard, MdOutlineBathtub } from "react-icons/md";
 import { BsDoorOpen, BsWhatsapp } from "react-icons/bs";
 import { Carrousel } from "../../containers/carrousel/carrousel";
-import { MdShare, MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
+import {
+  MdShare,
+  MdOutlineFavoriteBorder,
+  MdFavorite,
+  MdCheckCircle,
+} from "react-icons/md";
 
 import { writeText } from "clipboard-polyfill";
 import { AppContext } from "../../context";
@@ -29,7 +34,6 @@ import {
   ContainerImage,
   ContainerSecondImage,
   Copy,
-  CopieA,
 } from "./StylesDetailCard";
 
 export const DetailCard = ({
@@ -56,8 +60,8 @@ export const DetailCard = ({
   } = card;
   const [itemSelected, setItemSelected] = useState(0);
 
-  const [copyshow, setCopyshow] = useState("false");
-  const [buttonText, setButtonText] = useState("");
+  const [copyshow, setCopyshow] = useState(false);
+  const [textCopied, setTextCopied] = useState(false);
   const { JWT } = useContext(AppContext);
   const navigate = useNavigate();
   const selectImage = () => {
@@ -89,16 +93,17 @@ export const DetailCard = ({
 
   const url = window.location.href;
 
-  function copyUrl() {
+  const copyUrl = () => {
     try {
       writeText(url);
-      setButtonText("Copied!");
-      setCopyshow("true");
+      setTextCopied(true);
+      setTimeout(() => {
+        setTextCopied(false);
+      }, [1500]);
     } catch (err) {
-      setButtonText("Error!");
-      setCopyshow("false");
+      console.error(err);
     }
-  }
+  };
   return (
     <Container>
       <FirtsContainer>
@@ -123,21 +128,43 @@ export const DetailCard = ({
                 style={{ background: "transparent", cursor: "pointer" }}
               />
             )}
-            <button onClick={() => copyUrl()}>
+            <button onClick={() => setCopyshow((prev) => !prev)}>
               <MdShare
                 size="20px"
                 style={{ background: "transparent", cursor: "pointer" }}
               />
             </button>
-
-            {copyshow === "false" ? (
-              <Copy type="text" value={url} readOnly={true} />
-            ) : (
-              <Copy show type="text" value={url} readOnly={true} />
+            {copyshow && (
+              <div>
+                <Copy type="text" value={url} readOnly={true} show />
+                <button
+                  style={{
+                    background: "#373e47",
+                    color: "#fff",
+                    padding: "4px 10px",
+                    borderRadius: "4px",
+                    margin: "0 5px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => copyUrl()}
+                >
+                  {textCopied ? (
+                    <MdCheckCircle
+                      size={"16px"}
+                      style={{
+                        fill: "#39b508",
+                        background: "transparent",
+                      }}
+                    />
+                  ) : (
+                    "Copiar"
+                  )}
+                </button>
+              </div>
             )}
           </div>
-          <CopieA>{buttonText}</CopieA>
           <ContactText desktop onClick={() => handleFeatured()}>
+            Enviar mensaje
             <BsWhatsapp style={{ fontSize: "16px", fill: "#60D66A" }} />
           </ContactText>
         </ContainerIcons>

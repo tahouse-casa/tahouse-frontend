@@ -7,13 +7,17 @@ import { DetailCard } from "../../components/detailCard/detailCard";
 import { Return } from "../../components/return/return";
 import { AppContext } from "../../context";
 import { Loader } from "../../components/loader/loader";
-import { MdShare, MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
+import {
+  MdShare,
+  MdOutlineFavoriteBorder,
+  MdFavorite,
+  MdCheckCircle,
+} from "react-icons/md";
 import {
   MainContainer,
   ContainerIcons,
   Copy,
   Divbutton,
-  CopieA,
   ContainerReturn,
 } from "./stylesDetail";
 import { writeText } from "clipboard-polyfill";
@@ -21,8 +25,8 @@ import { writeText } from "clipboard-polyfill";
 export const Detail = () => {
   const [card, setCard] = useState({});
   const [loading, setLoading] = useState(true);
-  const [copyshow, setCopyshow] = useState("false");
-  const [buttonText, setButtonText] = useState("");
+  const [copyshow, setCopyshow] = useState(false);
+  const [textCopied, setTextCopied] = useState(false);
   const params = useParams();
   const { user, fetchUser, JWT } = useContext(AppContext);
   const navigate = useNavigate();
@@ -31,16 +35,17 @@ export const Detail = () => {
 
   const url = window.location.href;
 
-  function copyUrl() {
+  const copyUrl = () => {
     try {
       writeText(url);
-      setButtonText("Copied!");
-      setCopyshow("true");
+      setTextCopied(true);
+      setTimeout(() => {
+        setTextCopied(false);
+      }, [1500]);
     } catch (err) {
-      setButtonText("Error!");
-      setCopyshow("false");
+      console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -99,7 +104,6 @@ export const Detail = () => {
           <ContainerReturn>
             <Return linke={-1}>
               <ContainerIcons>
-                <CopieA>{buttonText}</CopieA>
                 <Divbutton>
                   {viewIncludes ? (
                     <MdFavorite
@@ -114,18 +118,38 @@ export const Detail = () => {
                       style={{ background: "transparent" }}
                     />
                   )}
-                  {copyshow === "false" ? (
-                    <Copy type="text" value={url} readOnly={true} />
-                  ) : (
-                    <Copy show type="text" value={url} readOnly={true} />
+                  {copyshow && (
+                    <div style={{ display: "flex" }}>
+                      <Copy type="text" value={url} readOnly={true} show />
+                      <button
+                        style={{
+                          background: "#373e47",
+                          color: "#fff",
+                          padding: "4px 10px",
+                          borderRadius: "4px",
+                          margin: "0 5px",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => copyUrl()}
+                      >
+                        {textCopied ? (
+                          <MdCheckCircle
+                            size={"16px"}
+                            style={{
+                              fill: "#39b508",
+                              background: "transparent",
+                            }}
+                          />
+                        ) : (
+                          "Copiar"
+                        )}
+                      </button>
+                    </div>
                   )}
-                  <button className="copy-button" onClick={copyUrl}>
+                  <button onClick={() => setCopyshow((prev) => !prev)}>
                     <MdShare
                       size="20px"
-                      style={{
-                        background: "transparent",
-                        color: "black",
-                      }}
+                      style={{ background: "transparent", cursor: "pointer" }}
                     />
                   </button>
                 </Divbutton>

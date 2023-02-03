@@ -28,6 +28,10 @@ export const Copy = styled.input`
   transform: ${(props) =>
     props.show ? "translateX(0px)" : "translateX(400px)"};
   overflow: ${(props) => (props.show ? "visible" : "hidden")};
+  @media (max-width: 768px) {
+    padding: 2px;
+    width: 100px;
+  }
 `;
 
 export const Divbutton = styled.div`
@@ -36,17 +40,6 @@ export const Divbutton = styled.div`
   justify-content: center;
   gap: 10px;
   margin-right: 20px;
-`;
-
-export const CopieA = styled.button`
-  display: flex;
-  justify-content: end;
-  color: black;
-  margin-right: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  width: 100%;
-  transition: 0.3s;
 `;
 
 export const ContainerReturn = styled.div`

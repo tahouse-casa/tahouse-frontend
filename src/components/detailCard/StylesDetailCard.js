@@ -76,11 +76,10 @@ export const ContainerSecondImage = styled.div`
 export const ContainerIcons = styled.div`
   display: none;
   @media (min-width: 768px) {
-    max-width: 750px;
-    min-width: 210px;
+    width: 100%;
     height: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: baseline;
     padding-top: 12px;
     padding-left: 22%;
@@ -109,6 +108,7 @@ export const ContactText = styled.p`
   font-family: "Roboto";
   gap: 2px;
   margin-right: 10px;
+  color: #000;
   cursor: pointer;
   @media (min-width: 768px) {
     display: ${(props) => !props.desktop && "none"};
@@ -193,19 +193,8 @@ export const Copy = styled.input`
     width: 110px;
     height: 30px;
     opacity: ${(props) => (props.show ? "1" : "0")};
-
-    @media (min-width: 1440px) {
-      width: 210px;
   }
-`;
-
-export const CopieA = styled.button`
-  @media (min-width: 768px) {
-  display: flex;
-  justify-content: end;
-  color: black;
-  margin-right: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s;
+  @media (min-width: 1440px) {
+    width: 210px;
+  }
 `;
