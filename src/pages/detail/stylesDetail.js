@@ -22,8 +22,12 @@ export const Copy = styled.input`
   border-radius: 3px;
   padding: 8px 12px;
   font-size: 14px;
-  width: 80%;
+  width: ${(props) => (props.show ? "210px" : "0px")};
   border-radius: 5px;
+  transition: 0.3s;
+  transform: ${(props) =>
+    props.show ? "translateX(0px)" : "translateX(400px)"};
+  overflow: ${(props) => (props.show ? "visible" : "hidden")};
 `;
 
 export const Divbutton = styled.div`
