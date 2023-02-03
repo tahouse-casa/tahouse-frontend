@@ -42,12 +42,30 @@ export const Input = styled.input`
     margin-bottom: 38px;
   }
 `;
+export const ShowPasswordLogin = styled.button`
+  width: 10px;
+  position: absolute;
+  right: 15px;
+  top: 55px;
+  z-index: 9;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  @media (min-width: 992px) {
+    top: 100px;
+    right: 20px;
+  }
+`;
 export const Button = styled.button`
   padding: 14px 12px;
   border-radius: 20px;
   border: 1px solid #b6b6b6;
   margin-bottom: 15px;
   cursor: pointer;
+  position: relative;
   margin-top: 1.5rem;
   background: #dfdfdf;
   color: black;
@@ -88,6 +106,11 @@ export const Form = styled.form`
   flex-direction: column;
   margin-top: 3rem;
   margin-bottom: 2rem;
+  position: relative;
+  @media (min-width: 992px) {
+    width: 1/2;
+    margin: 70px auto auto auto;
+  }
 `;
 export const ErrorStyle = styled.span`
   text-align: center;
@@ -105,11 +128,15 @@ export const Facebook = styled.img`
   width: 45px;
   height: 48px;
   left: 0px;
-  top: 24px;
+  top: -2px;
   padding: 5px 6px 5px 6px;
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     top: 0px;
-    left: 730px;
+    right: 105px;
+  }
+  @media (min-width: 992px) {
+    top: -1px;
+    right: 402px;
   }
 `;
 export const Google = styled.img`
@@ -120,11 +147,15 @@ export const Google = styled.img`
   width: 45px;
   height: 45px;
   left: 0px;
-  bottom: 15px;
+  bottom: 0px;
   padding: 5px 6px 5px 6px;
+  @media (min-width: 768px) {
+    top: 0px;
+    right: 105px;
+  }
   @media (min-width: 992px) {
-    bottom: 40px;
-    left: 730px;
+    top: 0px;
+    right: 402px;
   }
 `;
 export const SocialContainer = styled.div`

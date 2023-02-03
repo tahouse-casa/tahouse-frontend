@@ -35,8 +35,9 @@ export const Title = styled.h1`
   margin: 0 auto;
 `;
 export const ShowPassword = styled.button`
+  width: 10px;
   position: absolute;
-  right: 0;
+  right: 15px;
   top: 55px;
   z-index: 9;
   margin-top: 0.5rem;
@@ -47,13 +48,13 @@ export const ShowPassword = styled.button`
   font-size: 1.5rem;
   @media (min-width: 992px) {
     top: 100px;
-    left: 420px;
-    z-index: 10;
+    right: 20px;
   }
 `;
 export const PasswordRepeat = styled.button`
+  width: 10px;
   position: absolute;
-  right: 0;
+  right: 15px;
   top: 110px;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
@@ -63,7 +64,7 @@ export const PasswordRepeat = styled.button`
   font-size: 1.5rem;
   @media (min-width: 992px) {
     top: 195px;
-    left: 420px;
+    right: 20px;
     z-index: 10;
   }
 `;
@@ -73,6 +74,7 @@ export const Button = styled.button`
   border: 1px solid #b6b6b6;
   margin-bottom: 15px;
   cursor: pointer;
+  position: relative;
   margin-top: 0.5rem;
   background: #dfdfdf;
   color: black;
@@ -113,6 +115,10 @@ export const Form = styled.form`
   flex-direction: column;
   margin-top: 70px;
   position: relative;
+  @media (min-width: 992px) {
+    width: 1/2;
+    margin: 70px auto auto auto;
+  }
 `;
 export const ErrorStyle = styled.span`
   text-align: center;
@@ -130,15 +136,15 @@ export const Facebook = styled.img`
   width: 45px;
   height: 45px;
   left: 0px;
-  top: 8px;
+  top: -1px;
   padding: 5px 6px 5px 6px;
   @media (min-width: 768px) {
     top: 0px;
-    left: 265px;
+    right: 105px;
   }
   @media (min-width: 992px) {
     top: 0px;
-    left: 726px;
+    right: 402px;
   }
 `;
 export const Google = styled.img`
@@ -149,15 +155,15 @@ export const Google = styled.img`
   width: 45px;
   height: 45px;
   left: 0px;
-  bottom: 15px;
+  bottom: 0px;
   padding: 5px 6px 5px 6px;
   @media (min-width: 768px) {
     top: 0px;
-    left: 265px;
+    right: 105px;
   }
   @media (min-width: 992px) {
-    top: 88px;
-    left: 726px;
+    top: 0px;
+    right: 402px;
   }
 `;
 export const SocialContainer = styled.div`
