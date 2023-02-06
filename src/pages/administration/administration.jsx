@@ -149,8 +149,9 @@ export const Administration = () => {
           <Link
             to="/administration/properties/create"
             style={{ color: "#000" }}
+            className="Button-link-create-properties"
           >
-            <ButtonAdd />
+            <ButtonAdd className="icon-of-create-properties" />
           </Link>
         </Container>
       ) : (
