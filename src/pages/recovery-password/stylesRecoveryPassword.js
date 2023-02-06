@@ -1,7 +1,18 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  min-width: 380px;
+  width: 500px;
+  margin: 0 auto;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Title = styled.h2`
-  font-size: ${(props) => (props.second ? "14px" : "20px")};
+  font-size: ${(props) => (props.second ? "16px" : "24px")};
   font-family: "Roboto";
   text-align: center;
   font-weight: 500;
@@ -9,6 +20,7 @@ export const Title = styled.h2`
   margin-bottom: ${(props) => (props.second ? "35px" : "0")};
   width: 100%;
   color: ${(props) => (props.second ? "rgba(83, 83, 83, 0.87)" : "#000")};
+  width: 448px;
 `;
 export const SendButton = styled.button`
   width: 100%;
@@ -31,5 +43,12 @@ export const Text = styled.p`
   color: rgba(0, 0, 0, 0.87);
   &:hover {
     color: ${(props) => (props.hover ? "blue" : "rgba(0, 0, 0, 0.87)")};
+  }
+`;
+
+export const ContainerReturn = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
   }
 `;

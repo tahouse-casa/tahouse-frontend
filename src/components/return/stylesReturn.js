@@ -17,6 +17,6 @@ export const Title = styled.h3`
   font-family: "Roboto";
   font-weight: 500;
   margin-left: 12px;
-  margin-top: 5px;
+  margin-top: 15px;
   cursor: default;
 `;
