@@ -1,8 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Return } from "../../components/return/return";
 import { ModalComponent } from "../../components/modal/modalComponent";
 import { InputWithoutLogic } from "../../components/select/inputWithoutLogic";
-import { Title, SendButton, Text, Container } from "./stylesRecoveryPassword";
+import {
+  Title,
+  SendButton,
+  Text,
+  Container,
+  ContainerReturn,
+} from "./stylesRecoveryPassword";
 import { MdCheckCircle } from "react-icons/md";
 import { Navbar } from "../../components/navbar/navbar";
 
@@ -10,21 +16,6 @@ export const RecoveryPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState({});
   const [done, setDone] = useState(false);
-
-  const [windows, setWindows] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setWindows(true);
-      } else {
-        setWindows(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const handleInput = (e) => {
     setEmail(e.target.value);
@@ -60,12 +51,12 @@ export const RecoveryPassword = () => {
       });
   };
 
-  console.log(windows);
-
   return (
     <>
       <Navbar />
-      {windows && <Return linke={-1} />}
+      <ContainerReturn>
+        <Return linke={-1} />
+      </ContainerReturn>
       <Container style={{ padding: "0 16px" }}>
         <Title>Recuperar contraseña</Title>
         <Title second>Ingresa la dirección de email</Title>
