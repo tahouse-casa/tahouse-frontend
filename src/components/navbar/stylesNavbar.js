@@ -34,13 +34,15 @@ export const Navbars = styled.nav`
   gap: 0 2rem;
 
   @media (min-width: 768px) {
+    position: fixed;
     width: 100%;
     display: flex;
     align-items: center;
     gap: 0 1rem;
-    background-color: transparent;
+    background-color: #ebeaea;
     padding: 0 0 0 0;
     height: 90px;
+    z-index: 999;
   }
 `;
 export const LogoContainer = styled.div`
