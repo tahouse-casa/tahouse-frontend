@@ -57,7 +57,7 @@ export function Register({ isRegister }) {
         setIsRegistered(true);
         setTimeout(() => {
           navigate("/login");
-        }, 15000);
+        }, 5000);
       })
       .catch((e) => {
         setError(true);
