@@ -5,7 +5,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 70px;
 `;
 export const Input = styled.input`
   padding: 14px 8px;
@@ -20,6 +20,14 @@ export const Input = styled.input`
     margin: 0 auto;
     margin-bottom: 38px;
   }
+`;
+export const RegisteredMsg = styled.p`
+  font-family: "Roboto";
+  font-weight: 500;
+  text-align: center;
+  font-size: 16px;
+  color: green;
+  margin-bottom: 36px;
 `;
 export const Title = styled.h1`
   font-family: "Roboto";
