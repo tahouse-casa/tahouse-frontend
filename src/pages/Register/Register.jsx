@@ -12,15 +12,17 @@ import {
   SocialContainer,
   ShowPassword,
   PasswordRepeat,
-  Title,
+  RegisteredMsg,
 } from "./stylesRegister";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../assets/Google.svg";
 import FacebookIcon from "../../assets/Facebook.svg";
 import { Return } from "../../components/return/return";
+
 export function Register({ isRegister }) {
   const [error, setError] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   const {
     register,
     handleSubmit,
@@ -52,7 +54,10 @@ export function Register({ isRegister }) {
           return;
         }
         setError(false);
-        navigate("/login");
+        setIsRegistered(true);
+        setTimeout(() => {
+          navigate("/login");
+        }, 15000);
       })
       .catch((e) => {
         setError(true);
@@ -62,8 +67,13 @@ export function Register({ isRegister }) {
   return (
     <MainContainer>
       <Return linke={"/login"} />
-      <Title>Registrate para una mejor experiencia</Title>
+      {isRegistered && (
+        <RegisteredMsg>
+          ¡Te has registrado correctamente! Ahora puedes iniciar sesión
+        </RegisteredMsg>
+      )}
       <Form onSubmit={handleSubmit(handleFetchRegister)}>
+        {error && <Paragraph>Ha ocurrido un error</Paragraph>}
         <Input
           name="email"
           type="email"
