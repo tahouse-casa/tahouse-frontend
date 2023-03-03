@@ -27,10 +27,15 @@ export const AdminCountriesComponent = ({ data, setData, handleFetch }) => {
     let valueNameInput;
     if (nameInput) {
       const valueInput = data[nameInput];
-      valueNameInput = { ...valueInput, [e.target.name]: e.target.value };
+      valueNameInput = {
+        ...valueInput,
+        [e.target.name]: e.target.value?.toUpperCase(),
+      };
     }
     const name = nameInput || e.target.name;
-    const value = nameInput ? valueNameInput : e.target.value;
+    const value = nameInput
+      ? valueNameInput?.toUpperCase()
+      : e.target.value?.toUpperCase();
     setData({ ...data, [name]: value });
   };
 

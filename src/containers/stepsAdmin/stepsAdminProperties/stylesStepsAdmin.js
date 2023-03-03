@@ -73,9 +73,10 @@ export const ContainerAddIMage = styled.div`
   border-radius: 20px;
   gap: 15px;
 `;
-export const Phrase = styled.p`
+export const Phrase = styled.label`
   font-size: 14px;
   font-family: "Roboto";
+  cursor: pointer;
 `;
 export const ErrorSpan = styled.span`
   font-size: 12px;

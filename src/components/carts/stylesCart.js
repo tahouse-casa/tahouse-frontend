@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   position: relative;
   max-height: ${(props) => (props.visible ? "250px" : "160px")};
-  min-height: ${(props) => (props.visible ? "250px" : "158px")};
+  min-height: ${(props) => (props.visible ? "158px" : "158px")};
   background: #ffffff;
   box-shadow: ${(props) =>
     props.visible
@@ -17,7 +17,7 @@ export const Container = styled.div`
       : "0px 36px 6px rgb(0 0 0 / 25%)"};
   border-radius: 2px;
   max-width: ${(props) => (props.visible ? "240px" : "160px")};
-  min-width: ${(props) => (props.visible ? "240px" : "160px")};
+  min-width: ${(props) => (props.visible ? "156px" : "160px")};
   justify-self: center;
   @media (min-width: 768px) {
     max-width: ${(props) => (props.visible ? "330px" : "160px")};

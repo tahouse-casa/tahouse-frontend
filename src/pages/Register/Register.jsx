@@ -62,7 +62,6 @@ export function Register({ isRegister }) {
   return (
     <MainContainer>
       <Return linke={"/login"} />
-      <Title>Registrate para una mejor experiencia</Title>
       <Form onSubmit={handleSubmit(handleFetchRegister)}>
         <Input
           name="email"
@@ -162,7 +161,7 @@ export function Register({ isRegister }) {
         <Button type="submit">Ingresar</Button>
       </Form>
       <Paragraph>
-        <RegisterButton href="">O ingresa con una red social</RegisterButton>
+        <RegisterButton href="">O puedes registrarte con</RegisterButton>
       </Paragraph>
       <SocialContainer>
         <Button>

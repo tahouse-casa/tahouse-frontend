@@ -9,6 +9,7 @@ export const Title = styled.h2`
   margin-bottom: ${(props) => (props.second ? "35px" : "0")};
   width: 100%;
   color: ${(props) => (props.second ? "rgba(83, 83, 83, 0.87)" : "#000")};
+  padding: 0 16px;
 `;
 export const SendButton = styled.button`
   width: 100%;

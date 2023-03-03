@@ -5,6 +5,7 @@ export const Container = styled.ul`
   display: ${(props) => (props.detail ? "block" : "flex")};
   justify-content: flex-start;
   overflow-x: ${(props) => (props.detail ? "none" : "scroll")};
+  overflow-y: hidden;
   padding: 0;
   gap: 15px;
   list-style: none;
