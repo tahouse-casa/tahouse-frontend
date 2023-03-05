@@ -56,7 +56,6 @@ export const AdminCountries = () => {
         setViewModals({ error: true, done: true });
       });
   };
-  console.log(location.pathname);
   return (
     <>
       {!loading ? (

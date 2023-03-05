@@ -33,9 +33,7 @@ export const AdminCountriesComponent = ({ data, setData, handleFetch }) => {
       };
     }
     const name = nameInput || e.target.name;
-    const value = nameInput
-      ? valueNameInput
-      : e.target.value;
+    const value = nameInput ? valueNameInput : e.target.value;
     setData({ ...data, [name]: value });
   };
 
@@ -158,7 +156,14 @@ export const AdminCountriesComponent = ({ data, setData, handleFetch }) => {
           </Return>
           <Container>
             <InputComponent
-              handleSearch={(e)=>handleSearch({target: {name: "country", value: e.target.value.toUpperCase())}
+              handleSearch={(e) =>
+                handleSearch({
+                  target: {
+                    name: "country",
+                    value: e.target.value.toUpperCase(),
+                  },
+                })
+              }
               placeholder="Nombre del País"
               nameInput="country"
               errorInput={errorInput}
