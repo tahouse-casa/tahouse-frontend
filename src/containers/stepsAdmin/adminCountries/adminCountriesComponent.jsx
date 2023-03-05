@@ -29,13 +29,13 @@ export const AdminCountriesComponent = ({ data, setData, handleFetch }) => {
       const valueInput = data[nameInput];
       valueNameInput = {
         ...valueInput,
-        [e.target.name]: e.target.value?.toUpperCase(),
+        [e.target.name]: e.target.value,
       };
     }
     const name = nameInput || e.target.name;
     const value = nameInput
-      ? valueNameInput?.toUpperCase()
-      : e.target.value?.toUpperCase();
+      ? valueNameInput
+      : e.target.value;
     setData({ ...data, [name]: value });
   };
 
@@ -78,7 +78,7 @@ export const AdminCountriesComponent = ({ data, setData, handleFetch }) => {
   };
   const handleCitys = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = e.target.value.toUpperCase();
     const newData = [...cityData];
     newData[name] = value;
     setCityData(newData);
@@ -158,7 +158,7 @@ export const AdminCountriesComponent = ({ data, setData, handleFetch }) => {
           </Return>
           <Container>
             <InputComponent
-              handleSearch={handleSearch}
+              handleSearch={(e)=>handleSearch({target: {name: "country", value: e.target.value.toUpperCase())}
               placeholder="Nombre del País"
               nameInput="country"
               errorInput={errorInput}
