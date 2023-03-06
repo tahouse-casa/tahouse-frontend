@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  min-width: 380px;
+  min-width: 300px;
   width: 500px;
   margin: 0 auto;
   height: 60vh;
@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
 `;
 
 export const Title = styled.h2`
@@ -47,8 +48,11 @@ export const Text = styled.p`
 `;
 
 export const ContainerReturn = styled.div`
+  display: block;
+`;
+export const ContainerNavbar = styled.div`
   display: none;
   @media (min-width: 768px) {
     display: block;
-  }
+  } ;
 `;

@@ -55,7 +55,7 @@ export const Searcher = ({ onlyButton }) => {
 
     viewDefaultValue();
     if (country === "") {
-      navigate("/");
+      navigate("/all-properties");
     } else {
       navigate(`/search`);
     }

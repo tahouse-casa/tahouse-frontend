@@ -8,6 +8,7 @@ import {
   Text,
   Container,
   ContainerReturn,
+  ContainerNavbar,
 } from "./stylesRecoveryPassword";
 import { MdCheckCircle } from "react-icons/md";
 import { Navbar } from "../../components/navbar/navbar";
@@ -53,23 +54,27 @@ export const RecoveryPassword = () => {
 
   return (
     <>
-      <Navbar />
+      <ContainerNavbar>
+        <Navbar />
+      </ContainerNavbar>
       <ContainerReturn>
         <Return linke={-1} />
       </ContainerReturn>
       <Container style={{ padding: "0 16px" }}>
         <Title>Recuperar contraseña</Title>
         <Title second>Ingresa la dirección de email</Title>
-        <InputWithoutLogic
-          handleSearch={handleInput}
-          nameInput="sendEmail"
-          errorInput={error}
-          intoPlaceholder="Email"
-          valor={email}
-          errorMessage="El email ingresado no es válido."
-          noLabel
-        />
-        <SendButton onClick={() => sendEmail()}>ENVIAR</SendButton>
+        <div style={{ maxWidth: "328px", width: "328px" }}>
+          <InputWithoutLogic
+            handleSearch={handleInput}
+            nameInput="sendEmail"
+            errorInput={error}
+            intoPlaceholder="Email"
+            valor={email}
+            errorMessage="El email ingresado no es válido."
+            noLabel
+          />
+          <SendButton onClick={() => sendEmail()}>ENVIAR</SendButton>
+        </div>
         <Text>¿No recibiste el correo aún?</Text>
         <Text onClick={() => sendEmail()} hover>
           Puedes reintentarlo
