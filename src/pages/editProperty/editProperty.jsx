@@ -3,7 +3,7 @@ import { StepsAdmin } from "../../containers/stepsAdmin/stepsAdminProperties/ste
 import { useParams } from "react-router-dom";
 import { AppContext } from "../../context";
 import { Navbar } from "../../components/navbar/navbar";
-
+import { Loader } from "../../components/loader/loader";
 export const EditProperty = () => {
   const [error, setError] = useState(false);
   const [data, setData] = useState({});
@@ -47,15 +47,21 @@ export const EditProperty = () => {
 
   return (
     <>
-      <Navbar />
-      <StepsAdmin
-        data={data}
-        setData={setData}
-        error={error}
-        setError={setError}
-        sendData={sendData}
-        errorFetch={errorFetch}
-      />
+      {Object.keys(data).length > 2 ? (
+        <>
+          <Navbar />
+          <StepsAdmin
+            data={data}
+            setData={setData}
+            error={error}
+            setError={setError}
+            sendData={sendData}
+            errorFetch={errorFetch}
+          />
+        </>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };

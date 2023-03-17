@@ -8,11 +8,15 @@ import {
   ButtonDeleteImg,
   Img,
 } from "../stylesStepsAdmin";
-export const StepONe = ({ images, setImages }) => {
+
+const BASE_URL = "https://drive.google.com/uc?id=";
+
+export const StepONe = ({ images, setImages, data, setData }) => {
   const handleSelectImages = (files) => {
+    const freeSpaceForUploadImages = 3 - data.urlImage.length;
     if (files.length > 3) {
       let onlythreeLengthImages = {};
-      for (let index = 0; index < 3; index++) {
+      for (let index = 0; index < freeSpaceForUploadImages; index++) {
         onlythreeLengthImages = {
           ...onlythreeLengthImages,
           [index]: files[index],
@@ -29,6 +33,20 @@ export const StepONe = ({ images, setImages }) => {
       (item, index) => index !== indexItem
     );
     setImages(newImages);
+  };
+
+  const handleDeleteUrlImage = (indexItem) => {
+    const newImages = data.urlImage.filter(
+      (item, index) => index !== indexItem
+    );
+    setData({ ...data, urlImage: newImages });
+  };
+
+  const handleUrlImage = (image) => {
+    if (typeof image === "string") {
+      return BASE_URL + image;
+    }
+    return URL.createObjectURL(image);
   };
 
   return (
@@ -48,7 +66,23 @@ export const StepONe = ({ images, setImages }) => {
         </Phrase>
       </ContainerAddIMage>
       <ContainerImages>
-        {images["0"] &&
+        {data?.urlImage.map((item, index) => (
+          <div style={{ position: "relative" }} key={`${index}${item}`}>
+            <ButtonDeleteImg onClick={() => handleDeleteUrlImage(index)}>
+              <MdCancel
+                size="25px"
+                style={{
+                  background: "#fff",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                }}
+              />
+            </ButtonDeleteImg>
+            <Img src={handleUrlImage(item)} alt="" />
+          </div>
+        ))}
+        {data?.urlImage?.length !== 3 &&
+          images["0"] &&
           Object.values(images).map((item, index) => (
             <div style={{ position: "relative" }} key={`${index}${item?.name}`}>
               <ButtonDeleteImg onClick={() => handleDeleteImage(index)}>
@@ -61,7 +95,7 @@ export const StepONe = ({ images, setImages }) => {
                   }}
                 />
               </ButtonDeleteImg>
-              <Img src={URL.createObjectURL(item)} alt="" />
+              <Img src={handleUrlImage(item)} alt="" />
             </div>
           ))}
       </ContainerImages>

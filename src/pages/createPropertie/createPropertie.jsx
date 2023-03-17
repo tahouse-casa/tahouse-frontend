@@ -21,11 +21,7 @@ export const CreatePropertie = () => {
     description: "",
     phone: " ",
     email: " ",
-    urlImage: [
-      "1-s7aIBGDKuRDDEDu7OhI8gFHMHtZNzs6",
-      "1Q6C2lRN0LEnkSoHsrrID_He1uGe-a30E",
-      "1Ho4wjU-n0rGFmHpEZSZvCWST8ugSy7Oz",
-    ],
+    urlImage: [],
   });
 
   const { JWT } = useContext(AppContext);

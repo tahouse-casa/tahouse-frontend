@@ -57,7 +57,6 @@ export const DetailCard = ({
     environments,
     urlImage,
     id,
-    imagesDontUpload = false,
   } = card;
   const [itemSelected, setItemSelected] = useState(0);
 
@@ -65,17 +64,12 @@ export const DetailCard = ({
   const [textCopied, setTextCopied] = useState(false);
   const { JWT } = useContext(AppContext);
   const navigate = useNavigate();
+
   const selectImage = () => {
-    if (imagesDontUpload) {
-      const result = Object.values(imagesDontUpload).find(
-        (item, index) => index === itemSelected
-      );
-      return URL.createObjectURL(result);
-    }
     const result = urlImage.find((item, index) => index === itemSelected);
-    const BASE_URL = "https://drive.google.com/uc?id=";
-    return BASE_URL + result;
+    return handleUrlImage(result);
   };
+
   const TOKEN = JWT.token;
   const handleFeatured = () => {
     if (TOKEN) {
@@ -111,6 +105,15 @@ export const DetailCard = ({
       console.error(err);
     }
   };
+
+  const handleUrlImage = (image) => {
+    const BASE_URL = "https://drive.google.com/uc?id=";
+    if (typeof image === "string") {
+      return BASE_URL + image;
+    }
+    return URL.createObjectURL(image);
+  };
+
   return (
     <Container>
       <FirtsContainer>
@@ -178,23 +181,14 @@ export const DetailCard = ({
       </FirtsContainer>
       <SecondContainer>
         <ContainerSecondImage>
-          {imagesDontUpload
-            ? Object.values(imagesDontUpload).map((item, index) => (
-                <Img
-                  key={index}
-                  src={URL.createObjectURL(item)}
-                  selected={index === itemSelected ? true : false}
-                  onClick={() => setItemSelected(index)}
-                />
-              ))
-            : urlImage.map((item, index) => (
-                <Img
-                  key={index}
-                  src={"https://drive.google.com/uc?id=" + item}
-                  selected={index === itemSelected ? true : false}
-                  onClick={() => setItemSelected(index)}
-                />
-              ))}
+          {urlImage.map((item, index) => (
+            <Img
+              key={index}
+              src={handleUrlImage(item)}
+              selected={index === itemSelected ? true : false}
+              onClick={() => setItemSelected(index)}
+            />
+          ))}
         </ContainerSecondImage>
 
         <ContainerRow>

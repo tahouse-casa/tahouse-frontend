@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
+
 import { Return } from "../../../components/return/return";
 import { StepONe } from "./steps/stepONe";
 import { StepTwo } from "./steps/stepTwo";
@@ -19,7 +21,6 @@ export const StepsAdmin = ({ data, error, setData, setError, sendData }) => {
   const [errorInput, setErrorInput] = useState({});
   const [returnModal, setReturnModal] = useState(false);
   const [images, setImages] = useState({});
-
   const navigate = useNavigate();
   const steps = ["Imágenes", "Datos", "Contacto"];
 
@@ -62,7 +63,12 @@ export const StepsAdmin = ({ data, error, setData, setError, sendData }) => {
       setErrorInput(changeErrors);
     }
     if (!viewDisabled) {
-      setData({ ...data, imagesDontUpload: { ...images } });
+      if (active.value === 0) {
+        const updateAndVerifyLength = updateImagesData();
+        if (updateAndVerifyLength.error) {
+          return;
+        }
+      }
       setError(false);
       setErrorInput({});
       setActive({
@@ -70,6 +76,25 @@ export const StepsAdmin = ({ data, error, setData, setError, sendData }) => {
         steps: [...active.steps, active.value + 1],
       });
     }
+  };
+
+  const updateImagesData = () => {
+    const lengthImages = Object.keys(images).length;
+    let SelectUrlImages = [...data.urlImage];
+    for (let index = 0; index < lengthImages; index++) {
+      SelectUrlImages = [...SelectUrlImages, images[index]];
+    }
+    if (SelectUrlImages.length !== 3) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El número de imágenes de la propiedad deben ser 3.",
+      });
+      return { error: true };
+    }
+    setData({ ...data, urlImage: SelectUrlImages });
+    setImages({});
+    return { error: false };
   };
 
   return (
@@ -106,7 +131,12 @@ export const StepsAdmin = ({ data, error, setData, setError, sendData }) => {
           ))}
         </ContainerSteps>
         {active.value === 0 && (
-          <StepONe images={images} setImages={setImages} />
+          <StepONe
+            images={images}
+            setImages={setImages}
+            data={data}
+            setData={setData}
+          />
         )}
         {active.value === 1 && (
           <StepTwo
@@ -131,12 +161,7 @@ export const StepsAdmin = ({ data, error, setData, setError, sendData }) => {
       </div>
       {active.value < 2 && (
         <ContainerButton>
-          <ButtonSig
-            onClick={() => handlePrevVIew()}
-            disabled={Object.keys(images).length === 0}
-          >
-            SIGUIENTE
-          </ButtonSig>
+          <ButtonSig onClick={() => handlePrevVIew()}>SIGUIENTE</ButtonSig>
         </ContainerButton>
       )}
 
