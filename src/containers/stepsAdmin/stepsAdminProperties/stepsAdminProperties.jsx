@@ -14,17 +14,11 @@ import {
   Linear,
   ContainerButton,
 } from "./stylesStepsAdmin";
-export const StepsAdmin = ({
-  data,
-  error,
-  setData,
-  setError,
-  sendData,
-  errorFetch,
-}) => {
+export const StepsAdmin = ({ data, error, setData, setError, sendData }) => {
   const [active, setActive] = useState({ value: 0, steps: [0] });
   const [errorInput, setErrorInput] = useState({});
   const [returnModal, setReturnModal] = useState(false);
+  const [images, setImages] = useState({});
 
   const navigate = useNavigate();
   const steps = ["Imágenes", "Datos", "Contacto"];
@@ -43,6 +37,7 @@ export const StepsAdmin = ({
   const handlePrevVIew = () => {
     let viewDisabled = false;
     let changeErrors = {};
+
     if (active.value === 1) {
       for (const property in data) {
         if (data[property] === "") {
@@ -67,6 +62,7 @@ export const StepsAdmin = ({
       setErrorInput(changeErrors);
     }
     if (!viewDisabled) {
+      setData({ ...data, imagesDontUpload: { ...images } });
       setError(false);
       setErrorInput({});
       setActive({
@@ -109,7 +105,9 @@ export const StepsAdmin = ({
             </div>
           ))}
         </ContainerSteps>
-        {active.value === 0 && <StepONe />}
+        {active.value === 0 && (
+          <StepONe images={images} setImages={setImages} />
+        )}
         {active.value === 1 && (
           <StepTwo
             handleSearch={handleSearch}
@@ -126,7 +124,6 @@ export const StepsAdmin = ({
             error={error}
             setError={setError}
             sendData={sendData}
-            errorFetch={errorFetch}
             setErrorInput={setErrorInput}
             errorInput={errorInput}
           />
@@ -134,7 +131,12 @@ export const StepsAdmin = ({
       </div>
       {active.value < 2 && (
         <ContainerButton>
-          <ButtonSig onClick={() => handlePrevVIew()}>SIGUIENTE</ButtonSig>
+          <ButtonSig
+            onClick={() => handlePrevVIew()}
+            disabled={Object.keys(images).length === 0}
+          >
+            SIGUIENTE
+          </ButtonSig>
         </ContainerButton>
       )}
 

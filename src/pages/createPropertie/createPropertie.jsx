@@ -5,7 +5,6 @@ import { Navbar } from "../../components/navbar/navbar";
 
 export const CreatePropertie = () => {
   const [error, setError] = useState(false);
-  const [errorFetch, setErrorFetch] = useState(false);
 
   const [data, setData] = useState({
     typeOperation: "",
@@ -43,11 +42,11 @@ export const CreatePropertie = () => {
       body: JSON.stringify(data),
     })
       .then((res) => {
-        setErrorFetch(false);
+        return false;
       })
       .catch((err) => {
-        setErrorFetch(true);
         console.log(err);
+        return true;
       });
   };
   return (
@@ -59,7 +58,6 @@ export const CreatePropertie = () => {
         error={error}
         setError={setError}
         sendData={sendData}
-        errorFetch={errorFetch}
       />
     </>
   );

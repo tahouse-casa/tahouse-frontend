@@ -57,6 +57,7 @@ export const DetailCard = ({
     environments,
     urlImage,
     id,
+    imagesDontUpload = false,
   } = card;
   const [itemSelected, setItemSelected] = useState(0);
 
@@ -65,6 +66,12 @@ export const DetailCard = ({
   const { JWT } = useContext(AppContext);
   const navigate = useNavigate();
   const selectImage = () => {
+    if (imagesDontUpload) {
+      const result = Object.values(imagesDontUpload).find(
+        (item, index) => index === itemSelected
+      );
+      return URL.createObjectURL(result);
+    }
     const result = urlImage.find((item, index) => index === itemSelected);
     const BASE_URL = "https://drive.google.com/uc?id=";
     return BASE_URL + result;
@@ -171,14 +178,23 @@ export const DetailCard = ({
       </FirtsContainer>
       <SecondContainer>
         <ContainerSecondImage>
-          {urlImage.map((item, index) => (
-            <Img
-              key={index}
-              src={"https://drive.google.com/uc?id=" + item}
-              selected={index === itemSelected ? true : false}
-              onClick={() => setItemSelected(index)}
-            />
-          ))}
+          {imagesDontUpload
+            ? Object.values(imagesDontUpload).map((item, index) => (
+                <Img
+                  key={index}
+                  src={URL.createObjectURL(item)}
+                  selected={index === itemSelected ? true : false}
+                  onClick={() => setItemSelected(index)}
+                />
+              ))
+            : urlImage.map((item, index) => (
+                <Img
+                  key={index}
+                  src={"https://drive.google.com/uc?id=" + item}
+                  selected={index === itemSelected ? true : false}
+                  onClick={() => setItemSelected(index)}
+                />
+              ))}
         </ContainerSecondImage>
 
         <ContainerRow>

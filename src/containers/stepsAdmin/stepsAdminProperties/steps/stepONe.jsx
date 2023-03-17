@@ -1,56 +1,70 @@
-import { useState, useContext } from "react";
 import { BiImageAdd } from "react-icons/bi";
-import { ContainerAddIMage, Phrase, ContainerIMage } from "../stylesStepsAdmin";
-import { AppContext } from "../../../../context";
-export const StepONe = () => {
-  const [images, setImages] = useState("");
-
-  const { JWT } = useContext(AppContext);
-  const TOKEN = JWT.token;
-
-  const sendArchives = async () => {
-    const f = new FormData();
-
-    for (let index = 0; index < images.length; index++) {
-      f.append("file", images[index]);
+import { MdCancel } from "react-icons/md";
+import {
+  ContainerAddIMage,
+  Phrase,
+  ContainerStep1,
+  ContainerImages,
+  ButtonDeleteImg,
+  Img,
+} from "../stylesStepsAdmin";
+export const StepONe = ({ images, setImages }) => {
+  const handleSelectImages = (files) => {
+    if (files.length > 3) {
+      let onlythreeLengthImages = {};
+      for (let index = 0; index < 3; index++) {
+        onlythreeLengthImages = {
+          ...onlythreeLengthImages,
+          [index]: files[index],
+        };
+      }
+      setImages(onlythreeLengthImages);
+      return;
     }
+    setImages({ ...files });
+  };
 
-    fetch(`${process.env.REACT_APP_API_URL}/properties/uploadFile`, {
-      method: "POST",
-      headers: {
-        //"Content-Type": "multipart/form-data",
-        authorization: `Bearer ${TOKEN}`,
-      },
-      body: f,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const handleDeleteImage = (indexItem) => {
+    const newImages = Object.values(images).filter(
+      (item, index) => index !== indexItem
+    );
+    setImages(newImages);
   };
 
   return (
-    <>
-      <ContainerIMage>
-        <ContainerAddIMage>
-          <input
-            type="file"
-            style={{ display: "none" }}
-            id="upload-image"
-            multiple
-            onChange={(e) => {
-              //console.log(e.target.files);
-              setImages(e.target.files);
-            }}
-            encType="multipart/form-data"
-          />
-          <Phrase htmlFor="upload-image">CARGAR IMÁGENES </Phrase>
+    <ContainerStep1>
+      <ContainerAddIMage>
+        <input
+          type="file"
+          style={{ display: "none" }}
+          id="upload-image"
+          multiple
+          onChange={(e) => handleSelectImages(e.target.files)}
+          encType="multipart/form-data"
+        />
+        <Phrase htmlFor="upload-image">
+          CARGAR IMÁGENES
           <BiImageAdd size="25px" />
-        </ContainerAddIMage>
-      </ContainerIMage>
-      <button onClick={() => sendArchives()}>enviar</button>
-    </>
+        </Phrase>
+      </ContainerAddIMage>
+      <ContainerImages>
+        {images["0"] &&
+          Object.values(images).map((item, index) => (
+            <div style={{ position: "relative" }} key={`${index}${item?.name}`}>
+              <ButtonDeleteImg onClick={() => handleDeleteImage(index)}>
+                <MdCancel
+                  size="25px"
+                  style={{
+                    background: "#fff",
+                    borderRadius: "50%",
+                    cursor: "pointer",
+                  }}
+                />
+              </ButtonDeleteImg>
+              <Img src={URL.createObjectURL(item)} alt="" />
+            </div>
+          ))}
+      </ContainerImages>
+    </ContainerStep1>
   );
 };

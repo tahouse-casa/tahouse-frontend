@@ -42,6 +42,35 @@ export const StepThree = ({
       setViewModal(true);
     }
   };
+  /* const sendArchives = () => {
+    const f = new FormData();
+
+    for (let index = 0; index < images.length; index++) {
+      f.append("file", images[index]);
+    }
+
+    fetch(`${process.env.REACT_APP_API_URL}/properties/uploadFile`, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${TOKEN}`,
+      },
+      body: f,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };*/
+
+  const handleSendData = async () => {
+    const send = await sendData();
+    if (!send) {
+      setViewSecondModal(true);
+    }
+    //send images
+  };
 
   return (
     <ContainerStep>
@@ -72,16 +101,7 @@ export const StepThree = ({
         <MakeModal>
           <Return linke={-1} handleReturn={() => setViewModal(false)} />
           <DetailCard card={data} prevView />
-          <Button
-            onClick={() => {
-              sendData();
-              if (!errorFetch) {
-                setViewSecondModal(true);
-              }
-            }}
-          >
-            PUBLICAR
-          </Button>
+          <Button onClick={handleSendData}>PUBLICAR</Button>
         </MakeModal>
       )}
       {viewSecondModal && (
