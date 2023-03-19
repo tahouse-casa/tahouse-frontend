@@ -48,12 +48,10 @@ export const Cart = ({
   FavoriteId,
   error = { error: false, done: false },
 }) => {
-  const BASE_URL = "https://drive.google.com/uc?id=";
-
   return (
     <Container visible={featured}>
       <Link to={`/detail/${id}`} style={{ width: "100%" }}>
-        <Img src={BASE_URL + img[0]} alt="" visible={featured} />
+        <Img src={img[0]} alt="" visible={featured} />
       </Link>
       {admin && (
         <CancelIcon

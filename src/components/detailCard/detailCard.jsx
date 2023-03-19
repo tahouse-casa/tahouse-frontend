@@ -64,11 +64,12 @@ export const DetailCard = ({
   const [textCopied, setTextCopied] = useState(false);
   const { JWT } = useContext(AppContext);
   const navigate = useNavigate();
+
   const selectImage = () => {
     const result = urlImage.find((item, index) => index === itemSelected);
-    const BASE_URL = "https://drive.google.com/uc?id=";
-    return BASE_URL + result;
+    return handleUrlImage(result);
   };
+
   const TOKEN = JWT.token;
   const handleFeatured = () => {
     if (TOKEN) {
@@ -104,6 +105,14 @@ export const DetailCard = ({
       console.error(err);
     }
   };
+
+  const handleUrlImage = (image) => {
+    if (typeof image === "string") {
+      return image;
+    }
+    return URL.createObjectURL(image);
+  };
+
   return (
     <Container>
       <FirtsContainer>
@@ -174,7 +183,7 @@ export const DetailCard = ({
           {urlImage.map((item, index) => (
             <Img
               key={index}
-              src={"https://drive.google.com/uc?id=" + item}
+              src={handleUrlImage(item)}
               selected={index === itemSelected ? true : false}
               onClick={() => setItemSelected(index)}
             />

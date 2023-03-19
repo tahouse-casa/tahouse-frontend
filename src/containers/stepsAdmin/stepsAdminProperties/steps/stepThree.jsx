@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { InputComponent } from "../../../../components/select/inputComponent";
 import { DetailCard } from "../../../../components/detailCard/detailCard";
 import { Return } from "../../../../components/return/return";
@@ -6,7 +6,7 @@ import { MakeModal } from "../../../../components/modal/makeModal";
 import { ModalComponent } from "../../../../components/modal/modalComponent";
 import { ContainerStep, Button } from "../stylesStepsAdmin";
 import { MdCheckCircle, MdCancel } from "react-icons/md";
-
+import { AppContext } from "../../../../context";
 export const StepThree = ({
   handleSearch,
   data,
@@ -18,6 +18,9 @@ export const StepThree = ({
 }) => {
   const [viewModal, setViewModal] = useState(false);
   const [viewSecondModal, setViewSecondModal] = useState(false);
+
+  const { JWT } = useContext(AppContext);
+  const TOKEN = JWT.token;
 
   const handleButtonPrevView = () => {
     let viewDisabled = false;
@@ -40,6 +43,64 @@ export const StepThree = ({
     setErrorInput(errors);
     if (!viewDisabled) {
       setViewModal(true);
+    }
+  };
+
+  const sendAndVerifyArchives = async (data) => {
+    try {
+      let haveNewImages = [];
+      let imagesToUsed = [];
+      for (let index = 0; index < data.urlImage.length; index++) {
+        if (typeof data.urlImage[index] !== "string") {
+          haveNewImages = [...haveNewImages, data.urlImage[index]];
+        } else {
+          imagesToUsed = [...imagesToUsed, data.urlImage[index]];
+        }
+      }
+
+      if (haveNewImages.length === 0) {
+        return { success: true, send: false };
+      }
+
+      const f = new FormData();
+
+      for (let index = 0; index < haveNewImages.length; index++) {
+        f.append("file", haveNewImages[index]);
+      }
+
+      const send = await fetch(
+        `${process.env.REACT_APP_API_URL}/properties/uploadFile`,
+        {
+          method: "POST",
+          headers: {
+            authorization: `Bearer ${TOKEN}`,
+          },
+          body: f,
+        }
+      );
+      const convertJson = await send.json();
+      if (!convertJson?.success) {
+        return { success: false };
+      }
+      imagesToUsed = [...imagesToUsed, ...convertJson.urls];
+      return { success: true, send: true, response: imagesToUsed };
+    } catch (error) {
+      console.error(error);
+      return { success: false };
+    }
+  };
+
+  const handleSendData = async () => {
+    let newData = { ...data };
+    const sendImage = await sendAndVerifyArchives(newData);
+    if (sendImage.success) {
+      if (sendImage?.send) {
+        newData.urlImage = sendImage.response;
+      }
+      const send = await sendData(newData);
+      if (send.success) {
+        setViewSecondModal(true);
+      }
     }
   };
 
@@ -72,16 +133,7 @@ export const StepThree = ({
         <MakeModal>
           <Return linke={-1} handleReturn={() => setViewModal(false)} />
           <DetailCard card={data} prevView />
-          <Button
-            onClick={() => {
-              sendData();
-              if (!errorFetch) {
-                setViewSecondModal(true);
-              }
-            }}
-          >
-            PUBLICAR
-          </Button>
+          <Button onClick={handleSendData}>PUBLICAR</Button>
         </MakeModal>
       )}
       {viewSecondModal && (

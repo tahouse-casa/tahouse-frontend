@@ -7,7 +7,7 @@ html {
         
         *, *::before, *::after {
                 box-sizing: inherit;
-                background: #f4f4f4;
+                background: #fff;
         }
         
         ul, li, h1, h2, h3, p, button {
@@ -30,7 +30,7 @@ html {
                 max-width: 100vw;
                 overflow-x: hidden;
                 font-family: 'Roboto';
-                pading: 0;
+                padding: 0;
                 margin: 0;
                 box-sizing: border-box;
         }

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
+
 import { Return } from "../../../components/return/return";
 import { StepONe } from "./steps/stepONe";
 import { StepTwo } from "./steps/stepTwo";
@@ -14,18 +16,11 @@ import {
   Linear,
   ContainerButton,
 } from "./stylesStepsAdmin";
-export const StepsAdmin = ({
-  data,
-  error,
-  setData,
-  setError,
-  sendData,
-  errorFetch,
-}) => {
+export const StepsAdmin = ({ data, error, setData, setError, sendData }) => {
   const [active, setActive] = useState({ value: 0, steps: [0] });
   const [errorInput, setErrorInput] = useState({});
   const [returnModal, setReturnModal] = useState(false);
-
+  const [images, setImages] = useState({});
   const navigate = useNavigate();
   const steps = ["Imágenes", "Datos", "Contacto"];
 
@@ -43,6 +38,7 @@ export const StepsAdmin = ({
   const handlePrevVIew = () => {
     let viewDisabled = false;
     let changeErrors = {};
+
     if (active.value === 1) {
       for (const property in data) {
         if (data[property] === "") {
@@ -67,6 +63,12 @@ export const StepsAdmin = ({
       setErrorInput(changeErrors);
     }
     if (!viewDisabled) {
+      if (active.value === 0) {
+        const updateAndVerifyLength = updateImagesData();
+        if (updateAndVerifyLength.error) {
+          return;
+        }
+      }
       setError(false);
       setErrorInput({});
       setActive({
@@ -74,6 +76,25 @@ export const StepsAdmin = ({
         steps: [...active.steps, active.value + 1],
       });
     }
+  };
+
+  const updateImagesData = () => {
+    const lengthImages = Object.keys(images).length;
+    let SelectUrlImages = [...data.urlImage];
+    for (let index = 0; index < lengthImages; index++) {
+      SelectUrlImages = [...SelectUrlImages, images[index]];
+    }
+    if (SelectUrlImages.length !== 3) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El número de imágenes de la propiedad deben ser 3.",
+      });
+      return { error: true };
+    }
+    setData({ ...data, urlImage: SelectUrlImages });
+    setImages({});
+    return { error: false };
   };
 
   return (
@@ -109,7 +130,14 @@ export const StepsAdmin = ({
             </div>
           ))}
         </ContainerSteps>
-        {active.value === 0 && <StepONe />}
+        {active.value === 0 && (
+          <StepONe
+            images={images}
+            setImages={setImages}
+            data={data}
+            setData={setData}
+          />
+        )}
         {active.value === 1 && (
           <StepTwo
             handleSearch={handleSearch}
@@ -126,7 +154,6 @@ export const StepsAdmin = ({
             error={error}
             setError={setError}
             sendData={sendData}
-            errorFetch={errorFetch}
             setErrorInput={setErrorInput}
             errorInput={errorInput}
           />

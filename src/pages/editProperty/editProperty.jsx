@@ -3,7 +3,7 @@ import { StepsAdmin } from "../../containers/stepsAdmin/stepsAdminProperties/ste
 import { useParams } from "react-router-dom";
 import { AppContext } from "../../context";
 import { Navbar } from "../../components/navbar/navbar";
-
+import { Loader } from "../../components/loader/loader";
 export const EditProperty = () => {
   const [error, setError] = useState(false);
   const [data, setData] = useState({});
@@ -25,37 +25,47 @@ export const EditProperty = () => {
   const { JWT } = useContext(AppContext);
 
   const TOKEN = JWT.token;
-  const sendData = () => {
-    const newData = { ...data };
-    delete newData.id;
-    delete newData.createdAt;
-    fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify(newData),
-    })
-      .then((res) => {
-        setErrorFetch(false);
-      })
-      .catch((err) => {
-        setErrorFetch(true);
+
+  const sendData = async (data) => {
+    try {
+      let newData = { ...data };
+      delete newData.createdAt;
+      delete newData.id;
+      await fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify(newData),
       });
+      setErrorFetch(false);
+      return { success: true };
+    } catch (error) {
+      console.log(error);
+      setErrorFetch(true);
+
+      return { success: false };
+    }
   };
 
   return (
     <>
-      <Navbar />
-      <StepsAdmin
-        data={data}
-        setData={setData}
-        error={error}
-        setError={setError}
-        sendData={sendData}
-        errorFetch={errorFetch}
-      />
+      {Object.keys(data).length > 2 ? (
+        <>
+          <Navbar />
+          <StepsAdmin
+            data={data}
+            setData={setData}
+            error={error}
+            setError={setError}
+            sendData={sendData}
+            errorFetch={errorFetch}
+          />
+        </>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };

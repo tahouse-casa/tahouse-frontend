@@ -55,12 +55,13 @@ export const ContainerButton = styled.div`
   padding: 0 16px;
 `;
 //step1
-export const ContainerIMage = styled.div`
+export const ContainerStep1 = styled.div`
   width: 100%;
   min-height: 50vh;
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  flex-wrap: wrap;
 `;
 export const ContainerAddIMage = styled.div`
   width: 100%;
@@ -77,6 +78,10 @@ export const Phrase = styled.label`
   font-size: 14px;
   font-family: "Roboto";
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 `;
 export const ErrorSpan = styled.span`
   font-size: 12px;
@@ -84,6 +89,25 @@ export const ErrorSpan = styled.span`
   color: red;
   margin-bottom: 5px;
   text-align: start;
+`;
+export const ContainerImages = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+export const ButtonDeleteImg = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 0;
+`;
+export const Img = styled.img`
+  width: 328px;
+  height: 212px;
+  border-radius: 5px;
+  object-fit: unset;
 `;
 //step2 and step3
 export const ContainerStep = styled.div`
