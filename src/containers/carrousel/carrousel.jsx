@@ -7,8 +7,6 @@ export const Carrousel = ({ data = [], detail = false }) => {
 
   const amountImages = data.length;
 
-  const BASE_URL = "https://drive.google.com/uc?id=";
-
   const nextImage = () => {
     const select = selectedImage === amountImages - 1 ? 0 : selectedImage + 1;
     setSelectedImage(select);
@@ -36,7 +34,7 @@ export const Carrousel = ({ data = [], detail = false }) => {
                 divActive={index === selectedImage ? "active" : "inactive"}
               >
                 {selectedImage === index && (
-                  <Img src={BASE_URL + item} alt="inmobiliaria" />
+                  <Img src={item} alt="inmobiliaria" />
                 )}
               </DivImg>
             );

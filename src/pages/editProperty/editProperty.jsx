@@ -25,24 +25,28 @@ export const EditProperty = () => {
   const { JWT } = useContext(AppContext);
 
   const TOKEN = JWT.token;
-  const sendData = () => {
-    const newData = { ...data };
-    delete newData.id;
-    delete newData.createdAt;
-    fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify(newData),
-    })
-      .then((res) => {
-        setErrorFetch(false);
-      })
-      .catch((err) => {
-        setErrorFetch(true);
+
+  const sendData = async (data) => {
+    try {
+      let newData = { ...data };
+      delete newData.createdAt;
+      delete newData.id;
+      await fetch(`${process.env.REACT_APP_API_URL}/properties/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify(newData),
       });
+      setErrorFetch(false);
+      return { success: true };
+    } catch (error) {
+      console.log(error);
+      setErrorFetch(true);
+
+      return { success: false };
+    }
   };
 
   return (

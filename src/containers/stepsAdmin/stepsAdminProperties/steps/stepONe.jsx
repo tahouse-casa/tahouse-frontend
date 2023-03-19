@@ -9,8 +9,6 @@ import {
   Img,
 } from "../stylesStepsAdmin";
 
-const BASE_URL = "https://drive.google.com/uc?id=";
-
 export const StepONe = ({ images, setImages, data, setData }) => {
   const handleSelectImages = (files) => {
     const freeSpaceForUploadImages = 3 - data.urlImage.length;
@@ -44,7 +42,7 @@ export const StepONe = ({ images, setImages, data, setData }) => {
 
   const handleUrlImage = (image) => {
     if (typeof image === "string") {
-      return BASE_URL + image;
+      return image;
     }
     return URL.createObjectURL(image);
   };

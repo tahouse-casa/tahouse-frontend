@@ -23,27 +23,25 @@ export const CreatePropertie = () => {
     email: " ",
     urlImage: [],
   });
-
   const { JWT } = useContext(AppContext);
 
   const TOKEN = JWT.token;
 
-  const sendData = () => {
-    fetch(`${process.env.REACT_APP_API_URL}/properties`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return false;
-      })
-      .catch((err) => {
-        console.log(err);
-        return true;
+  const sendData = async (data) => {
+    try {
+      await fetch(`${process.env.REACT_APP_API_URL}/properties`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify(data),
       });
+      return { success: true };
+    } catch (error) {
+      console.log(error);
+      return { success: false };
+    }
   };
   return (
     <>

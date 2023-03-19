@@ -107,9 +107,8 @@ export const DetailCard = ({
   };
 
   const handleUrlImage = (image) => {
-    const BASE_URL = "https://drive.google.com/uc?id=";
     if (typeof image === "string") {
-      return BASE_URL + image;
+      return image;
     }
     return URL.createObjectURL(image);
   };
