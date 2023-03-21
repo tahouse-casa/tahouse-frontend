@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  frontend:
+    container_name: frontend
+    networks:
+      - tahouse
+    build:
+      context: ../
+      dockerfile: local/Dockerfile.local
+    ports:
+      - 8080:80
+
+networks:
+  tahouse:
+    name: tahouse
+    external: true
